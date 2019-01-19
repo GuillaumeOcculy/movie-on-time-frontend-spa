@@ -1,32 +1,31 @@
 import axios from "axios";
 
-const baseUrl = "http://localhost:3000";
+const baseUrl = "http://localhost:3000/api";
 // const baseUrl = "https://movieontime.com/api";
 
 const apiClient = axios.create({
   baseURL: baseUrl,
-  withCredentials: false, // This is the default
+  withCredentials: false,
   headers: {
     Accept: "application/json",
-    "Content-Type": "application/json",
-    "Access-Control-Allow-Origin": "*"
+    "Content-Type": "application/json"
   }
 });
 
 export default {
   getNowShowing() {
-    return apiClient.get("/movies");
+    return apiClient.get("/");
   },
   getMovie(id) {
     return apiClient.get("/movies/" + id);
   },
   getPremiere() {
-    return apiClient.post("/premiere");
+    return apiClient.get("/premiere");
   },
   getUpcoming() {
-    return apiClient.post("/upcoming");
+    return apiClient.get("/upcoming");
   },
   getReprojection() {
-    return apiClient.post("/reprojection");
+    return apiClient.get("/reprojection");
   }
 };

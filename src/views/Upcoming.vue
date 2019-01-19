@@ -13,7 +13,6 @@ import MovieCard from "@/components/MovieCard.vue";
 import MovieHeaderLinkList from "@/components/MovieHeaderLinkList.vue";
 
 export default {
-  name: "home",
   components: {
     MovieCard,
     MovieHeaderLinkList
@@ -24,9 +23,9 @@ export default {
     };
   },
   created() {
-    MovieService.getNowShowing()
+    MovieService.getUpcoming()
       .then(response => {
-        this.movies = response.data;
+        this.movies = response.data["movies"];
       })
       .catch(error => {
         console.log("There was an error:", error.response);

@@ -12,9 +12,3 @@
     >
   </div>
 </template>
-
-<script>
-export default {
-  name: "MovieHeaderLinkList"
-};
-</script>
