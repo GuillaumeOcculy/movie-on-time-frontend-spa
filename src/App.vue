@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Navbar />
-    <router-view />
+    <div class="container mt-5"><router-view /></div>
   </div>
 </template>
 
@@ -14,3 +14,9 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.container {
+  max-width: 1300px;
+}
+</style>
