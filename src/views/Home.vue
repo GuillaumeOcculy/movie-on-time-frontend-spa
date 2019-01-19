@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import axios from "axios";
+import MovieService from "@/services/MovieService.js";
 import MovieCard from "@/components/MovieCard.vue";
 import MovieHeaderLinkList from "@/components/MovieHeaderLinkList.vue";
 
@@ -24,8 +24,7 @@ export default {
     };
   },
   created() {
-    axios
-      .get("http://localhost:3000/movies")
+    MovieService.getNowShowing()
       .then(response => {
         this.movies = response.data;
       })
