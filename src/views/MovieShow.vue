@@ -1,12 +1,13 @@
 <template>
   <div>
     <MovieHeaderLinkList />
-    <h1 class="text-center">{{ movie.title }}</h1>
+    <MovieInfo :movie="movie" />
   </div>
 </template>
 
 <script>
 import MovieService from "@/services/MovieService.js";
+import MovieInfo from "@/components/MovieInfo.vue";
 import MovieHeaderLinkList from "@/components/MovieHeaderLinkList.vue";
 
 export default {
@@ -14,7 +15,9 @@ export default {
     id: Number
   },
   components: {
-    MovieHeaderLinkList
+    MovieHeaderLinkList,
+
+    MovieInfo
   },
   data() {
     return {
@@ -32,5 +35,3 @@ export default {
   }
 };
 </script>
-
-<style scoped></style>
