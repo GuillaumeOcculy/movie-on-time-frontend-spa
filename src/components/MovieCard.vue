@@ -1,5 +1,5 @@
 <template>
-  <div class="col-sm-3 mt-5">
+  <div class="col-sm-3 mt-3">
     <router-link
       :to="{ name: 'movie-show', params: { id: movie.id } }"
       class="text-decoration-none"
