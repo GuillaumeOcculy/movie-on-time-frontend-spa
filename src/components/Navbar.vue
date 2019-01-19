@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <nav class="navbar navbar-expand-lg navbar-light bg-white">
     <div class="container">
       <router-link to="/" class="navbar-brand">Movie On Time</router-link>
 

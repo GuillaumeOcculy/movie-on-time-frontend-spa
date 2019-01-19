@@ -12,6 +12,21 @@ export default new Router({
       path: "/",
       name: "home",
       component: Home
+    },
+    {
+      path: "/upcoming",
+      name: "upcoming",
+      component: Home
+    },
+    {
+      path: "/premiere",
+      name: "premiere",
+      component: Home
+    },
+    {
+      path: "/reprojection",
+      name: "reprojection",
+      component: Home
     }
   ]
 });
