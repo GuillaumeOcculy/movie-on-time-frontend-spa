@@ -1,5 +1,7 @@
 <template>
-  <div>{{ genre.name }}</div>
+  <div>
+    <p>{{ genre.name }}</p>
+  </div>
 </template>
 
 <script>
