@@ -5,7 +5,7 @@
       class="text-decoration-none"
     >
       <div class="card">
-        <img :src="movie.poster_url" :alt="movie.title" />
+        <img :src="movie.poster_url || posterNotFound" :alt="movie.title" />
         <div class="card-body">
           <h5 class="card-title">{{ movie.title }}</h5>
         </div>
@@ -18,9 +18,16 @@
 </template>
 
 <script>
+import posterNotFound from "@/assets/images/poster_not_found.jpg";
+
 export default {
   props: {
     movie: Object
+  },
+  data: function() {
+    return {
+      posterNotFound: posterNotFound
+    };
   }
 };
 </script>
