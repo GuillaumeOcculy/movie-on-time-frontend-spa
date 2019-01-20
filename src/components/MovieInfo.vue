@@ -1,5 +1,5 @@
 <template>
-  <div class="row bg-white mt-3 py-3 palign-items-center">
+  <div class="row bg-white mt-3 py-3 align-items-center">
     <div class="col-sm-4">
       <img :src="movie.poster_url" :alt="movie.title" />
     </div>

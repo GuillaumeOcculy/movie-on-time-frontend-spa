@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import MovieService from "@/services/MovieService.js";
+import MOTService from "@/services/MOTService.js";
 import MovieInfo from "@/components/MovieInfo.vue";
 import CinemaInfo from "@/components/CinemaInfo.vue";
 import MovieDate from "@/components/MovieDate.vue";
@@ -40,7 +40,7 @@ export default {
     };
   },
   created() {
-    MovieService.getMovie(this.id)
+    MOTService.getMovie(this.id)
       .then(response => {
         this.movie = response.data["movie"];
       })

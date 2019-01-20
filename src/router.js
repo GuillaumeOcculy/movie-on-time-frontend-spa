@@ -5,6 +5,7 @@ import Premiere from "./views/Premiere.vue";
 import Upcoming from "./views/Upcoming.vue";
 import Reprojection from "./views/Reprojection.vue";
 import MovieShow from "./views/MovieShow.vue";
+import ShowtimeShow from "./views/ShowtimeShow.vue";
 
 Vue.use(Router);
 
@@ -36,6 +37,12 @@ export default new Router({
       path: "/movies/:id",
       name: "movie-show",
       component: MovieShow,
+      props: true
+    },
+    {
+      path: "/showtimes/:id",
+      name: "showtime-show",
+      component: ShowtimeShow,
       props: true
     }
   ]

@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import MovieService from "@/services/MovieService.js";
+import MOTService from "@/services/MOTService.js";
 import MovieCard from "@/components/MovieCard.vue";
 import MovieHeaderLinkList from "@/components/MovieHeaderLinkList.vue";
 
@@ -23,7 +23,7 @@ export default {
     };
   },
   created() {
-    MovieService.getPremiere()
+    MOTService.getPremiere()
       .then(response => {
         this.movies = response.data["movies"];
       })

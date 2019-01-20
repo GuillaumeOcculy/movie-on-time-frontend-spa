@@ -27,5 +27,8 @@ export default {
   },
   getReprojection() {
     return apiClient.get("/reprojection");
+  },
+  getShowtime(id) {
+    return apiClient.get("/showtimes/" + id);
   }
 };

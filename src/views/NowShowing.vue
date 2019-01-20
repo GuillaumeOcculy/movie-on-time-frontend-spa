@@ -1,14 +1,14 @@
 <template>
   <div>
-    <MovieHeaderLinkList />
+    <MovieHeaderLinkList/>
     <div class="row">
-      <MovieCard v-for="movie in movies" :key="movie.id" :movie="movie" />
+      <MovieCard v-for="movie in movies" :key="movie.id" :movie="movie"/>
     </div>
   </div>
 </template>
 
 <script>
-import MovieService from "@/services/MovieService.js";
+import MOTService from "@/services/MOTService.js";
 import MovieCard from "@/components/MovieCard.vue";
 import MovieHeaderLinkList from "@/components/MovieHeaderLinkList.vue";
 
@@ -23,7 +23,7 @@ export default {
     };
   },
   created() {
-    MovieService.getNowShowing()
+    MOTService.getNowShowing()
       .then(response => {
         this.movies = response.data["movies"];
       })
