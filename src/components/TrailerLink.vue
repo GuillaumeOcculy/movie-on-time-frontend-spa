@@ -14,8 +14,3 @@ export default {
   }
 };
 </script>
-
-<style scoped>
-a {
-}
-</style>
