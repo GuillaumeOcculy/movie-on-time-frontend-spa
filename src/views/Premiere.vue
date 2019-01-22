@@ -2,7 +2,11 @@
   <div>
     <MovieHeaderLinkList />
     <div class="row">
-      <MovieCard v-for="movie in movies" :key="movie.id" :movie="movie" />
+      <MovieCard
+        v-for="movie in movies"
+        :key="movie.id"
+        :movie="movie.attributes"
+      />
     </div>
   </div>
 </template>
@@ -25,7 +29,7 @@ export default {
   created() {
     MOTService.getPremiere()
       .then(response => {
-        this.movies = response.data["movies"];
+        this.movies = response.data["data"];
       })
       .catch(error => {
         console.log("There was an error:", error.response);
