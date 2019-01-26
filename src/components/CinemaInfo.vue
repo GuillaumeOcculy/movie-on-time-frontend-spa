@@ -1,11 +1,11 @@
 <template>
   <div class="row p-3">
     <div class="col-sm-4">
-      <h1 class="text-center">{{ cinema.name }}</h1>
+      <h1 class="text-center">{{ cinema.attributes.name }}</h1>
       <p v-html="computedAddress"></p>
     </div>
     <div class="col-sm-8 align-self-center">
-      <ShowtimeList :showtimes="cinema.showtimes" />
+      <ShowtimeList :showtimes="cinema.attributes.showtimes.data" />
     </div>
   </div>
 </template>
@@ -19,9 +19,16 @@ export default {
   components: {
     ShowtimeList
   },
+  created() {
+    console.log(this.cinema.attributes.showtimes.data);
+  },
   computed: {
     computedAddress: function() {
-      return this.cinema.address.split(",").join("<br>");
+      return [
+        this.cinema.attributes.street,
+        this.cinema.attributes.post_code,
+        this.cinema.attributes.city
+      ].join("<br>");
     }
   }
 };

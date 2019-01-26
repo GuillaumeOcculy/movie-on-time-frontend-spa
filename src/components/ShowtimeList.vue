@@ -27,7 +27,7 @@ export default {
   },
   computed: {
     groupedShowtimes: function() {
-      return _.groupBy(this.showtimes, "version");
+      return _.groupBy(this.showtimes, "attributes.version");
     }
   }
 };
