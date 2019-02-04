@@ -10,7 +10,11 @@
     />
 
     <div class="row bg-white mt-3 d-flex bd-highlight">
-      <MovieDate v-for="date in this.dates" :key="date" :date="date" />
+      <MovieDate
+        v-for="date in movie.attributes.dates"
+        :key="date"
+        :date="date"
+      />
     </div>
 
     <div class="bg-white mt-3">
@@ -20,11 +24,11 @@
 </template>
 
 <script>
-import MOTService from "@/services/MOTService.js";
 import MovieInfo from "@/components/MovieInfo.vue";
 import CinemaInfo from "@/components/CinemaInfo.vue";
 import MovieDate from "@/components/MovieDate.vue";
 import MovieHeaderLinkList from "@/components/MovieHeaderLinkList.vue";
+import { mapState } from "vuex";
 
 export default {
   props: {
@@ -36,41 +40,16 @@ export default {
     MovieInfo,
     CinemaInfo
   },
-  data() {
-    return {
-      movie: {},
-      dates: [],
-      trailers: [],
-      casts: [],
-      directors: [],
-      genres: [],
-      cinemas: []
-    };
-  },
+  computed: mapState([
+    "movie",
+    "trailers",
+    "casts",
+    "directors",
+    "genres",
+    "cinemas"
+  ]),
   created() {
-    MOTService.getMovie(this.id)
-      .then(response => {
-        this.movie = response.data.data;
-        this.dates = this.movie.attributes.dates;
-        this.trailers = response.data.included.filter(
-          association => association.type == "trailer"
-        );
-        this.directors = response.data.included.filter(
-          association => association.type == "director"
-        );
-        this.casts = response.data.included.filter(
-          association => association.type == "cast"
-        );
-        this.genres = response.data.included.filter(
-          association => association.type == "genre"
-        );
-        this.cinemas = response.data.included.filter(
-          association => association.type == "cinema_item"
-        );
-      })
-      .catch(error => {
-        console.log("There was an error:", error.response);
-      });
+    this.$store.dispatch("fetchMovie", this.id);
   }
 };
 </script>
