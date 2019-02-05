@@ -19,9 +19,6 @@ export default {
   components: {
     ShowtimeList
   },
-  created() {
-    console.log(this.cinema.attributes.showtimes.data);
-  },
   computed: {
     computedAddress: function() {
       return [

@@ -10,11 +10,11 @@
     />
 
     <div class="row bg-white mt-3 d-flex bd-highlight">
-      <MovieDate
-        v-for="date in movie.attributes.dates"
-        :key="date"
-        :date="date"
-      />
+      <template v-for="date in movie.attributes.dates">
+        <div class="p-2 flex-fill bd-highlight text-center border" :key="date">
+          <button @click="set_date(date)" class="btn">{{ date }}</button>
+        </div>
+      </template>
     </div>
 
     <div class="bg-white mt-3">
@@ -26,7 +26,6 @@
 <script>
 import MovieInfo from "@/components/MovieInfo.vue";
 import CinemaInfo from "@/components/CinemaInfo.vue";
-import MovieDate from "@/components/MovieDate.vue";
 import MovieHeaderLinkList from "@/components/MovieHeaderLinkList.vue";
 import { mapState } from "vuex";
 
@@ -36,7 +35,6 @@ export default {
   },
   components: {
     MovieHeaderLinkList,
-    MovieDate,
     MovieInfo,
     CinemaInfo
   },
@@ -48,8 +46,14 @@ export default {
     "genres",
     "cinemas"
   ]),
+  methods: {
+    set_date(date) {
+      var payload = { id: this.id, date: date };
+      this.$store.dispatch("fetchMovie", payload);
+    }
+  },
   created() {
-    this.$store.dispatch("fetchMovie", this.id);
+    this.$store.dispatch("fetchMovie", { id: this.id });
   }
 };
 </script>

@@ -35,8 +35,8 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    fetchMovie({ commit }, id) {
-      MOTService.getMovie(id)
+    fetchMovie({ commit }, { id, date }) {
+      MOTService.getMovie(id, date)
         .then(response => {
           commit("SET_MOVIE", response.data);
         })

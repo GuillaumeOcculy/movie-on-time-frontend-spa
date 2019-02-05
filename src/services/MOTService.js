@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseUrl = "http://localhost:3000";
+const baseUrl = "http://localhost:3009";
 // const baseUrl = "https://movieontime.com/api";
 
 const apiClient = axios.create({
@@ -16,8 +16,12 @@ export default {
   getNowShowing() {
     return apiClient.get("/");
   },
-  getMovie(id) {
-    return apiClient.get("/movies/" + id);
+  getMovie(id, date) {
+    if (date != undefined) {
+      return apiClient.get("/movies/" + id + "?date=" + date);
+    } else {
+      return apiClient.get("/movies/" + id);
+    }
   },
   getPremiere() {
     return apiClient.get("/premiere");
