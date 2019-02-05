@@ -18,7 +18,24 @@
     </div>
 
     <div class="bg-white mt-3">
-      <CinemaInfo v-for="cinema in cinemas" :key="cinema.id" :cinema="cinema" />
+      <template v-if="cinemas.length > 0">
+        <form class="form-inline">
+          <div class="form-group mx-sm-3 mb-2 mt-3">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Search Cinema"
+              v-model="search"
+            />
+          </div>
+        </form>
+      </template>
+
+      <CinemaInfo
+        v-for="cinema in filteredCinemas"
+        :key="cinema.id"
+        :cinema="cinema"
+      />
     </div>
   </div>
 </template>
@@ -38,14 +55,29 @@ export default {
     MovieInfo,
     CinemaInfo
   },
-  computed: mapState([
-    "movie",
-    "trailers",
-    "casts",
-    "directors",
-    "genres",
-    "cinemas"
-  ]),
+  data: function() {
+    return {
+      search: ""
+    };
+  },
+  computed: {
+    filteredCinemas: function() {
+      return this.cinemas.filter(cinema => {
+        return cinema.attributes.name
+          .toLowerCase()
+          .match(this.search.toLowerCase());
+      });
+    },
+    ...mapState([
+      "movie",
+      "trailers",
+      "casts",
+      "directors",
+      "genres",
+      "cinemas"
+    ])
+  },
+
   methods: {
     set_date(date) {
       var payload = { id: this.id, date: date };
