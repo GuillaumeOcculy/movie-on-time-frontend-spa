@@ -34,5 +34,8 @@ export default {
   },
   getShowtime(id) {
     return apiClient.get("/showtimes/" + id);
+  },
+  getCinemas() {
+    return apiClient.get("/cinemas");
   }
 };

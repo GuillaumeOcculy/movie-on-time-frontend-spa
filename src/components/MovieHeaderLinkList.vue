@@ -10,5 +10,8 @@
     <router-link :to="{ name: 'reprojection' }" class="navbar-brand"
       >Reprojection</router-link
     >
+    <router-link :to="{ name: 'cinemas' }" class="navbar-brand"
+      >Cinemas</router-link
+    >
   </div>
 </template>
