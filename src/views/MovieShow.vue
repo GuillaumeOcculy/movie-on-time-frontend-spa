@@ -21,11 +21,22 @@
       <template v-if="cinemas.length > 0">
         <form class="form-inline">
           <div class="form-group mx-sm-3 mb-2 mt-3">
+            <label for="inputPassword2" class="sr-only">Password</label>
             <input
               type="text"
               class="form-control"
               placeholder="Search Cinema"
               v-model="search"
+            />
+          </div>
+          <div class="form-group mb-2 mt-3">
+            <label for="staticEmail2" class="sr-only">Email</label>
+            <input
+              type="text"
+              readonly
+              class="form-control-plaintext"
+              id="staticEmail2"
+              :value="'Cinemas: ' + filteredCinemas.length"
             />
           </div>
         </form>

@@ -2,7 +2,7 @@
   <div>
     <MovieHeaderLinkList />
 
-    <div class="row" v-if="cinemas.length > 0">
+    <div class="row mt-2" v-if="cinemas.length > 0">
       <form class="form-inline">
         <div class="form-group mx-sm-3 mb-2">
           <label for="inputPassword2" class="sr-only">Password</label>
@@ -20,7 +20,7 @@
             readonly
             class="form-control-plaintext"
             id="staticEmail2"
-            :value="'Results: ' + filteredCinemas.length"
+            :value="'Cinemas: ' + filteredCinemas.length"
           />
         </div>
       </form>
