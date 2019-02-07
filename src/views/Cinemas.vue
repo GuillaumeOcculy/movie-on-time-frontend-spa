@@ -10,7 +10,8 @@
             type="text"
             class="form-control"
             placeholder="Search Cinema"
-            v-model="search"
+            v-model="query"
+            v-on:keyup="search_cinemas"
           />
         </div>
         <div class="form-group mb-2">
@@ -20,18 +21,14 @@
             readonly
             class="form-control-plaintext"
             id="staticEmail2"
-            :value="'Cinemas: ' + filteredCinemas.length"
+            :value="'Cinemas: ' + cinemas.length"
           />
         </div>
       </form>
     </div>
 
     <div class="row">
-      <CinemaCard
-        v-for="cinema in filteredCinemas"
-        :cinema="cinema"
-        :key="cinema.id"
-      />
+      <CinemaCard v-for="cinema in cinemas" :cinema="cinema" :key="cinema.id" />
     </div>
   </div>
 </template>
@@ -49,16 +46,19 @@ export default {
   data() {
     return {
       cinemas: [],
-      search: ""
+      query: ""
     };
   },
-  computed: {
-    filteredCinemas: function() {
-      return this.cinemas.filter(cinema => {
-        return cinema.attributes.name
-          .toLowerCase()
-          .match(this.search.toLowerCase());
-      });
+  methods: {
+    search_cinemas() {
+      MOTService.getCinemas(this.query)
+        .then(response => {
+          this.cinemas = response.data["data"];
+          console.log(this.cinemas.length);
+        })
+        .catch(error => {
+          console.log("There was an error:", error.response);
+        });
     }
   },
   created() {

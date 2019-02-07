@@ -35,8 +35,12 @@ export default {
   getShowtime(id) {
     return apiClient.get("/showtimes/" + id);
   },
-  getCinemas() {
-    return apiClient.get("/cinemas");
+  getCinemas(query) {
+    if (query != undefined) {
+      return apiClient.get("/cinemas?query=" + query);
+    } else {
+      return apiClient.get("/cinemas");
+    }
   },
   getCinema(id, date) {
     if (date != undefined) {
