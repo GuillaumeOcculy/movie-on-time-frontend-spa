@@ -88,7 +88,6 @@ export default {
       "cinemas"
     ])
   },
-
   methods: {
     set_date(date) {
       var payload = { id: this.id, date: date };

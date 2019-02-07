@@ -1,5 +1,5 @@
 <template>
-  <div class="row p-3 bg-white">
+  <div class="row p-3">
     <div class="col-sm-6">
       <router-link
         :to="{ name: 'movie-show', params: { id: movie.id } }"
