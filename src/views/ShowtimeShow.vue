@@ -7,33 +7,46 @@
           <div class="card-body">
             <div class="row">
               <div class="col-sm-3">
-                <img
-                  :src="movie.attributes.poster_url"
-                  alt="movie.attributes.title"
-                />
+                <router-link
+                  :to="{ name: 'movie-show', params: { id: movie.id } }"
+                >
+                  <img
+                    :src="movie.attributes.poster_url"
+                    alt="movie.attributes.title"
+                  />
+                </router-link>
               </div>
 
               <div class="col-sm-5">
                 <router-link
                   :to="{ name: 'movie-show', params: { id: movie.id } }"
                 >
-                  <h1 class="text-center">{{ movie.attributes.title }}</h1>
+                  <div>
+                    <h1 class="text-center">{{ movie.attributes.title }}</h1>
+
+                    <hr />
+                    <p>
+                      <span class="text-muted">During</span>
+                      {{ movie.attributes.running_time }} min
+                    </p>
+                    <p>
+                      <span class="text-muted">Released on</span>
+                      {{ movie.attributes.release_date }}
+                    </p>
+                    <p>
+                      <span class="text-muted">By</span> {{ directorNames }}
+                    </p>
+                    <p><span class="text-muted">With</span> {{ castNames }}</p>
+                  </div>
                 </router-link>
-                <hr />
-                <p>
-                  <span class="text-muted">During</span>
-                  {{ movie.attributes.running_time }} min
-                </p>
-                <p>
-                  <span class="text-muted">Released on</span>
-                  {{ movie.attributes.release_date }}
-                </p>
-                <p><span class="text-muted">By</span> {{ directorNames }}</p>
-                <p><span class="text-muted">With</span> {{ castNames }}</p>
               </div>
 
               <div class="col-sm-4">
-                <h2 class="text-center">{{ cinema.attributes.name }}</h2>
+                <router-link
+                  :to="{ name: 'cinema-show', params: { id: cinema.id } }"
+                >
+                  <h2 class="text-center">{{ cinema.attributes.name }}</h2>
+                </router-link>
                 <hr />
                 <p class="text-muted">Address</p>
                 <p v-html="computedAddress"></p>

@@ -8,11 +8,13 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     movie: {},
+    cinema: {},
     trailers: [],
     casts: [],
     directors: [],
     genres: [],
-    cinemas: []
+    cinemas: [],
+    movies: []
   },
   mutations: {
     SET_MOVIE(state, data) {
@@ -32,6 +34,12 @@ export default new Vuex.Store({
       state.cinemas = data.included.filter(
         association => association.type == "cinema_item"
       );
+    },
+    SET_CINEMA(state, data) {
+      state.cinema = data.data;
+      state.movies = data.included.filter(
+        association => association.type == "movie_item"
+      );
     }
   },
   actions: {
@@ -39,6 +47,15 @@ export default new Vuex.Store({
       MOTService.getMovie(id, date)
         .then(response => {
           commit("SET_MOVIE", response.data);
+        })
+        .catch(error => {
+          console.log("There was an error:", error.response);
+        });
+    },
+    fetchCinema({ commit }, { id, date }) {
+      MOTService.getCinema(id, date)
+        .then(response => {
+          commit("SET_CINEMA", response.data);
         })
         .catch(error => {
           console.log("There was an error:", error.response);

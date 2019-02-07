@@ -1,7 +1,12 @@
 <template>
   <div class="row p-3">
     <div class="col-sm-4">
-      <h1 class="text-center">{{ cinema.attributes.name }}</h1>
+      <router-link
+        :to="{ name: 'cinema-show', params: { id: cinema.id } }"
+        class="text-decoration-none"
+      >
+        <h1 class="text-center">{{ cinema.attributes.name }}</h1>
+      </router-link>
       <p v-html="computedAddress"></p>
     </div>
     <div class="col-sm-8 align-self-center">

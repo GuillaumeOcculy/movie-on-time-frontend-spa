@@ -1,11 +1,16 @@
 <template>
   <div class="col-sm-3 mt-3">
-    <div class="card" style="width: 18rem;">
-      <div class="card-body">
-        <h5 class="card-title">{{ cinema.attributes.name }}</h5>
-        <p class="card-text" v-html="computedAddress"></p>
+    <router-link
+      :to="{ name: 'cinema-show', params: { id: cinema.id } }"
+      class="text-decoration-none"
+    >
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">{{ cinema.attributes.name }}</h5>
+          <p class="card-text" v-html="computedAddress"></p>
+        </div>
       </div>
-    </div>
+    </router-link>
   </div>
 </template>
 
