@@ -1,6 +1,6 @@
 <template>
   <div>
-    <MovieHeaderLinkList />
+    <MovieHeaderLinkList/>
     <MovieInfo
       :movie="movie"
       :trailers="trailers"
@@ -26,8 +26,9 @@
               type="text"
               class="form-control"
               placeholder="Search Cinema"
-              v-model="search"
-            />
+              v-model="query"
+              v-on:keyup="search_cinemas"
+            >
           </div>
           <div class="form-group mb-2 mt-3">
             <label for="staticEmail2" class="sr-only">Email</label>
@@ -36,17 +37,13 @@
               readonly
               class="form-control-plaintext"
               id="staticEmail2"
-              :value="'Cinemas: ' + filteredCinemas.length"
-            />
+              :value="'Cinemas: ' + cinemas.length"
+            >
           </div>
         </form>
       </template>
 
-      <CinemaInfo
-        v-for="cinema in filteredCinemas"
-        :key="cinema.id"
-        :cinema="cinema"
-      />
+      <CinemaInfo v-for="cinema in cinemas" :key="cinema.id" :cinema="cinema"/>
     </div>
   </div>
 </template>
@@ -68,17 +65,10 @@ export default {
   },
   data: function() {
     return {
-      search: ""
+      query: ""
     };
   },
   computed: {
-    filteredCinemas: function() {
-      return this.cinemas.filter(cinema => {
-        return cinema.attributes.name
-          .toLowerCase()
-          .match(this.search.toLowerCase());
-      });
-    },
     ...mapState([
       "movie",
       "trailers",
@@ -91,6 +81,10 @@ export default {
   methods: {
     set_date(date) {
       var payload = { id: this.id, date: date };
+      this.$store.dispatch("fetchMovie", payload);
+    },
+    search_cinemas() {
+      var payload = { id: this.id, query: this.query };
       this.$store.dispatch("fetchMovie", payload);
     }
   },

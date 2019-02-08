@@ -16,9 +16,9 @@ export default {
   getNowShowing() {
     return apiClient.get("/");
   },
-  getMovie(id, date) {
-    if (date != undefined) {
-      return apiClient.get("/movies/" + id + "?date=" + date);
+  getMovie(id, date, query) {
+    if (query != undefined) {
+      return apiClient.get("/movies/" + id + "?query=" + query);
     } else {
       return apiClient.get("/movies/" + id);
     }
