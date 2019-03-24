@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="cinema.attributes">
     <MovieHeaderLinkList />
     <CinemaInfo :cinema="cinema" />
 

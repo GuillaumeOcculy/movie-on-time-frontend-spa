@@ -21,14 +21,25 @@
           <dd>{{ movie.attributes.original_title }}</dd>
         </template>
 
-        <dt>Duration</dt>
-        <dd>{{ movie.attributes.running_time }} min</dd>
-        <dt>Directors</dt>
-        <dd>{{ directorNames }}</dd>
-        <dt>Casts</dt>
-        <dd>{{ castNames }}</dd>
-        <dt>Synopsis</dt>
-        <dd>{{ movie.attributes.synopsis }}</dd>
+        <template v-if="movie.attributes.running_time">
+          <dt>Duration</dt>
+          <dd>{{ movie.attributes.running_time }} min</dd>
+        </template>
+
+        <template v-if="directorNames.length > 0">
+          <dt>Directors</dt>
+          <dd>{{ directorNames }}</dd>
+        </template>
+
+        <template v-if="castNames.length > 0">
+          <dt>Casts</dt>
+          <dd>{{ castNames }}</dd>
+        </template>
+
+        <template v-if="movie.attributes.synopsis">
+          <dt>Synopsis</dt>
+          <dd>{{ movie.attributes.synopsis }}</dd>
+        </template>
       </dl>
 
       <div class="text-center">

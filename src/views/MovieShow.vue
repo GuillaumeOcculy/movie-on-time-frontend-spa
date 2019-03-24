@@ -21,7 +21,7 @@
               class="form-control"
               placeholder="Search Cinema"
               v-model="query"
-              v-on:keyup="fetch_movie"
+              @input="fetch_movie"
             />
           </div>
           <div class="form-group mb-2 mt-3">

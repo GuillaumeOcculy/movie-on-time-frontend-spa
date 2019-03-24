@@ -17,14 +17,22 @@
             <hr />
 
             <dl>
-              <dt>Released on</dt>
-              <dd>{{ movie.attributes.release_date }}</dd>
-              <dt>Duration</dt>
-              <dd>{{ movie.attributes.running_time }} min</dd>
-              <dt>Directors</dt>
-              <dd>{{ directorNames }}</dd>
-              <dt>Casts</dt>
-              <dd>{{ castNames }}</dd>
+              <template v-if="movie.attributes.release_date">
+                <dt>Released on</dt>
+                <dd>{{ movie.attributes.release_date }}</dd>
+              </template>
+              <template v-if="movie.attributes.running_time">
+                <dt>Duration</dt>
+                <dd>{{ movie.attributes.running_time }} min</dd>
+              </template>
+              <template v-if="directorNames.length > 0">
+                <dt>Directors</dt>
+                <dd>{{ directorNames }}</dd>
+              </template>
+              <template v-if="castNames.length > 0">
+                <dt>Casts</dt>
+                <dd>{{ castNames }}</dd>
+              </template>
             </dl>
           </div>
         </div>
