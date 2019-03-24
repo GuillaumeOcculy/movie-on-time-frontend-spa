@@ -5,12 +5,17 @@
       class="text-decoration-none"
     >
       <div class="card">
-        <img :src="movie.poster_url || posterNotFound" :alt="movie.title">
+        <img
+          :src="movie.attributes.poster_url || posterNotFound"
+          :alt="movie.attributes.title"
+        />
         <div class="card-body">
-          <h5 class="card-title">{{ movie.title }}</h5>
+          <h5 class="card-title">{{ movie.attributes.title }}</h5>
         </div>
         <div class="card-footer bg-transparent">
-          <p class="text-center text-muted">{{ movie.release_date }}</p>
+          <p class="text-center text-muted">
+            {{ movie.attributes.release_date }}
+          </p>
         </div>
       </div>
     </router-link>

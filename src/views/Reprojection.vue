@@ -2,11 +2,7 @@
   <div>
     <MovieHeaderLinkList />
     <div class="row">
-      <MovieCard
-        v-for="movie in movies"
-        :key="movie.id"
-        :movie="movie.attributes"
-      />
+      <MovieCard v-for="movie in movies" :key="movie.id" :movie="movie" />
     </div>
   </div>
 </template>
