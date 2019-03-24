@@ -11,7 +11,7 @@
             class="form-control"
             placeholder="Search Cinema"
             v-model="query"
-            v-on:keyup="search_cinemas"
+            @input="search_cinemas"
           />
         </div>
         <div class="form-group mb-2">
