@@ -5,6 +5,7 @@ import store from "./store";
 import BootstrapVue from "bootstrap-vue";
 
 import AppDate from "@/components/AppDate";
+import AppShortDate from "@/components/AppShortDate";
 
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";
@@ -14,6 +15,7 @@ import "@/assets/stylesheets/style.scss";
 Vue.use(BootstrapVue);
 Vue.use(require("vue-moment"));
 Vue.component("AppDate", AppDate);
+Vue.component("AppShortDate", AppShortDate);
 
 Vue.config.productionTip = false;
 

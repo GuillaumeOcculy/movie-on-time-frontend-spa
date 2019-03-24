@@ -70,7 +70,7 @@
                 <div class="col-sm">
                   <p>Date</p>
                   <p class="text-danger">
-                    <AppDate :date="showtime.attributes.start_date" />
+                    <AppShortDate :date="showtime.attributes.start_date" />
                   </p>
                 </div>
                 <div class="col-sm">
