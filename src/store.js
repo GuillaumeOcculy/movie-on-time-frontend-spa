@@ -8,8 +8,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     movie: {},
-    cinema: {},
-    movies: []
+    cinema: {}
   },
   mutations: {
     SET_MOVIE(state, data) {
@@ -34,9 +33,10 @@ export default new Vuex.Store({
         association => association.type == "cinema_item"
       );
     },
+
     SET_CINEMA(state, data) {
       state.cinema = data.data;
-      state.movies = data.included.filter(
+      state.cinema["movies"] = data.included.filter(
         association => association.type == "movie_item"
       );
     }
