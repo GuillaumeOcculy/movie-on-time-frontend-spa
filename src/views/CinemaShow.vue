@@ -62,7 +62,8 @@ export default {
   },
   data: function() {
     return {
-      search: ""
+      search: "",
+      date: ""
     };
   },
   created() {
@@ -79,12 +80,18 @@ export default {
     movies: function() {
       return this.cinema.movies;
     },
+    payload: function() {
+      return { id: this.id, date: this.date };
+    },
     ...mapState(["cinema"])
   },
   methods: {
+    fetch_cinema() {
+      this.$store.dispatch("fetchCinema", this.payload);
+    },
     set_date(date) {
-      var payload = { id: this.id, date: date };
-      this.$store.dispatch("fetchCinema", payload);
+      this.date = date;
+      this.fetch_cinema();
     }
   }
 };

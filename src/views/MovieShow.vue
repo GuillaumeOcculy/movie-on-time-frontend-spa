@@ -21,7 +21,7 @@
               class="form-control"
               placeholder="Search Cinema"
               v-model="query"
-              v-on:keyup="search_cinemas"
+              v-on:keyup="fetch_movie"
             />
           </div>
           <div class="form-group mb-2 mt-3">
@@ -91,17 +91,14 @@ export default {
   methods: {
     set_date(date) {
       this.date = date;
-      console.log("set_date", this.payload);
-      this.$store.dispatch("fetchMovie", this.payload);
+      this.fetch_movie();
     },
-    search_cinemas() {
-      console.log("search_cinemas", this.payload);
+    fetch_movie() {
       this.$store.dispatch("fetchMovie", this.payload);
     }
   },
   created() {
-    console.log("created payload", this.payload);
-    this.$store.dispatch("fetchMovie", this.payload);
+    this.fetch_movie();
   }
 };
 </script>
