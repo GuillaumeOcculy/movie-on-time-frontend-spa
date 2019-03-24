@@ -59,10 +59,18 @@ export default {
   },
   data: function() {
     return {
-      query: ""
+      query: "",
+      date: ""
     };
   },
   computed: {
+    payload: function() {
+      return {
+        id: this.id,
+        query: this.query,
+        date: this.date
+      };
+    },
     cinemas: function() {
       return this.movie.cinemas;
     },
@@ -70,16 +78,18 @@ export default {
   },
   methods: {
     set_date(date) {
-      var payload = { id: this.id, date: date };
-      this.$store.dispatch("fetchMovie", payload);
+      this.date = date;
+      console.log("set_date", this.payload);
+      this.$store.dispatch("fetchMovie", this.payload);
     },
     search_cinemas() {
-      var payload = { id: this.id, query: this.query };
-      this.$store.dispatch("fetchMovie", payload);
+      console.log("search_cinemas", this.payload);
+      this.$store.dispatch("fetchMovie", this.payload);
     }
   },
   created() {
-    this.$store.dispatch("fetchMovie", { id: this.id });
+    console.log("created payload", this.payload);
+    this.$store.dispatch("fetchMovie", this.payload);
   }
 };
 </script>

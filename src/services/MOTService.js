@@ -1,4 +1,5 @@
 import axios from "axios";
+import queryString from "query-string";
 
 const baseUrl = "http://localhost:3000";
 // const baseUrl = "https://movieontime.com/api";
@@ -16,12 +17,12 @@ export default {
   getNowShowing() {
     return apiClient.get("/");
   },
-  getMovie(id, date, query) {
-    if (query != undefined) {
-      return apiClient.get("/movies/" + id + "?query=" + query);
-    } else {
-      return apiClient.get("/movies/" + id);
-    }
+  getMovie(payload) {
+    const id = payload["id"];
+    delete payload.id;
+    const params = queryString.stringify(payload);
+
+    return apiClient.get("/movies/" + id + "?" + params);
   },
   getPremiere() {
     return apiClient.get("/premiere");
