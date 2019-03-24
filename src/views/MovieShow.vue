@@ -1,13 +1,7 @@
 <template>
   <div>
-    <MovieHeaderLinkList/>
-    <MovieInfo
-      :movie="movie"
-      :trailers="trailers"
-      :casts="casts"
-      :directors="directors"
-      :genres="genres"
-    />
+    <MovieHeaderLinkList />
+    <MovieInfo :movie="movie" />
 
     <div class="row bg-white mt-3 d-flex bd-highlight">
       <template v-for="date in movie.attributes.dates">
@@ -28,7 +22,7 @@
               placeholder="Search Cinema"
               v-model="query"
               v-on:keyup="search_cinemas"
-            >
+            />
           </div>
           <div class="form-group mb-2 mt-3">
             <label for="staticEmail2" class="sr-only">Email</label>
@@ -38,12 +32,12 @@
               class="form-control-plaintext"
               id="staticEmail2"
               :value="'Cinemas: ' + cinemas.length"
-            >
+            />
           </div>
         </form>
       </template>
 
-      <CinemaInfo v-for="cinema in cinemas" :key="cinema.id" :cinema="cinema"/>
+      <CinemaInfo v-for="cinema in cinemas" :key="cinema.id" :cinema="cinema" />
     </div>
   </div>
 </template>
@@ -69,14 +63,10 @@ export default {
     };
   },
   computed: {
-    ...mapState([
-      "movie",
-      "trailers",
-      "casts",
-      "directors",
-      "genres",
-      "cinemas"
-    ])
+    cinemas: function() {
+      return this.movie.cinemas;
+    },
+    ...mapState(["movie"])
   },
   methods: {
     set_date(date) {

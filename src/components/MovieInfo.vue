@@ -34,7 +34,7 @@
       <div class="text-center">
         <div class="btn-group" role="group" aria-label="Basic example">
           <TrailerLink
-            v-for="(trailer, index) in trailers"
+            v-for="(trailer, index) in movie.trailers"
             :key="trailer.id"
             :trailer="trailer"
             :index="index"
@@ -61,15 +61,17 @@ export default {
   },
   computed: {
     genreNames: function() {
-      var genres = this.genres.map(genre => genre.attributes.name);
+      var genres = this.movie.genres.map(genre => genre.attributes.name);
       return genres.join(", ");
     },
     directorNames: function() {
-      var directors = this.directors.map(director => director.attributes.name);
+      var directors = this.movie.directors.map(
+        director => director.attributes.name
+      );
       return directors.join(", ");
     },
     castNames: function() {
-      var casts = this.casts.map(cast => cast.attributes.name);
+      var casts = this.movie.casts.map(cast => cast.attributes.name);
       return casts.join(", ");
     }
   }

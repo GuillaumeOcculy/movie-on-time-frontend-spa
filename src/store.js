@@ -9,29 +9,28 @@ export default new Vuex.Store({
   state: {
     movie: {},
     cinema: {},
-    trailers: [],
-    casts: [],
-    directors: [],
-    genres: [],
-    cinemas: [],
     movies: []
   },
   mutations: {
     SET_MOVIE(state, data) {
       state.movie = data.data;
-      state.trailers = data.included.filter(
+      state.movie["trailers"] = data.included.filter(
         association => association.type == "trailer"
       );
-      state.directors = data.included.filter(
+
+      state.movie["directors"] = data.included.filter(
         association => association.type == "director"
       );
-      state.casts = data.included.filter(
+
+      state.movie["casts"] = data.included.filter(
         association => association.type == "cast"
       );
-      state.genres = data.included.filter(
+
+      state.movie["genres"] = data.included.filter(
         association => association.type == "genre"
       );
-      state.cinemas = data.included.filter(
+
+      state.movie["cinemas"] = data.included.filter(
         association => association.type == "cinema_item"
       );
     },
