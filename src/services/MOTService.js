@@ -36,12 +36,10 @@ export default {
   getShowtime(id) {
     return apiClient.get("/showtimes/" + id);
   },
-  getCinemas(query) {
-    if (query != undefined) {
-      return apiClient.get("/cinemas?query=" + query);
-    } else {
-      return apiClient.get("/cinemas");
-    }
+  getCinemas(payload) {
+    const params = queryString.stringify(payload);
+
+    return apiClient.get("/cinemas?" + params);
   },
   getCinema(payload) {
     const id = payload["id"];

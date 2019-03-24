@@ -49,12 +49,16 @@ export default {
       query: ""
     };
   },
+  computed: {
+    payload: function() {
+      return { query: this.query };
+    }
+  },
   methods: {
     search_cinemas() {
-      MOTService.getCinemas(this.query)
+      MOTService.getCinemas(this.payload)
         .then(response => {
           this.cinemas = response.data["data"];
-          console.log(this.cinemas.length);
         })
         .catch(error => {
           console.log("There was an error:", error.response);
@@ -62,13 +66,7 @@ export default {
     }
   },
   created() {
-    MOTService.getCinemas()
-      .then(response => {
-        this.cinemas = response.data["data"];
-      })
-      .catch(error => {
-        console.log("There was an error:", error.response);
-      });
+    this.search_cinemas();
   }
 };
 </script>
