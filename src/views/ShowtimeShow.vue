@@ -20,6 +20,7 @@
               <div class="col-sm-5">
                 <router-link
                   :to="{ name: 'movie-show', params: { id: movie.id } }"
+                  class="text-decoration-none"
                 >
                   <div>
                     <h1 class="text-center">{{ movie.attributes.title }}</h1>
@@ -46,6 +47,7 @@
               <div class="col-sm-4">
                 <router-link
                   :to="{ name: 'cinema-show', params: { id: cinema.id } }"
+                  class="text-decoration-none"
                 >
                   <h2 class="text-center">{{ cinema.attributes.name }}</h2>
                 </router-link>
