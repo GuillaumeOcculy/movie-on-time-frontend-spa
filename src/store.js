@@ -26,8 +26,8 @@ export default new Vuex.Store({
       });
     },
 
-    fetchCinema({ commit }, { id, date }) {
-      MOTService.getCinema(id, date)
+    fetchCinema({ commit }, payload) {
+      MOTService.getCinema(payload)
         .then(response => {
           commit("SET_CINEMA", response.data);
         })

@@ -43,11 +43,11 @@ export default {
       return apiClient.get("/cinemas");
     }
   },
-  getCinema(id, date) {
-    if (date != undefined) {
-      return apiClient.get("/cinemas/" + id + "?date=" + date);
-    } else {
-      return apiClient.get("/cinemas/" + id);
-    }
+  getCinema(payload) {
+    const id = payload["id"];
+    delete payload.id;
+    const params = queryString.stringify(payload);
+
+    return apiClient.get("/cinemas/" + id + "?" + params);
   }
 };
