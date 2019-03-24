@@ -10,6 +10,33 @@ export default new Vuex.Store({
     movie: {},
     cinema: {}
   },
+
+  actions: {
+    fetchMovie({ commit }, { id, date, query }) {
+      return new Promise((resolve, reject) => {
+        MOTService.getMovie(id, date, query)
+          .then(response => {
+            commit("SET_MOVIE", response.data);
+            resolve();
+          })
+          .catch(error => {
+            reject(error);
+            console.log("There was an error:", error);
+          });
+      });
+    },
+
+    fetchCinema({ commit }, { id, date }) {
+      MOTService.getCinema(id, date)
+        .then(response => {
+          commit("SET_CINEMA", response.data);
+        })
+        .catch(error => {
+          console.log("There was an error:", error.response);
+        });
+    }
+  },
+
   mutations: {
     SET_MOVIE(state, data) {
       state.movie = data.data;
@@ -39,26 +66,6 @@ export default new Vuex.Store({
       state.cinema["movies"] = data.included.filter(
         association => association.type == "movie_item"
       );
-    }
-  },
-  actions: {
-    fetchMovie({ commit }, { id, date, query }) {
-      MOTService.getMovie(id, date, query)
-        .then(response => {
-          commit("SET_MOVIE", response.data);
-        })
-        .catch(error => {
-          console.log("There was an error:", error.response);
-        });
-    },
-    fetchCinema({ commit }, { id, date }) {
-      MOTService.getCinema(id, date)
-        .then(response => {
-          commit("SET_CINEMA", response.data);
-        })
-        .catch(error => {
-          console.log("There was an error:", error.response);
-        });
     }
   }
 });
