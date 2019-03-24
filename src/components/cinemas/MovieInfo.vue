@@ -19,7 +19,7 @@
             <dl>
               <template v-if="movie.attributes.release_date">
                 <dt>Released on</dt>
-                <dd>{{ movie.attributes.release_date }}</dd>
+                <dd><AppDate :date="movie.attributes.release_date" /></dd>
               </template>
               <template v-if="movie.attributes.running_time">
                 <dt>Duration</dt>

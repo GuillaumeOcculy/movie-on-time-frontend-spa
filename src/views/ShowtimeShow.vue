@@ -25,18 +25,20 @@
                     <h1 class="text-center">{{ movie.attributes.title }}</h1>
 
                     <hr />
-                    <p>
+                    <p v-if="movie.attributes.running_time">
                       <span class="text-muted">During</span>
                       {{ movie.attributes.running_time }} min
                     </p>
-                    <p>
-                      <span class="text-muted">Released on</span>
-                      {{ movie.attributes.release_date }}
+                    <p v-if="movie.attributes.release_date">
+                      <span class="text-muted mr-1">Released on</span>
+                      <AppDate :date="movie.attributes.release_date" />
                     </p>
-                    <p>
+                    <p v-if="directorNames.length > 0">
                       <span class="text-muted">By</span> {{ directorNames }}
                     </p>
-                    <p><span class="text-muted">With</span> {{ castNames }}</p>
+                    <p v-if="castNames.length > 0">
+                      <span class="text-muted">With</span> {{ castNames }}
+                    </p>
                   </div>
                 </router-link>
               </div>
@@ -68,7 +70,7 @@
                 <div class="col-sm">
                   <p>Date</p>
                   <p class="text-danger">
-                    {{ showtime.attributes.start_date }}
+                    <AppDate :date="showtime.attributes.start_date" />
                   </p>
                 </div>
                 <div class="col-sm">

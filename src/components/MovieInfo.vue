@@ -10,7 +10,7 @@
 
       <dl>
         <dt>Released on</dt>
-        <dd>{{ movie.attributes.release_date }}</dd>
+        <dd><AppDate :date="movie.attributes.release_date" /></dd>
         <dt>Genres</dt>
         <dd>{{ genreNames }}</dd>
 

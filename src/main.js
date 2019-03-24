@@ -4,12 +4,17 @@ import router from "./router";
 import store from "./store";
 import BootstrapVue from "bootstrap-vue";
 
+import AppDate from "@/components/AppDate";
+
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";
 
 import "@/assets/stylesheets/style.scss";
 
 Vue.use(BootstrapVue);
+Vue.use(require("vue-moment"));
+Vue.component("AppDate", AppDate);
+
 Vue.config.productionTip = false;
 
 new Vue({

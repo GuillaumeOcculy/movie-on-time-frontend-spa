@@ -14,7 +14,7 @@
         </div>
         <div class="card-footer bg-transparent">
           <p class="text-center text-muted">
-            {{ movie.attributes.release_date }}
+            <AppDate :date="movie.attributes.release_date" />
           </p>
         </div>
       </div>
