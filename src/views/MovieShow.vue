@@ -12,7 +12,7 @@
     </div>
 
     <div class="bg-white mt-3">
-      <template v-if="cinemas.length > 0">
+      <template>
         <form class="form-inline">
           <div class="form-group mx-sm-3 mb-2 mt-3">
             <label for="inputPassword2" class="sr-only">Password</label>
@@ -37,7 +37,19 @@
         </form>
       </template>
 
-      <CinemaInfo v-for="cinema in cinemas" :key="cinema.id" :cinema="cinema" />
+      <template v-if="cinemas.length > 0">
+        <CinemaInfo
+          v-for="cinema in cinemas"
+          :key="cinema.id"
+          :cinema="cinema"
+        />
+      </template>
+
+      <template v-else>
+        <div class="bt-white">
+          <h1>There are no cinemas avaible at this moment</h1>
+        </div>
+      </template>
     </div>
   </div>
 </template>
