@@ -5,7 +5,7 @@
       <div class="col-md-10 offset-md-1">
         <div class="card">
           <div class="card-body">
-            <div class="row">
+            <div class="row" v-if="movie.attributes">
               <div class="col-sm-3">
                 <router-link
                   :to="{ name: 'movie-show', params: { id: movie.id } }"
@@ -89,7 +89,7 @@
             </div>
 
             <hr />
-            <div class="text-center">
+            <div class="text-center" v-if="showtime.attributes">
               <div class="row">
                 <div class="col-sm">
                   <p>Date</p>
