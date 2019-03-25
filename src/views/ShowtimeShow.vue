@@ -26,22 +26,42 @@
                     <h1 class="text-center">{{ movie.attributes.title }}</h1>
 
                     <hr />
-                    <p v-if="movie.attributes.running_time">
-                      <span class="text-muted mr-1">During</span>
-                      <MovieHours
-                        :running_time="movie.attributes.running_time"
-                      />
-                    </p>
-                    <p v-if="movie.attributes.release_date">
-                      <span class="text-muted mr-1">Released on</span>
-                      <AppDate :date="movie.attributes.release_date" />
-                    </p>
-                    <p v-if="directorNames.length > 0">
-                      <span class="text-muted">By</span> {{ directorNames }}
-                    </p>
-                    <p v-if="castNames.length > 0">
-                      <span class="text-muted">With</span> {{ castNames }}
-                    </p>
+
+                    <dl class="row">
+                      <template v-if="movie.attributes.running_time">
+                        <dt class="col-sm-3">During</dt>
+                        <dd class="col-sm-9">
+                          <span class="text-muted">
+                            <MovieHours
+                              :running_time="movie.attributes.running_time"
+                            />
+                          </span>
+                        </dd>
+                      </template>
+
+                      <template v-if="movie.attributes.release_date">
+                        <dt class="col-sm-3">Released</dt>
+                        <dd class="col-sm-9">
+                          <span class="text-muted">
+                            <AppDate :date="movie.attributes.release_date" />
+                          </span>
+                        </dd>
+                      </template>
+
+                      <template v-if="directorNames.length > 0">
+                        <dt class="col-sm-3">By</dt>
+                        <dd class="col-sm-9">
+                          <span class="text-muted">{{ directorNames }}</span>
+                        </dd>
+                      </template>
+
+                      <template v-if="castNames.length > 0">
+                        <dt class="col-sm-3">With</dt>
+                        <dd class="col-sm-9">
+                          <span class="text-muted">{{ castNames }}</span>
+                        </dd>
+                      </template>
+                    </dl>
                   </div>
                 </router-link>
               </div>
