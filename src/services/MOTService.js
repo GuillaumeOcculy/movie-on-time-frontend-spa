@@ -14,8 +14,8 @@ const apiClient = axios.create({
 });
 
 export default {
-  getNowShowing() {
-    return apiClient.get("/");
+  getNowShowing(page) {
+    return apiClient.get("/?page=" + page);
   },
   getMovie(payload) {
     const id = payload["id"];
