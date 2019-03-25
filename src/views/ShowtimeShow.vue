@@ -27,8 +27,10 @@
 
                     <hr />
                     <p v-if="movie.attributes.running_time">
-                      <span class="text-muted">During</span>
-                      {{ movie.attributes.running_time }} min
+                      <span class="text-muted mr-1">During</span>
+                      <MovieHours
+                        :running_time="movie.attributes.running_time"
+                      />
                     </p>
                     <p v-if="movie.attributes.release_date">
                       <span class="text-muted mr-1">Released on</span>
@@ -118,13 +120,15 @@
 <script>
 import MOTService from "@/services/MOTService.js";
 import MovieHeaderLinkList from "@/components/MovieHeaderLinkList.vue";
+import MovieHours from "@/components/MovieHours.vue";
 
 export default {
   props: {
     id: [String, Number]
   },
   components: {
-    MovieHeaderLinkList
+    MovieHeaderLinkList,
+    MovieHours
   },
   data() {
     return {

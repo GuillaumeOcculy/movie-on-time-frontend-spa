@@ -23,7 +23,9 @@
               </template>
               <template v-if="movie.attributes.running_time">
                 <dt>Duration</dt>
-                <dd>{{ movie.attributes.running_time }} min</dd>
+                <dd>
+                  <MovieHours :running_time="movie.attributes.running_time" />
+                </dd>
               </template>
               <template v-if="directorNames.length > 0">
                 <dt>Directors</dt>
@@ -47,12 +49,15 @@
 <script>
 import posterNotFound from "@/assets/images/poster_not_found.jpg";
 import ShowtimeList from "@/components/ShowtimeList.vue";
+import MovieHours from "@/components/MovieHours.vue";
+
 export default {
   props: {
     movie: Object
   },
   components: {
-    ShowtimeList
+    ShowtimeList,
+    MovieHours
   },
   data: function() {
     return {

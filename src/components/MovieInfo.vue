@@ -23,7 +23,7 @@
 
         <template v-if="movie.attributes.running_time">
           <dt>Duration</dt>
-          <dd>{{ movie.attributes.running_time }} min</dd>
+          <dd><MovieHours :running_time="movie.attributes.running_time" /></dd>
         </template>
 
         <template v-if="directorNames.length > 0">
@@ -58,6 +58,7 @@
 
 <script>
 import TrailerLink from "./TrailerLink.vue";
+import MovieHours from "./MovieHours.vue";
 
 export default {
   props: {
@@ -68,7 +69,8 @@ export default {
     casts: Array
   },
   components: {
-    TrailerLink
+    TrailerLink,
+    MovieHours
   },
   computed: {
     genreNames: function() {
