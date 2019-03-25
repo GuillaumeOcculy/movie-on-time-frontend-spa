@@ -7,7 +7,7 @@ export default {
   props: {
     date: {
       required: true,
-      type: Number
+      type: String
     }
   }
 };
