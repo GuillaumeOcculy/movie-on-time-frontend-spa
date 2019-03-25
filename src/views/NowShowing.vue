@@ -1,26 +1,14 @@
 <template>
-  <div>
-    <MovieHeaderLinkList />
-
-    <AppPagination :meta="meta" @pagination-clicked="fetchMovies" />
-
-    <div class="row">
-      <MovieCard v-for="movie in movies" :key="movie.id" :movie="movie" />
-    </div>
-
-    <AppPagination :meta="meta" @pagination-clicked="fetchMovies" />
-  </div>
+  <MovieList @pagination-clicked="fetchMovies" :meta="meta" :movies="movies" />
 </template>
 
 <script>
 import MOTService from "@/services/MOTService.js";
-import MovieCard from "@/components/MovieCard.vue";
-import MovieHeaderLinkList from "@/components/MovieHeaderLinkList.vue";
+import MovieList from "@/components/MovieList.vue";
 
 export default {
   components: {
-    MovieCard,
-    MovieHeaderLinkList
+    MovieList
   },
   data() {
     return {

@@ -1,35 +1,34 @@
 <template>
-  <div>
-    <MovieHeaderLinkList />
-    <div class="row">
-      <MovieCard v-for="movie in movies" :key="movie.id" :movie="movie" />
-    </div>
-  </div>
+  <MovieList @pagination-clicked="fetchMovies" :meta="meta" :movies="movies" />
 </template>
 
 <script>
 import MOTService from "@/services/MOTService.js";
-import MovieCard from "@/components/MovieCard.vue";
-import MovieHeaderLinkList from "@/components/MovieHeaderLinkList.vue";
+import MovieList from "@/components/MovieList.vue";
 
 export default {
   components: {
-    MovieCard,
-    MovieHeaderLinkList
+    MovieList
   },
   data() {
     return {
-      movies: []
+      movies: [],
+      meta: {}
     };
   },
+  methods: {
+    fetchMovies: function(page) {
+      MOTService.getUpcoming(page)
+        .then(response => {
+          this.movies = response.data["data"];
+        })
+        .catch(error => {
+          console.log("There was an error:", error.response);
+        });
+    }
+  },
   created() {
-    MOTService.getUpcoming()
-      .then(response => {
-        this.movies = response.data["data"];
-      })
-      .catch(error => {
-        console.log("There was an error:", error.response);
-      });
+    this.fetchMovies();
   }
 };
 </script>

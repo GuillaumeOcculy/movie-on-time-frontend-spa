@@ -15,6 +15,7 @@ const apiClient = axios.create({
 
 export default {
   getNowShowing(page) {
+    page = page === undefined ? 1 : page;
     return apiClient.get("/?page=" + page);
   },
   getMovie(payload) {
@@ -24,14 +25,17 @@ export default {
 
     return apiClient.get("/movies/" + id + "?" + params);
   },
-  getPremiere() {
-    return apiClient.get("/premiere");
+  getPremiere(page) {
+    page = page === undefined ? 1 : page;
+    return apiClient.get("/premiere?page=" + page);
   },
-  getUpcoming() {
-    return apiClient.get("/upcoming");
+  getUpcoming(page) {
+    page = page === undefined ? 1 : page;
+    return apiClient.get("/upcoming?page=" + page);
   },
-  getReprojection() {
-    return apiClient.get("/reprojection");
+  getReprojection(page) {
+    page = page === undefined ? 1 : page;
+    return apiClient.get("/reprojection?page=" + page);
   },
   getShowtime(id) {
     return apiClient.get("/showtimes/" + id);
