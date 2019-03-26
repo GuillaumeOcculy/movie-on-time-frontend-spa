@@ -20,11 +20,13 @@
       <MovieCard v-for="movie in movies" :key="movie.id" :movie="movie" />
     </div>
 
-    <AppPagination
-      :meta="meta"
-      @pagination-clicked="paginationClicked"
-      v-if="movies.length > 0"
-    />
+    <div class="d-flex flex-row-reverse bd-highlight mt-3">
+      <AppPagination
+        :meta="meta"
+        @pagination-clicked="paginationClicked"
+        v-if="movies.length > 0"
+      />
+    </div>
   </div>
 </template>
 

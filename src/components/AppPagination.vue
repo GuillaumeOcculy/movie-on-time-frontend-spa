@@ -1,19 +1,21 @@
 <template>
-  <ul class="pagination">
-    <li class="page-item" :class="{ disabled: !meta.prev_page }">
-      <a
-        class="page-link"
-        href="#"
-        @click.prevent="click(meta.prev_page)"
-        tabindex="-1"
-        aria-disabled="true"
-      >Previous</a>
-    </li>
+  <nav aria-label="Page navigation example">
+    <ul class="pagination">
+      <li class="page-item" :class="{ disabled: !meta.prev_page }">
+        <a
+          class="page-link"
+          href="#"
+          @click.prevent="click(meta.prev_page)"
+          tabindex="-1"
+          aria-disabled="true"
+        >Previous</a>
+      </li>
 
-    <li class="page-item" :class="{ disabled: !meta.next_page }">
-      <a class="page-link" href="#" @click.prevent="click(meta.next_page)">Next</a>
-    </li>
-  </ul>
+      <li class="page-item" :class="{ disabled: !meta.next_page }">
+        <a class="page-link" href="#" @click.prevent="click(meta.next_page)">Next</a>
+      </li>
+    </ul>
+  </nav>
 </template>
 
 <script>
