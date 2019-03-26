@@ -49,7 +49,8 @@ export default {
     return apiClient.get("/showtimes/" + id);
   },
   getCinemas(payload) {
-    const params = queryString.stringify(payload);
+    let params = payload == undefined ? { page: 1 } : payload;
+    params = queryString.stringify(params);
 
     return apiClient.get("/cinemas?" + params);
   },

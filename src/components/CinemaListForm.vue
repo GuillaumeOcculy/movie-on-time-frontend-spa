@@ -4,7 +4,7 @@
       <input
         type="text"
         class="form-control"
-        placeholder="Search movies"
+        placeholder="Search cinema"
         v-model="query"
         @input="queryEntered"
       />
@@ -15,7 +15,7 @@
         readonly
         class="form-control-plaintext"
         id="staticEmail2"
-        :value="'Movies: ' + meta.total_count"
+        :value="'Cinemas: ' + meta.total_count"
       />
     </div>
   </form>

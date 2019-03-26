@@ -2,32 +2,12 @@
   <div>
     <MovieHeaderLinkList />
 
-    <div class="row mt-2" v-if="cinemas.length > 0">
-      <form class="form-inline">
-        <div class="form-group mx-sm-3 mb-2">
-          <label for="inputPassword2" class="sr-only">Password</label>
-          <input
-            type="text"
-            class="form-control"
-            placeholder="Search Cinema"
-            v-model="query"
-            @input="search_cinemas"
-          />
-        </div>
-        <div class="form-group mb-2">
-          <label for="staticEmail2" class="sr-only">Email</label>
-          <input
-            type="text"
-            readonly
-            class="form-control-plaintext"
-            id="staticEmail2"
-            :value="'Cinemas: ' + cinemas.length"
-          />
-        </div>
-      </form>
-    </div>
-
-    <CinemaList :cinemas="cinemas" />
+    <CinemaList
+      :cinemas="cinemas"
+      :meta="meta"
+      @query-entered="fetchCinemas"
+      @pagination-clicked="fetchCinemas"
+    />
   </div>
 </template>
 
@@ -44,19 +24,16 @@ export default {
   data() {
     return {
       cinemas: [],
-      query: ""
+      query: "",
+      meta: {}
     };
   },
-  computed: {
-    payload: function() {
-      return { query: this.query };
-    }
-  },
   methods: {
-    search_cinemas() {
-      MOTService.getCinemas(this.payload)
+    fetchCinemas(payload) {
+      MOTService.getCinemas(payload)
         .then(response => {
           this.cinemas = response.data["data"];
+          this.meta = response.data["meta"];
         })
         .catch(error => {
           console.log("There was an error:", error.response);
@@ -64,7 +41,7 @@ export default {
     }
   },
   created() {
-    this.search_cinemas();
+    this.fetchCinemas();
   }
 };
 </script>
