@@ -1,7 +1,7 @@
 import axios from "axios";
 import queryString from "query-string";
 
-const baseUrl = "http://localhost:3000";
+const baseUrl = "http://localhost:3009";
 // const baseUrl = "https://movieontime.com/api";
 
 const apiClient = axios.create({
@@ -14,9 +14,11 @@ const apiClient = axios.create({
 });
 
 export default {
-  getNowShowing(page) {
-    page = page === undefined ? 1 : page;
-    return apiClient.get("/?page=" + page);
+  getNowShowing(payload) {
+    let params = payload == undefined ? { page: 1 } : payload;
+    params = queryString.stringify(params);
+
+    return apiClient.get("/?" + params);
   },
   getMovie(payload) {
     const id = payload["id"];

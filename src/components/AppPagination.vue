@@ -31,7 +31,8 @@ export default {
   },
   methods: {
     click: function(page) {
-      this.$emit("pagination-clicked", page);
+      const payload = { page: page };
+      this.$emit("pagination-clicked", payload);
     }
   }
 };

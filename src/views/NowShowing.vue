@@ -1,5 +1,10 @@
 <template>
-  <MovieList @pagination-clicked="fetchMovies" :meta="meta" :movies="movies" />
+  <MovieList
+    @query-entered="fetchMovies"
+    @pagination-clicked="fetchMovies"
+    :meta="meta"
+    :movies="movies"
+  />
 </template>
 
 <script>
@@ -17,8 +22,8 @@ export default {
     };
   },
   methods: {
-    fetchMovies: function(page) {
-      MOTService.getNowShowing(page)
+    fetchMovies: function(payload) {
+      MOTService.getNowShowing(payload)
         .then(response => {
           this.movies = response.data["data"];
           this.meta = response.data["meta"];
