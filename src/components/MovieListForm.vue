@@ -15,7 +15,7 @@
         readonly
         class="form-control-plaintext"
         id="staticEmail2"
-        :value="'Movies: ' + movies.length"
+        :value="'Movies: ' + meta.total_count"
       />
     </div>
   </form>
@@ -27,6 +27,10 @@ export default {
     movies: {
       required: true,
       type: Array
+    },
+    meta: {
+      required: true,
+      type: Object
     }
   },
   data() {

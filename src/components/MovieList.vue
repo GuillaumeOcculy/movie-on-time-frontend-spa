@@ -3,7 +3,11 @@
     <MovieHeaderLinkList />
 
     <div class="d-flex justify-content-between">
-      <MovieListForm @query-entered="queryEntered" :movies="movies" />
+      <MovieListForm
+        @query-entered="queryEntered"
+        :movies="movies"
+        :meta="meta"
+      />
 
       <AppPagination
         :meta="meta"
