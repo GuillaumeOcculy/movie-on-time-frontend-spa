@@ -1,5 +1,10 @@
 <template>
-  <MovieList @pagination-clicked="fetchMovies" :meta="meta" :movies="movies" />
+  <MovieList
+    @query-entered="fetchMovies"
+    @pagination-clicked="fetchMovies"
+    :meta="meta"
+    :movies="movies"
+  />
 </template>
 
 <script>
@@ -21,6 +26,7 @@ export default {
       MOTService.getReprojection(page)
         .then(response => {
           this.movies = response.data["data"];
+          this.meta = response.data["meta"];
         })
         .catch(error => {
           console.log("There was an error:", error.response);

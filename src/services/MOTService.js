@@ -27,17 +27,23 @@ export default {
 
     return apiClient.get("/movies/" + id + "?" + params);
   },
-  getPremiere(page) {
-    page = page === undefined ? 1 : page;
-    return apiClient.get("/premiere?page=" + page);
+  getPremiere(payload) {
+    let params = payload == undefined ? { page: 1 } : payload;
+    params = queryString.stringify(params);
+
+    return apiClient.get("/premiere?" + params);
   },
-  getUpcoming(page) {
-    page = page === undefined ? 1 : page;
-    return apiClient.get("/upcoming?page=" + page);
+  getUpcoming(payload) {
+    let params = payload == undefined ? { page: 1 } : payload;
+    params = queryString.stringify(params);
+
+    return apiClient.get("/upcoming?" + params);
   },
-  getReprojection(page) {
-    page = page === undefined ? 1 : page;
-    return apiClient.get("/reprojection?page=" + page);
+  getReprojection(payload) {
+    let params = payload == undefined ? { page: 1 } : payload;
+    params = queryString.stringify(params);
+
+    return apiClient.get("/reprojection?" + params);
   },
   getShowtime(id) {
     return apiClient.get("/showtimes/" + id);
