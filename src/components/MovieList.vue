@@ -17,7 +17,7 @@
     </div>
 
     <div class="row">
-      <MovieCard v-for="movie in movies" :key="movie.id" :movie="movie" />
+      <MovieListItem v-for="movie in movies" :key="movie.id" :movie="movie" />
     </div>
 
     <div class="d-flex flex-row-reverse bd-highlight mt-3">
@@ -31,13 +31,13 @@
 </template>
 
 <script>
-import MovieCard from "@/components/MovieCard.vue";
+import MovieListItem from "@/components/MovieListItem.vue";
 import MovieListForm from "@/components/MovieListForm.vue";
 import MovieHeaderLinkList from "@/components/MovieHeaderLinkList.vue";
 
 export default {
   components: {
-    MovieCard,
+    MovieListItem,
     MovieListForm,
     MovieHeaderLinkList
   },

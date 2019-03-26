@@ -27,21 +27,19 @@
       </form>
     </div>
 
-    <div class="row">
-      <CinemaCard v-for="cinema in cinemas" :cinema="cinema" :key="cinema.id" />
-    </div>
+    <CinemaList :cinemas="cinemas" />
   </div>
 </template>
 
 <script>
 import MOTService from "@/services/MOTService.js";
 import MovieHeaderLinkList from "@/components/MovieHeaderLinkList.vue";
-import CinemaCard from "@/components/CinemaCard.vue";
+import CinemaList from "@/components/CinemaList.vue";
 
 export default {
   components: {
     MovieHeaderLinkList,
-    CinemaCard
+    CinemaList
   },
   data() {
     return {

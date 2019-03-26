@@ -4,7 +4,7 @@
       <div class="row mt-3">
         <div class="col-sm-2">{{ group }}</div>
         <div class="col-sm-10">
-          <ShowtimeCard
+          <ShowtimeListItem
             v-for="showtime in showtimes"
             :key="showtime.id"
             :showtime="showtime"
@@ -17,13 +17,13 @@
 
 <script>
 import _ from "lodash";
-import ShowtimeCard from "@/components/ShowtimeCard.vue";
+import ShowtimeListItem from "@/components/ShowtimeListItem.vue";
 export default {
   props: {
     showtimes: Array
   },
   components: {
-    ShowtimeCard
+    ShowtimeListItem
   },
   computed: {
     groupedShowtimes: function() {
