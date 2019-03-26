@@ -1,24 +1,19 @@
 <template>
-  <nav aria-label="Page navigation example">
-    <ul class="pagination justify-content-end">
-      <li class="page-item" :class="{ disabled: !meta.prev_page }">
-        <a
-          class="page-link"
-          href="#"
-          @click.prevent="click(meta.prev_page)"
-          tabindex="-1"
-          aria-disabled="true"
-          >Previous</a
-        >
-      </li>
+  <ul class="pagination">
+    <li class="page-item" :class="{ disabled: !meta.prev_page }">
+      <a
+        class="page-link"
+        href="#"
+        @click.prevent="click(meta.prev_page)"
+        tabindex="-1"
+        aria-disabled="true"
+      >Previous</a>
+    </li>
 
-      <li class="page-item" :class="{ disabled: !meta.next_page }">
-        <a class="page-link" href="#" @click.prevent="click(meta.next_page)"
-          >Next</a
-        >
-      </li>
-    </ul>
-  </nav>
+    <li class="page-item" :class="{ disabled: !meta.next_page }">
+      <a class="page-link" href="#" @click.prevent="click(meta.next_page)">Next</a>
+    </li>
+  </ul>
 </template>
 
 <script>

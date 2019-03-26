@@ -7,7 +7,6 @@ import BootstrapVue from "bootstrap-vue";
 import AppDate from "@/components/AppDate";
 import AppShortDate from "@/components/AppShortDate";
 import AppPagination from "@/components/AppPagination";
-import AppSearchMovies from "@/components/AppSearchMovies";
 
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";
@@ -19,7 +18,6 @@ Vue.use(require("vue-moment"));
 Vue.component("AppDate", AppDate);
 Vue.component("AppShortDate", AppShortDate);
 Vue.component("AppPagination", AppPagination);
-Vue.component("AppSearchMovies", AppSearchMovies);
 
 Vue.config.productionTip = false;
 

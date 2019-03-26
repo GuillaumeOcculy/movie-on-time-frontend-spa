@@ -2,13 +2,15 @@
   <div>
     <MovieHeaderLinkList />
 
-    <AppSearchMovies @query-entered="queryEntered" :movies="movies" />
+    <div class="d-flex justify-content-between">
+      <MovieListForm @query-entered="queryEntered" :movies="movies" />
 
-    <AppPagination
-      :meta="meta"
-      @pagination-clicked="paginationClicked"
-      v-if="movies.length > 0"
-    />
+      <AppPagination
+        :meta="meta"
+        @pagination-clicked="paginationClicked"
+        v-if="movies.length > 0"
+      />
+    </div>
 
     <div class="row">
       <MovieCard v-for="movie in movies" :key="movie.id" :movie="movie" />
@@ -24,11 +26,13 @@
 
 <script>
 import MovieCard from "@/components/MovieCard.vue";
+import MovieListForm from "@/components/MovieListForm.vue";
 import MovieHeaderLinkList from "@/components/MovieHeaderLinkList.vue";
 
 export default {
   components: {
     MovieCard,
+    MovieListForm,
     MovieHeaderLinkList
   },
   props: {
