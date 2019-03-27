@@ -1,46 +1,50 @@
 <template>
   <div v-if="movie.attributes">
-    <MovieHeaderLinkList/>
-    <MovieInfo :movie="movie"/>
+    <MovieHeaderLinkList />
+    <MovieInfo :movie="movie" />
 
     <div class="row bg-white mt-3 d-flex bd-highlight">
       <template v-for="date in movie.attributes.dates">
         <div class="p-2 flex-fill bd-highlight text-center border" :key="date">
           <button @click="set_date(date)" class="btn">
-            <AppShortDate :date="date"/>
+            <AppShortDate :date="date" />
           </button>
         </div>
       </template>
     </div>
 
     <div class="bg-white mt-3">
-      <template>
+      <div class="d-flex justify-content-between">
         <form class="form-inline">
           <div class="form-group mx-sm-3 mb-2 mt-3">
-            <label for="inputPassword2" class="sr-only">Password</label>
             <input
               type="text"
               class="form-control"
               placeholder="Search Cinema"
               v-model="query"
               @input="fetch_movie"
-            >
+            />
           </div>
           <div class="form-group mb-2 mt-3">
-            <label for="staticEmail2" class="sr-only">Email</label>
             <input
               type="text"
               readonly
               class="form-control-plaintext"
               id="staticEmail2"
               :value="'Cinemas: ' + cinemas.length"
-            >
+            />
           </div>
         </form>
-      </template>
+
+        <AppPagination
+          :meta="meta"
+          @pagination-clicked="fetch_movie"
+          v-if="cinemas.length > 0"
+        />
+      </div>
 
       <template v-if="cinemas.length > 0">
-        <CinemaList :cinemas="cinemas"/>
+        <CinemaList :cinemas="cinemas" />
       </template>
 
       <template v-else>
@@ -70,7 +74,8 @@ export default {
   data: function() {
     return {
       query: "",
-      date: ""
+      date: "",
+      page: 1
     };
   },
   computed: {
@@ -78,20 +83,23 @@ export default {
       return {
         id: this.id,
         query: this.query,
-        date: this.date
+        date: this.date,
+        page: this.page
       };
     },
     cinemas: function() {
       return this.movie.cinemas;
     },
-    ...mapState(["movie"])
+    ...mapState(["movie", "meta"])
   },
   methods: {
     set_date(date) {
       this.date = date;
       this.fetch_movie();
     },
-    fetch_movie() {
+    fetch_movie(payload) {
+      this.page = payload && payload["page"] ? payload["page"] : 1;
+
       this.$store.dispatch("fetchMovie", this.payload);
     }
   },

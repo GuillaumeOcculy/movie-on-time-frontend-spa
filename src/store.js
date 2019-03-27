@@ -8,7 +8,8 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     movie: {},
-    cinema: {}
+    cinema: {},
+    meta: {}
   },
 
   actions: {
@@ -40,6 +41,7 @@ export default new Vuex.Store({
   mutations: {
     SET_MOVIE(state, data) {
       state.movie = data.data;
+      state.meta = data["meta"];
       state.movie["trailers"] = data.included.filter(
         association => association.type == "trailer"
       );
