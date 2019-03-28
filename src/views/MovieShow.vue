@@ -14,27 +14,8 @@
     </div>
 
     <div class="bg-white mt-3">
-      <div class="d-flex justify-content-between">
-        <form class="form-inline">
-          <div class="form-group mx-sm-3 mb-2 mt-3">
-            <input
-              type="text"
-              class="form-control"
-              placeholder="Search Cinema"
-              v-model="query"
-              @input="fetch_movie"
-            />
-          </div>
-          <div class="form-group mb-2 mt-3">
-            <input
-              type="text"
-              readonly
-              class="form-control-plaintext"
-              id="staticEmail2"
-              :value="'Cinemas: ' + cinemas.length"
-            />
-          </div>
-        </form>
+      <div class="d-flex justify-content-between p-3">
+        <CinemaListForm @query-entered="fetch_movie" :meta="meta" />
 
         <AppPagination
           :meta="meta"
@@ -59,6 +40,7 @@
 <script>
 import MovieInfo from "@/components/MovieInfo.vue";
 import CinemaList from "@/components/movies/CinemaList.vue";
+import CinemaListForm from "@/components/CinemaListForm.vue";
 import MovieHeaderLinkList from "@/components/MovieHeaderLinkList.vue";
 import { mapState } from "vuex";
 
@@ -69,7 +51,8 @@ export default {
   components: {
     MovieHeaderLinkList,
     MovieInfo,
-    CinemaList
+    CinemaList,
+    CinemaListForm
   },
   data: function() {
     return {
@@ -99,7 +82,9 @@ export default {
     },
     fetch_movie(payload) {
       this.page = payload && payload["page"] ? payload["page"] : 1;
-
+      this.query = payload && payload["query"] ? payload["query"] : "";
+      console.log("payload", payload);
+      console.log("this.payload", this.payload);
       this.$store.dispatch("fetchMovie", this.payload);
     }
   },
