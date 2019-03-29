@@ -8,6 +8,7 @@ import MovieShow from "./views/MovieShow.vue";
 import ShowtimeShow from "./views/ShowtimeShow.vue";
 import Cinemas from "./views/Cinemas.vue";
 import CinemaShow from "./views/CinemaShow.vue";
+import Search from "./views/Search.vue";
 
 Vue.use(Router);
 
@@ -57,6 +58,11 @@ export default new Router({
       name: "cinema-show",
       component: CinemaShow,
       props: true
+    },
+    {
+      path: "/search",
+      name: "search-movies",
+      component: Search
     }
   ]
 });

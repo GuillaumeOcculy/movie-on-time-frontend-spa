@@ -13,7 +13,7 @@
       </template>
     </div>
 
-    <div class="bg-white mt-3">
+    <div class="bg-white mt-3" id="cinema-list">
       <div class="d-flex justify-content-between p-3">
         <CinemaListForm @query-entered="fetch_movie" :meta="meta" />
 
@@ -83,8 +83,6 @@ export default {
     fetch_movie(payload) {
       this.page = payload && payload["page"] ? payload["page"] : 1;
       this.query = payload && payload["query"] ? payload["query"] : "";
-      console.log("payload", payload);
-      console.log("this.payload", this.payload);
       this.$store.dispatch("fetchMovie", this.payload);
     }
   },
@@ -93,3 +91,10 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+#cinema-list {
+  margin-right: -15px;
+  margin-left: -15px;
+}
+</style>

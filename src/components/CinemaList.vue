@@ -44,7 +44,6 @@ export default {
       this.$emit("pagination-clicked", payload);
     },
     queryEntered: function(payload) {
-      console.log("payload", payload);
       this.$emit("query-entered", payload);
     }
   }

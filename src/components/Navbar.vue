@@ -15,29 +15,50 @@
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <!-- <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <form class="form-inline my-2 my-lg-0">
             <input
               class="form-control mr-sm-2"
               type="search"
+              v-model="query"
+              autofocus
               placeholder="Enter a movie title"
               aria-label="Search"
             />
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+            <button
+              class="btn btn-outline-success my-2 my-sm-0"
+              type="submit"
+              @click.stop.prevent="submit()"
+            >
               Search
             </button>
           </form>
         </ul>
 
-        <ul class="navbar-nav">
+        <!-- <ul class="navbar-nav">
           <li class="nav-item"><a class="nav-link" href="#">Sign in</a></li>
-        </ul>
-      </div>-->
+        </ul>-->
+      </div>
     </div>
   </nav>
 </template>
 
+<script>
+export default {
+  data() {
+    return {
+      query: ""
+    };
+  },
+  methods: {
+    submit() {
+      this.$router.push({ name: "search-movies", query: { q: this.query } });
+      this.$router.go(0);
+    }
+  }
+};
+</script>
 <style scoped>
 .container {
   max-width: 1300px;
