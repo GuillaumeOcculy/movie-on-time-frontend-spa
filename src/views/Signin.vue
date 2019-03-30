@@ -1,29 +1,11 @@
 <template>
   <div>
-    <h1 class="text-center">Sign up</h1>
+    <h1 class="text-center">Sign in</h1>
 
     <div class="container mt-3">
       <div class="row">
         <div class="col-md-6 offset-md-3">
           <form @submit.prevent="submitForm">
-            <div class="row">
-              <div class="col">
-                <input
-                  type="text"
-                  class="form-control"
-                  placeholder="First name"
-                  v-model="firstName"
-                />
-              </div>
-              <div class="col">
-                <input
-                  type="text"
-                  class="form-control"
-                  placeholder="Last name"
-                  v-model="lastName"
-                />
-              </div>
-            </div>
             <div class="row mt-3">
               <div class="col">
                 <input
@@ -45,15 +27,15 @@
             <div class="row mt-3">
               <div class="col">
                 <button type="submit" class="btn btn-primary btn-block">
-                  Register
+                  Log in
                 </button>
               </div>
             </div>
           </form>
 
           <div class="text-center">
-            <router-link :to="{ name: 'signin' }" class="navbar-brand"
-              >Already have an account? Sign in</router-link
+            <router-link :to="{ name: 'signup' }" class="navbar-brand"
+              >Don't have an account? Sign up</router-link
             >
           </div>
         </div>
@@ -67,8 +49,6 @@ import MOTService from "@/services/MOTService.js";
 export default {
   data() {
     return {
-      firstName: null,
-      lastName: null,
       email: null,
       password: null
     };
@@ -76,8 +56,6 @@ export default {
   computed: {
     form: function() {
       return {
-        first_name: this.firstName,
-        last_name: this.lastName,
         email: this.email,
         password: this.password
       };
@@ -85,7 +63,7 @@ export default {
   },
   methods: {
     submitForm() {
-      MOTService.createUser(this.form)
+      MOTService.signIn(this.form)
         .then(response => {
           console.log("Successful", response);
         })

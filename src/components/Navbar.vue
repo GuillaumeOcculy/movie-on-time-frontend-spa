@@ -38,8 +38,8 @@
 
         <ul class="navbar-nav">
           <li class="nav-item">
-            <router-link :to="{ name: 'signup' }" class="navbar-brand"
-              >Sign up</router-link
+            <router-link :to="{ name: 'signin' }" class="navbar-brand"
+              >Sign in</router-link
             >
           </li>
         </ul>

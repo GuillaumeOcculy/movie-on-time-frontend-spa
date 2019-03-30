@@ -68,5 +68,8 @@ export default {
   },
   createUser(payload) {
     return apiClient.post("/users", payload);
+  },
+  signIn(payload) {
+    return apiClient.post("/auth", payload);
   }
 };

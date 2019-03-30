@@ -10,6 +10,7 @@ import Cinemas from "./views/Cinemas.vue";
 import CinemaShow from "./views/CinemaShow.vue";
 import Search from "./views/Search.vue";
 import Signup from "./views/Signup.vue";
+import Signin from "./views/Signin.vue";
 
 Vue.use(Router);
 
@@ -69,6 +70,11 @@ export default new Router({
       path: "/signup",
       name: "signup",
       component: Signup
+    },
+    {
+      path: "/signin",
+      name: "signin",
+      component: Signin
     }
   ]
 });
