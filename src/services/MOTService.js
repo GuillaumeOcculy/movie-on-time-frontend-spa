@@ -65,5 +65,8 @@ export default {
     const params = queryString.stringify(payload);
 
     return apiClient.get("/cinemas/" + id + "?" + params);
+  },
+  createUser(payload) {
+    return apiClient.post("/users", payload);
   }
 };

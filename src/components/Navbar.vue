@@ -36,9 +36,13 @@
           </form>
         </ul>
 
-        <!-- <ul class="navbar-nav">
-          <li class="nav-item"><a class="nav-link" href="#">Sign in</a></li>
-        </ul>-->
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <router-link :to="{ name: 'signup' }" class="navbar-brand"
+              >Sign up</router-link
+            >
+          </li>
+        </ul>
       </div>
     </div>
   </nav>

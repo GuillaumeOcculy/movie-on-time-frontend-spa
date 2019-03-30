@@ -9,6 +9,7 @@ import ShowtimeShow from "./views/ShowtimeShow.vue";
 import Cinemas from "./views/Cinemas.vue";
 import CinemaShow from "./views/CinemaShow.vue";
 import Search from "./views/Search.vue";
+import Signup from "./views/Signup.vue";
 
 Vue.use(Router);
 
@@ -63,6 +64,11 @@ export default new Router({
       path: "/search",
       name: "search-movies",
       component: Search
+    },
+    {
+      path: "/signup",
+      name: "signup",
+      component: Signup
     }
   ]
 });
