@@ -38,7 +38,10 @@
 
         <ul class="navbar-nav">
           <li class="nav-item">
-            <router-link :to="{ name: 'signin' }" class="navbar-brand"
+            <router-link
+              v-if="!loggedIn"
+              :to="{ name: 'signin' }"
+              class="navbar-brand"
               >Sign in</router-link
             >
           </li>
@@ -49,6 +52,8 @@
 </template>
 
 <script>
+import { authComputed } from "../vuex/helpers.js";
+
 export default {
   data() {
     return {
@@ -60,6 +65,9 @@ export default {
       this.$router.push({ name: "search-movies", query: { q: this.query } });
       this.$router.go(0);
     }
+  },
+  computed: {
+    ...authComputed
   }
 };
 </script>

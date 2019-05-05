@@ -91,5 +91,11 @@ export default new Vuex.Store({
         userData.token
       }`;
     }
+  },
+
+  getters: {
+    loggedIn(state) {
+      return !!state.user;
+    }
   }
 });
