@@ -44,6 +44,10 @@
               class="navbar-brand"
               >Sign in</router-link
             >
+
+            <a href="#" v-else @click.prevent="logout()" class="navbar-brand"
+              >Sign out</a
+            >
           </li>
         </ul>
       </div>
@@ -64,6 +68,11 @@ export default {
     submit() {
       this.$router.push({ name: "search-movies", query: { q: this.query } });
       this.$router.go(0);
+    },
+    logout() {
+      this.$store.dispatch("logout").then(() => {
+        this.$router.go(0);
+      });
     }
   },
   computed: {

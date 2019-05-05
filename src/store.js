@@ -49,6 +49,10 @@ export default new Vuex.Store({
       return MOTService.signIn(payload).then(({ data }) => {
         commit("SET_USER_DATA", data.data.attributes);
       });
+    },
+
+    logout({ commit }) {
+      commit("CLEAR_USER_DATA");
     }
   },
 
@@ -90,12 +94,17 @@ export default new Vuex.Store({
       axios.defaults.headers.common["Authorization"] = `Bearer ${
         userData.token
       }`;
+    },
+
+    CLEAR_USER_DATA() {
+      localStorage.clear();
+      axios.defaults.headers.common["Authorization"] = null;
     }
   },
 
   getters: {
-    loggedIn(state) {
-      return !!state.user;
+    loggedIn() {
+      return !!localStorage.user;
     }
   }
 });

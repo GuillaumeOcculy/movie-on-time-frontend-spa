@@ -86,6 +86,7 @@ export default {
     register() {
       this.$store.dispatch("register", this.form).then(() => {
         this.$router.push({ name: "home" });
+        this.$router.go(0);
       });
     }
   }

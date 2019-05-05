@@ -64,6 +64,7 @@ export default {
     login() {
       this.$store.dispatch("login", this.form).then(() => {
         this.$router.push({ name: "home" });
+        this.$router.go(0);
       });
     }
   }
