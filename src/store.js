@@ -2,6 +2,7 @@ import Vue from "vue";
 import Vuex from "vuex";
 
 import MOTService from "@/services/MOTService.js";
+import axios from "axios";
 
 Vue.use(Vuex);
 
@@ -9,7 +10,8 @@ export default new Vuex.Store({
   state: {
     movie: {},
     cinema: {},
-    meta: {}
+    meta: {},
+    user: null
   },
 
   actions: {
@@ -35,6 +37,12 @@ export default new Vuex.Store({
         .catch(error => {
           console.log("There was an error:", error.response);
         });
+    },
+
+    register({ commit }, payload) {
+      return MOTService.createUser(payload).then(({ data }) => {
+        commit("SET_USER_DATA", data.data.attributes);
+      });
     }
   },
 
@@ -68,6 +76,14 @@ export default new Vuex.Store({
       state.cinema["movies"] = data.included.filter(
         association => association.type == "movie_item"
       );
+    },
+
+    SET_USER_DATA(state, userData) {
+      state.user = userData;
+      localStorage.setItem("user", JSON.stringify(userData));
+      axios.defaults.headers.common["Authorization"] = `Bearer ${
+        userData.token
+      }`;
     }
   }
 });
