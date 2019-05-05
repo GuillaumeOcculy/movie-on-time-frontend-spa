@@ -43,6 +43,12 @@ export default new Vuex.Store({
       return MOTService.createUser(payload).then(({ data }) => {
         commit("SET_USER_DATA", data.data.attributes);
       });
+    },
+
+    login({ commit }, payload) {
+      return MOTService.signIn(payload).then(({ data }) => {
+        commit("SET_USER_DATA", data.data.attributes);
+      });
     }
   },
 

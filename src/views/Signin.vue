@@ -5,7 +5,7 @@
     <div class="container mt-3">
       <div class="row">
         <div class="col-md-6 offset-md-3">
-          <form @submit.prevent="submitForm">
+          <form @submit.prevent="login">
             <div class="row mt-3">
               <div class="col">
                 <input
@@ -45,7 +45,6 @@
 </template>
 
 <script>
-import MOTService from "@/services/MOTService.js";
 export default {
   data() {
     return {
@@ -62,14 +61,10 @@ export default {
     }
   },
   methods: {
-    submitForm() {
-      MOTService.signIn(this.form)
-        .then(response => {
-          console.log("Successful", response);
-        })
-        .catch(error => {
-          console.log("There was an error:", error.response.data);
-        });
+    login() {
+      this.$store.dispatch("login", this.form).then(() => {
+        this.$router.push({ name: "home" });
+      });
     }
   }
 };
