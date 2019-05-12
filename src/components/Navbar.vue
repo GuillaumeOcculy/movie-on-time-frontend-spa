@@ -46,9 +46,16 @@
             >
 
             <template v-else>
+              <router-link
+                :to="{ name: 'favorite-cinemas' }"
+                class="navbar-brand"
+                >Cinemas</router-link
+              >
+
               <router-link :to="{ name: 'watchlist' }" class="navbar-brand"
                 >Watchlist</router-link
               >
+
               <router-link :to="{ name: 'watched' }" class="navbar-brand"
                 >Watched</router-link
               >

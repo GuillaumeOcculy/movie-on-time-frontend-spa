@@ -72,6 +72,10 @@ export default {
     return apiClient.get("/cinemas/" + id + "?" + params);
   },
 
+  getFavoriteCinemas() {
+    return apiClient.get("/favorite_cinemas");
+  },
+
   getWatchlist() {
     return apiClient.get("/watchlist");
   },
