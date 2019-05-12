@@ -49,6 +49,9 @@
               <router-link :to="{ name: 'watchlist' }" class="navbar-brand"
                 >Watchlist</router-link
               >
+              <router-link :to="{ name: 'watched' }" class="navbar-brand"
+                >Watched</router-link
+              >
               <a href="#" @click.prevent="logout()" class="navbar-brand"
                 >Sign out</a
               >

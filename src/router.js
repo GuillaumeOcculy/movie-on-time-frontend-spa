@@ -12,6 +12,7 @@ import Search from "./views/Search.vue";
 import Signup from "./views/Signup.vue";
 import Signin from "./views/Signin.vue";
 import Watchlist from "./views/Watchlist.vue";
+import Watched from "./views/Watched.vue";
 
 Vue.use(Router);
 
@@ -81,6 +82,11 @@ export default new Router({
       path: "/watchlist",
       name: "watchlist",
       component: Watchlist
+    },
+    {
+      path: "/watched",
+      name: "watched",
+      component: Watched
     }
   ]
 });

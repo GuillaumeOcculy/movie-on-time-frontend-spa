@@ -73,7 +73,11 @@ export default {
   },
 
   getWatchlist() {
-    return apiClient.get("/watchlist/");
+    return apiClient.get("/watchlist");
+  },
+
+  getWatchedMovies() {
+    return apiClient.get("/watched_movies");
   },
 
   createUser(payload) {
