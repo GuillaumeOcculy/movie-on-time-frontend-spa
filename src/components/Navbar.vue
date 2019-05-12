@@ -45,9 +45,14 @@
               >Sign in</router-link
             >
 
-            <a href="#" v-else @click.prevent="logout()" class="navbar-brand"
-              >Sign out</a
-            >
+            <template v-else>
+              <router-link :to="{ name: 'watchlist' }" class="navbar-brand"
+                >Watchlist</router-link
+              >
+              <a href="#" @click.prevent="logout()" class="navbar-brand"
+                >Sign out</a
+              >
+            </template>
           </li>
         </ul>
       </div>

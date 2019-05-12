@@ -13,6 +13,11 @@ const apiClient = axios.create({
   }
 });
 
+if (localStorage.user) {
+  var user = JSON.parse(localStorage.user);
+  apiClient.defaults.headers.common["Authorization"] = `Bearer ${user.token}`;
+}
+
 export default {
   getNowShowing(payload) {
     let params = payload == undefined ? { page: 1 } : payload;
@@ -66,6 +71,11 @@ export default {
 
     return apiClient.get("/cinemas/" + id + "?" + params);
   },
+
+  getWatchlist() {
+    return apiClient.get("/watchlist/");
+  },
+
   createUser(payload) {
     return apiClient.post("/users", payload);
   },

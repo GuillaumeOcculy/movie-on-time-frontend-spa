@@ -11,6 +11,7 @@ import CinemaShow from "./views/CinemaShow.vue";
 import Search from "./views/Search.vue";
 import Signup from "./views/Signup.vue";
 import Signin from "./views/Signin.vue";
+import Watchlist from "./views/Watchlist.vue";
 
 Vue.use(Router);
 
@@ -75,6 +76,11 @@ export default new Router({
       path: "/signin",
       name: "signin",
       component: Signin
+    },
+    {
+      path: "/watchlist",
+      name: "watchlist",
+      component: Watchlist
     }
   ]
 });
