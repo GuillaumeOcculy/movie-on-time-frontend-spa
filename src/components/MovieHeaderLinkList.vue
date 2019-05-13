@@ -15,3 +15,9 @@
     >
   </div>
 </template>
+
+<style scoped>
+a:hover {
+  color: #e53935;
+}
+</style>

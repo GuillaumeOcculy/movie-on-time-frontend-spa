@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-light bg-white">
+  <nav class="navbar navbar-expand-lg bg-white">
     <div class="container">
       <router-link to="/" class="navbar-brand">Movie On Time</router-link>
 
@@ -98,5 +98,8 @@ export default {
 <style scoped>
 .container {
   max-width: 1300px;
+}
+a:hover {
+  color: #e53935;
 }
 </style>

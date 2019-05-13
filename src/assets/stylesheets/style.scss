@@ -11,8 +11,14 @@ a {
 }
 
 a:hover {
-  color: $red;
+  color: $grey;
 }
 .router-link-exact-active {
   color: $red;
+}
+
+.navbar-expand-lg {
+  .navbar-brand {
+    color: $grey;
+  }
 }
