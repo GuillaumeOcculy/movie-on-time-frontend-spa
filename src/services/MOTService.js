@@ -84,6 +84,14 @@ export default {
     return apiClient.get("/watched_movies");
   },
 
+  addToWatchlist(movie_id) {
+    return apiClient.post("/watchlist", movie_id);
+  },
+
+  removeToWatchlist(movie_id) {
+    return apiClient.delete("/watchlist", { data: movie_id });
+  },
+
   createUser(payload) {
     return apiClient.post("/users", payload);
   },

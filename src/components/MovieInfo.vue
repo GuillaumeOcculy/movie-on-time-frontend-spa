@@ -52,6 +52,26 @@
           />
         </div>
       </div>
+
+      <div class="text-center">
+        <button
+          type="button"
+          class="btn btn-success"
+          v-if="movie.attributes.watchlisted"
+          @click="removeToWatchlist()"
+        >
+          Remove to Watchlist
+        </button>
+
+        <button
+          type="button"
+          class="btn btn-outline-success"
+          v-else
+          @click="addToWatchlist()"
+        >
+          Add to Watchlist
+        </button>
+      </div>
     </div>
   </div>
 </template>
@@ -59,6 +79,7 @@
 <script>
 import TrailerLink from "./TrailerLink.vue";
 import MovieHours from "./MovieHours.vue";
+import MOTService from "@/services/MOTService.js";
 
 export default {
   props: {
@@ -86,6 +107,21 @@ export default {
     castNames: function() {
       var casts = this.movie.casts.map(cast => cast.attributes.name);
       return casts.join(", ");
+    },
+    movieId: function() {
+      return { movie_id: this.movie.id };
+    }
+  },
+  methods: {
+    addToWatchlist() {
+      MOTService.addToWatchlist(this.movieId).then(() => {
+        this.movie.attributes.watchlisted = true;
+      });
+    },
+    removeToWatchlist() {
+      MOTService.removeToWatchlist(this.movieId).then(() => {
+        this.movie.attributes.watchlisted = false;
+      });
     }
   }
 };
