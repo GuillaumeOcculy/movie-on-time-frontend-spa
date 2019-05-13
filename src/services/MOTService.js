@@ -92,6 +92,14 @@ export default {
     return apiClient.delete("/watchlist", { data: movie_id });
   },
 
+  addToFavorite(cinema_id) {
+    return apiClient.post("/favorite_cinemas", cinema_id);
+  },
+
+  removeToFavorite(cinema_id) {
+    return apiClient.delete("/favorite_cinemas", { data: cinema_id });
+  },
+
   createUser(payload) {
     return apiClient.post("/users", payload);
   },
