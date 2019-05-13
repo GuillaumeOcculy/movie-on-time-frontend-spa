@@ -13,7 +13,15 @@
             />
           </div>
           <div class="col-6">
-            <h3 class="text-center">{{ movie.attributes.title }}</h3>
+            <h3 class="text-center">
+              {{ movie.attributes.title }}
+              <span
+                style="font-size: 1em; color: Tomato;"
+                v-if="movie.attributes.watchlisted"
+              >
+                <i class="fas fa-bookmark"></i>
+              </span>
+            </h3>
             <hr />
 
             <dl>
