@@ -5,8 +5,14 @@
         :to="{ name: 'cinema-show', params: { id: cinema.id } }"
         class="text-decoration-none"
       >
-        <h1 class="text-center">{{ cinema.attributes.name }}</h1>
+        <h1 class="text-center">
+          {{ cinema.attributes.name }}
+          <span style="font-size: 1em; color: Tomato;" v-if="favorited">
+            <i class="fas fa-heart"></i>
+          </span>
+        </h1>
       </router-link>
+
       <p v-html="computedAddress"></p>
     </div>
     <div class="col-sm-8 align-self-center">
@@ -17,6 +23,7 @@
 
 <script>
 import ShowtimeList from "@/components/ShowtimeList.vue";
+
 export default {
   props: {
     cinema: Object
@@ -31,6 +38,9 @@ export default {
         this.cinema.attributes.post_code,
         this.cinema.attributes.city
       ].join("<br>");
+    },
+    favorited: function() {
+      return this.cinema.attributes.favorited;
     }
   }
 };

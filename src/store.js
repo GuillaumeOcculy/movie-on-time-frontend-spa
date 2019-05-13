@@ -77,7 +77,13 @@ export default new Vuex.Store({
       );
 
       state.movie["cinemas"] = data.included.filter(
-        association => association.type == "cinema_item"
+        association =>
+          association.type == "cinema_item" && !association.attributes.favorited
+      );
+
+      state.movie["favorited_cinemas"] = data.included.filter(
+        association =>
+          association.type == "cinema_item" && association.attributes.favorited
       );
     },
 

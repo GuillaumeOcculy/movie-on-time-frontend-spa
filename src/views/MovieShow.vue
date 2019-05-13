@@ -20,15 +20,19 @@
         <AppPagination
           :meta="meta"
           @pagination-clicked="fetch_movie"
-          v-if="cinemas.length > 0"
+          v-if="cinemas_length > 0"
         />
       </div>
+
+      <template v-if="favorited_cinemas.length > 0">
+        <CinemaList :cinemas="favorited_cinemas" />
+      </template>
 
       <template v-if="cinemas.length > 0">
         <CinemaList :cinemas="cinemas" />
       </template>
 
-      <template v-else>
+      <template v-if="cinemas_length == 0">
         <div class="bt-white">
           <h1>There are no cinemas avaible at this moment</h1>
         </div>
@@ -72,6 +76,12 @@ export default {
     },
     cinemas: function() {
       return this.movie.cinemas;
+    },
+    favorited_cinemas: function() {
+      return this.movie.favorited_cinemas;
+    },
+    cinemas_length: function() {
+      return this.cinemas.length + this.favorited_cinemas.length;
     },
     ...mapState(["movie", "meta"])
   },
