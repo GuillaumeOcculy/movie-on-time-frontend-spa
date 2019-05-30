@@ -46,22 +46,27 @@
             >
 
             <template v-else>
-              <router-link
-                :to="{ name: 'favorite-cinemas' }"
-                class="navbar-brand"
-                >Cinemas</router-link
-              >
-
-              <router-link :to="{ name: 'watchlist' }" class="navbar-brand"
-                >Watchlist</router-link
-              >
-
-              <!-- <router-link :to="{ name: 'watched' }" class="navbar-brand"
-                >Watched</router-link
-              >-->
-              <a href="#" @click.prevent="logout()" class="navbar-brand"
-                >Sign out</a
-              >
+              <div>
+                <b-dropdown
+                  size="lg"
+                  variant="link"
+                  toggle-class="text-decoration-none"
+                  no-caret
+                >
+                  <template slot="button-content">
+                    &#x1F464;
+                    <span class="sr-only">Profile</span>
+                  </template>
+                  <b-dropdown-item href="/favorite-cinemas"
+                    >Cinemas</b-dropdown-item
+                  >
+                  <b-dropdown-item href="/watchlist">Watchlist</b-dropdown-item>
+                  <b-dropdown-item href="/watched">Watched</b-dropdown-item>
+                  <b-dropdown-item href="#" @click.prevent="logout()"
+                    >Log out</b-dropdown-item
+                  >
+                </b-dropdown>
+              </div>
             </template>
           </li>
         </ul>
