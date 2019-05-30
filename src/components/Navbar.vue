@@ -54,7 +54,8 @@
                   no-caret
                 >
                   <template slot="button-content">
-                    &#x1F464;
+                    <v-gravatar email="occuly.guillaume@gmail.com" :size="50" />
+
                     <span class="sr-only">Profile</span>
                   </template>
                   <b-dropdown-item href="/favorite-cinemas"

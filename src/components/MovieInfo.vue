@@ -10,7 +10,9 @@
 
       <dl>
         <dt>Released on</dt>
-        <dd><AppDate :date="movie.attributes.release_date" /></dd>
+        <dd>
+          <AppDate :date="movie.attributes.release_date" />
+        </dd>
         <dt>Genres</dt>
         <dd>{{ genreNames }}</dd>
 
@@ -23,7 +25,9 @@
 
         <template v-if="movie.attributes.running_time">
           <dt>Duration</dt>
-          <dd><MovieHours :running_time="movie.attributes.running_time" /></dd>
+          <dd>
+            <MovieHours :running_time="movie.attributes.running_time" />
+          </dd>
         </template>
 
         <template v-if="directorNames.length > 0">
@@ -53,7 +57,7 @@
         </div>
       </div>
 
-      <div class="text-center">
+      <div class="text-center" v-if="!movie.attributes.watched">
         <button
           type="button"
           class="btn btn-success"
@@ -70,6 +74,26 @@
           @click="addToWatchlist()"
         >
           Add to Watchlist
+        </button>
+      </div>
+
+      <div class="text-center mt-3">
+        <button
+          type="button"
+          class="btn btn-primary"
+          v-if="movie.attributes.watched"
+          @click="removeAsWatched()"
+        >
+          Remove as Watched
+        </button>
+
+        <button
+          type="button"
+          class="btn btn-outline-primary"
+          v-else
+          @click="markAsWatched()"
+        >
+          Mark as Watched
         </button>
       </div>
     </div>
@@ -121,6 +145,17 @@ export default {
     removeToWatchlist() {
       MOTService.removeToWatchlist(this.movieId).then(() => {
         this.movie.attributes.watchlisted = false;
+      });
+    },
+    markAsWatched() {
+      MOTService.markAsWatched(this.movieId).then(() => {
+        this.movie.attributes.watched = true;
+        this.movie.attributes.watchlisted = false;
+      });
+    },
+    removeAsWatched() {
+      MOTService.removeAsWatched(this.movieId).then(() => {
+        this.movie.attributes.watched = false;
       });
     }
   }

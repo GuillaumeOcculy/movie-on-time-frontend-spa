@@ -3,6 +3,7 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 import BootstrapVue from "bootstrap-vue";
+import Gravatar from "vue-gravatar";
 
 import AppDate from "@/components/AppDate";
 import AppShortDate from "@/components/AppShortDate";
@@ -18,6 +19,7 @@ Vue.use(require("vue-moment"));
 Vue.component("AppDate", AppDate);
 Vue.component("AppShortDate", AppShortDate);
 Vue.component("AppPagination", AppPagination);
+Vue.component("v-gravatar", Gravatar);
 
 Vue.config.productionTip = false;
 
