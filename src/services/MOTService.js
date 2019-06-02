@@ -2,7 +2,7 @@ import axios from "axios";
 import queryString from "query-string";
 
 const baseUrl = "http://localhost:3000";
-// const baseUrl = "https://movieontime.com/api";
+// const baseUrl = "https://api.movieontime.com";
 
 const apiClient = axios.create({
   baseURL: baseUrl,
