@@ -69,7 +69,7 @@ export default {
     payload: function() {
       return {
         id: this.id,
-        query: this.query,
+        q: this.query,
         date: this.date,
         page: this.page
       };
@@ -92,7 +92,7 @@ export default {
     },
     fetch_movie(payload) {
       this.page = payload && payload["page"] ? payload["page"] : 1;
-      this.query = payload && payload["query"] ? payload["query"] : "";
+      this.query = payload && payload["q"] ? payload["q"] : "";
       this.$store.dispatch("fetchMovie", this.payload);
     }
   },

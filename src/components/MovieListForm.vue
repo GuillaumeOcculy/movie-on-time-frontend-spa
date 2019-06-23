@@ -36,7 +36,7 @@ export default {
   },
   methods: {
     queryEntered: function() {
-      const payload = { query: this.query };
+      const payload = { q: this.query };
       this.$emit("query-entered", payload);
     }
   }
