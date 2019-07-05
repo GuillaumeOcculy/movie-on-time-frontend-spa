@@ -16,9 +16,7 @@
         <dt>Genres</dt>
         <dd>{{ genreNames }}</dd>
 
-        <template
-          v-if="movie.attributes.title != movie.attributes.original_title"
-        >
+        <template v-if="movie.attributes.title != movie.attributes.original_title">
           <dt>Original title</dt>
           <dd>{{ movie.attributes.original_title }}</dd>
         </template>
@@ -63,18 +61,14 @@
           class="btn btn-success"
           v-if="movie.attributes.watchlisted"
           @click="removeToWatchlist()"
-        >
-          Remove to Watchlist
-        </button>
+        >Remove to Watchlist</button>
 
         <button
           type="button"
           class="btn btn-outline-success"
           v-else
           @click="addToWatchlist()"
-        >
-          Add to Watchlist
-        </button>
+        >Add to Watchlist</button>
       </div>
 
       <div class="text-center mt-3">
@@ -83,18 +77,14 @@
           class="btn btn-primary"
           v-if="movie.attributes.watched"
           @click="removeAsWatched()"
-        >
-          Remove as Watched
-        </button>
+        >Remove as Watched</button>
 
         <button
           type="button"
           class="btn btn-outline-primary"
           v-else
           @click="markAsWatched()"
-        >
-          Mark as Watched
-        </button>
+        >Mark as Watched</button>
       </div>
     </div>
   </div>
@@ -138,9 +128,13 @@ export default {
   },
   methods: {
     addToWatchlist() {
-      MOTService.addToWatchlist(this.movieId).then(() => {
-        this.movie.attributes.watchlisted = true;
-      });
+      MOTService.addToWatchlist(this.movieId)
+        .then(() => {
+          this.movie.attributes.watchlisted = true;
+        })
+        .catch(error => {
+          if (error.response.status == 401) alert("You must be logged in");
+        });
     },
     removeToWatchlist() {
       MOTService.removeToWatchlist(this.movieId).then(() => {
@@ -148,10 +142,14 @@ export default {
       });
     },
     markAsWatched() {
-      MOTService.markAsWatched(this.movieId).then(() => {
-        this.movie.attributes.watched = true;
-        this.movie.attributes.watchlisted = false;
-      });
+      MOTService.markAsWatched(this.movieId)
+        .then(() => {
+          this.movie.attributes.watched = true;
+          this.movie.attributes.watchlisted = false;
+        })
+        .catch(error => {
+          if (error.response.status == 401) alert("You must be logged in");
+        });
     },
     removeAsWatched() {
       MOTService.removeAsWatched(this.movieId).then(() => {

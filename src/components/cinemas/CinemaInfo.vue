@@ -2,7 +2,7 @@
   <div class="bg-white mt-3 py-3">
     <h1 class="text-center">{{ cinema.attributes.name }}</h1>
 
-    <hr>
+    <hr />
 
     <dl class="text-center">
       <dt>Address</dt>
@@ -42,9 +42,13 @@ export default {
   },
   methods: {
     addToFavorite() {
-      MOTService.addToFavorite(this.cinemaId).then(() => {
-        this.cinema.attributes.favorited = true;
-      });
+      MOTService.addToFavorite(this.cinemaId)
+        .then(() => {
+          this.cinema.attributes.favorited = true;
+        })
+        .catch(error => {
+          if (error.response.status == 401) alert("You must be logged in");
+        });
     },
     removeToFavorite() {
       MOTService.removeToFavorite(this.cinemaId).then(() => {

@@ -84,10 +84,18 @@ export default {
   },
   methods: {
     register() {
-      this.$store.dispatch("register", this.form).then(() => {
-        this.$router.push({ name: "home" });
-        this.$router.go(0);
-      });
+      this.$store
+        .dispatch("register", this.form)
+        .then(() => {
+          this.$router.push({ name: "home" });
+          this.$router.go(0);
+        })
+        .catch(error => {
+          var data = error.response.data;
+          var errors = JSON.stringify(data, null, 4);
+
+          alert(errors);
+        });
     }
   }
 };

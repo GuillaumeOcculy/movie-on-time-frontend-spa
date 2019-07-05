@@ -8,12 +8,7 @@
           <form @submit.prevent="login">
             <div class="row mt-3">
               <div class="col">
-                <input
-                  type="email"
-                  class="form-control"
-                  placeholder="Email"
-                  v-model="email"
-                />
+                <input type="email" class="form-control" placeholder="Email" v-model="email" />
               </div>
               <div class="col">
                 <input
@@ -26,17 +21,16 @@
             </div>
             <div class="row mt-3">
               <div class="col">
-                <button type="submit" class="btn btn-primary btn-block">
-                  Log in
-                </button>
+                <button type="submit" class="btn btn-primary btn-block">Log in</button>
               </div>
             </div>
           </form>
 
           <div class="text-center">
-            <router-link :to="{ name: 'signup' }" class="navbar-brand"
-              >Don't have an account? Sign up</router-link
-            >
+            <router-link
+              :to="{ name: 'signup' }"
+              class="navbar-brand"
+            >Don't have an account? Sign up</router-link>
           </div>
         </div>
       </div>
@@ -62,10 +56,15 @@ export default {
   },
   methods: {
     login() {
-      this.$store.dispatch("login", this.form).then(() => {
-        this.$router.push({ name: "home" });
-        this.$router.go(0);
-      });
+      this.$store
+        .dispatch("login", this.form)
+        .then(() => {
+          this.$router.push({ name: "home" });
+          this.$router.go(0);
+        })
+        .catch(error => {
+          alert(error.response.data);
+        });
     }
   }
 };
