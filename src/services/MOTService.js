@@ -37,6 +37,14 @@ export default {
 
     return apiClient.get("/movies/" + id + "?" + params);
   },
+  getCountryPoll() {
+    return apiClient.get("/v1/polls/1");
+  },
+  answerToPoll(payload) {
+    let poll_id = payload["pollId"];
+    return apiClient.post("/v1/polls/" + poll_id + "/poll_answers", payload);
+  },
+
   getPremiere(payload) {
     let params = payload == undefined ? { page: 1 } : payload;
     params = queryString.stringify(params);

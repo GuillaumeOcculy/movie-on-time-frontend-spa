@@ -1,24 +1,28 @@
 <template>
-  <form class="form-inline">
-    <div class="form-group mr-2">
-      <input
-        type="text"
-        class="form-control"
-        placeholder="Search movies"
-        v-model="query"
-        @input="queryEntered"
-      />
-    </div>
-    <div class="form-group mb-2">
-      <input
-        type="text"
-        readonly
-        class="form-control-plaintext"
-        id="staticEmail2"
-        :value="'Movies: ' + meta.total_count"
-      />
-    </div>
-  </form>
+  <div>
+    <AppSelectedCountry />
+
+    <form class="form-inline">
+      <div class="form-group mr-2">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Search movies"
+          v-model="query"
+          @input="queryEntered"
+        />
+      </div>
+      <div class="form-group mb-2">
+        <input
+          type="text"
+          readonly
+          class="form-control-plaintext"
+          id="staticEmail2"
+          :value="'Movies: ' + meta.total_count"
+        />
+      </div>
+    </form>
+  </div>
 </template>
 
 <script>

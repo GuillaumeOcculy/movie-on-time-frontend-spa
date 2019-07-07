@@ -14,6 +14,7 @@ import Signin from "./views/Signin.vue";
 import FavoriteCinemas from "./views/FavoriteCinemas.vue";
 import Watchlist from "./views/Watchlist.vue";
 import Watched from "./views/Watched.vue";
+import SelectCountry from "./views/SelectCountry.vue";
 
 Vue.use(Router);
 
@@ -93,6 +94,11 @@ export default new Router({
       path: "/watched",
       name: "watched",
       component: Watched
+    },
+    {
+      path: "/select-country",
+      name: "select-country",
+      component: SelectCountry
     }
   ]
 });
