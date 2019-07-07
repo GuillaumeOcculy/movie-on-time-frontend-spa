@@ -16,13 +16,17 @@
           class="btn btn-success"
           v-if="cinema.attributes.favorited"
           @click="removeToFavorite()"
-        >Remove to Favorite</button>
+        >
+          Remove to Favorite
+        </button>
         <button
           type="button"
           class="btn btn-outline-success"
           v-else
           @click="addToFavorite()"
-        >Add to Favorite</button>
+        >
+          Add to Favorite
+        </button>
       </dd>
     </dl>
   </div>
@@ -42,6 +46,10 @@ export default {
   },
   methods: {
     addToFavorite() {
+      if (!localStorage.user) {
+        alert("You must be logged in");
+        return;
+      }
       MOTService.addToFavorite(this.cinemaId)
         .then(() => {
           this.cinema.attributes.favorited = true;
