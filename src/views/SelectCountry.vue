@@ -4,7 +4,9 @@
 
     <div class="text-center">
       <p class="lead">Unfortunatly, France is the only country available for now.</p>
-      <p>You can ask to add your country by filling the form below.</p>
+      <p>
+        <b>You can ask to add your country by filling the form below.</b>
+      </p>
     </div>
     <div class="jumbotron">
       <div class="text-center">
@@ -14,11 +16,8 @@
       <div class="d-flex justify-content-center">
         <form class="form-inline" @submit.prevent="submit">
           <div class="form-group mx-sm-3 mb-2">
-            <select class="custom-select" v-model="country">
-              <option selected>Open this select menu</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
+            <select class="custom-select" v-model="selectedCountry">
+              <option v-for="country in countries" :key="country.name">{{ country.name }}</option>
             </select>
           </div>
           <button type="submit" class="btn btn-primary mb-2">Add my country</button>
@@ -27,19 +26,20 @@
       <hr class="my-4" />
 
       <div>
-        <!-- <div v-for="answer in answers"> -->
         <button
           type="button"
-          class="btn btn-primary mr-3"
+          class="btn btn-primary mr-3 mt-3"
           v-for="answer in answers"
           :key="answer.id"
+          @click="vote(answer.attributes.body)"
         >
           {{ answer.attributes.body }}
-          <span
-            class="badge badge-light"
-          >{{ answer.attributes.vote_count }}</span>
+          <span class="badge badge-light">
+            {{
+            answer.attributes.vote_count
+            }}
+          </span>
         </button>
-        <!-- </div> -->
       </div>
     </div>
   </div>
@@ -47,33 +47,41 @@
 
 <script>
 import MOTService from "@/services/MOTService.js";
+import dataCountries from "@/datas/countries.json";
+import _ from "lodash";
 
 export default {
   data() {
     return {
       poll: null,
       answers: [],
-      country: null
+      selectedCountry: null,
+      countries: []
     };
   },
   computed: {
     form: function() {
       return {
         pollId: this.poll.id,
-        body: this.country
+        body: this.selectedCountry
       };
     }
   },
   methods: {
+    vote(value) {
+      this.selectedCountry = value;
+      this.submit();
+    },
+    updatePoll(response) {
+      let answers = response.data.included.sort(country => country.name);
+      this.answers = _.sortBy(answers, "attributes.body");
+      this.poll = response.data.data;
+    },
     submit() {
-      if (!localStorage.user) {
-        alert("You must be logged in");
-        return;
-      }
       MOTService.answerToPoll(this.form)
         .then(response => {
-          this.answers = response.data.included;
-          this.poll = response.data.data;
+          this.updatePoll(response);
+          alert("Thanks for your vote !");
         })
         .catch(error => {
           var data = error.response.data;
@@ -81,13 +89,17 @@ export default {
 
           alert(errors);
         });
+    },
+    getCountriesList: function() {
+      this.countries = dataCountries;
     }
   },
   created() {
     MOTService.getCountryPoll().then(response => {
-      this.answers = response.data.included;
-      this.poll = response.data.data;
+      this.updatePoll(response);
     });
+
+    this.countries = dataCountries;
   }
 };
 </script>
