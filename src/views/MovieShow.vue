@@ -17,12 +17,10 @@
       <div class="d-flex justify-content-between p-3">
         <CinemaListForm @query-entered="fetch_movie" :meta="meta" />
 
-        <AppPagination
-          :meta="meta"
-          @pagination-clicked="fetch_movie"
-          v-if="cinemas_length > 0"
-        />
+        <AppPagination :meta="meta" @pagination-clicked="fetch_movie" v-if="cinemas_length > 0" />
       </div>
+
+      <AppSelectedCountry class="p-3" />
 
       <template v-if="favorited_cinemas.length > 0">
         <CinemaList :cinemas="favorited_cinemas" />

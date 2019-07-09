@@ -1,7 +1,5 @@
 <template>
   <div>
-    <AppSelectedCountry />
-
     <form class="form-inline">
       <div class="form-group mr-2">
         <input

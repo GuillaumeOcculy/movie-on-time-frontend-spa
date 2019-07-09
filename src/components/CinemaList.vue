@@ -10,12 +10,9 @@
       />
     </div>
 
+    <AppSelectedCountry />
     <div class="row">
-      <CinemaListItem
-        v-for="cinema in cinemas"
-        :key="cinema.id"
-        :cinema="cinema"
-      />
+      <CinemaListItem v-for="cinema in cinemas" :key="cinema.id" :cinema="cinema" />
     </div>
   </div>
 </template>

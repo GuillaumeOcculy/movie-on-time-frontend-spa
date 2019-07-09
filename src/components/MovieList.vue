@@ -12,6 +12,7 @@
       />
     </div>
 
+    <AppSelectedCountry />
     <div class="row">
       <MovieListItem v-for="movie in movies" :key="movie.id" :movie="movie" />
     </div>
