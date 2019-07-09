@@ -105,7 +105,7 @@ export default {
   },
 
   removeAsWatched(movie_id) {
-    return apiClient.delete("/watched_movies", { data: movie_id });
+    return apiClient.delete("/watched_movies/" + movie_id);
   },
 
   addToFavorite(cinema_id) {

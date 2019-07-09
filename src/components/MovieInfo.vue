@@ -168,7 +168,7 @@ export default {
         });
     },
     removeAsWatched() {
-      MOTService.removeAsWatched(this.movieId).then(() => {
+      MOTService.removeAsWatched(this.movie.id).then(() => {
         this.movie.attributes.watched = false;
       });
     }
