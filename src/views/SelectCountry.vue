@@ -3,10 +3,10 @@
     <!-- <h1 class="text-center">Select Country</h1> -->
 
     <div class="text-center">
-      <p class="lead">Unfortunatly, France is the only country available for now.</p>
-      <p>
-        <b>You can ask to add your country by filling the form below.</b>
+      <p class="lead">
+        Unfortunatly, France is the only country available for now.
       </p>
+      <p><b>You can ask to add your country by filling the form below.</b></p>
     </div>
     <div class="jumbotron">
       <div class="text-center">
@@ -16,12 +16,35 @@
       <div class="d-flex justify-content-center">
         <form class="form-inline" @submit.prevent="submit">
           <div class="form-group mx-sm-3 mb-2">
-            <select class="custom-select" v-model="selectedCountry">
-              <option v-for="country in countries" :key="country.name">{{ country.name }}</option>
+            <select class="custom-select" v-model="selectedCountry" required>
+              <option v-for="country in countries" :key="country.name">{{
+                country.name
+              }}</option>
             </select>
+
+            <input
+              required
+              v-if="!loggedIn"
+              type="email"
+              class="form-control ml-3"
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp"
+              placeholder="Enter email"
+              v-model="selectedEmail"
+            />
           </div>
-          <button type="submit" class="btn btn-primary mb-2">Add my country</button>
+          <button type="submit" class="btn btn-primary mb-2">
+            Add my country
+          </button>
         </form>
+
+        <br />
+      </div>
+
+      <div class="text-center">
+        <ul v-for="(error, index) in errors" :key="index">
+          <p class="text-danger">{{ error }}</p>
+        </ul>
       </div>
       <hr class="my-4" />
 
@@ -35,9 +58,7 @@
         >
           {{ answer.attributes.body }}
           <span class="badge badge-light">
-            {{
-            answer.attributes.vote_count
-            }}
+            {{ answer.attributes.vote_count }}
           </span>
         </button>
       </div>
@@ -48,6 +69,7 @@
 <script>
 import MOTService from "@/services/MOTService.js";
 import dataCountries from "@/datas/countries.json";
+import { authComputed } from "../vuex/helpers.js";
 import _ from "lodash";
 
 export default {
@@ -55,17 +77,21 @@ export default {
     return {
       poll: null,
       answers: [],
+      countries: [],
       selectedCountry: null,
-      countries: []
+      selectedEmail: null,
+      errors: []
     };
   },
   computed: {
     form: function() {
       return {
         pollId: this.poll.id,
-        body: this.selectedCountry
+        body: this.selectedCountry,
+        email: this.selectedEmail
       };
-    }
+    },
+    ...authComputed
   },
   methods: {
     vote(value) {
@@ -81,13 +107,12 @@ export default {
       MOTService.answerToPoll(this.form)
         .then(response => {
           this.updatePoll(response);
+          this.errors = [];
+
           alert("Thanks for your vote !");
         })
         .catch(error => {
-          var data = error.response.data;
-          var errors = JSON.stringify(data, null, 4);
-
-          alert(errors);
+          this.errors = error.response.data;
         });
     },
     getCountriesList: function() {
