@@ -14,7 +14,7 @@ const apiClient = axios.create({
 });
 
 if (localStorage.user) {
-  var user = JSON.parse(localStorage.user);
+  let user = JSON.parse(localStorage.user);
   apiClient.defaults.headers.common["Authorization"] = `Bearer ${user.token}`;
 }
 

@@ -111,6 +111,10 @@ export default new Vuex.Store({
   getters: {
     loggedIn() {
       return !!localStorage.user;
+    },
+    loggedUser() {
+      let user = JSON.parse(localStorage.user);
+      return user;
     }
   }
 });

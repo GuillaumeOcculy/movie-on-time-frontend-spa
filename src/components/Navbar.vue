@@ -54,7 +54,7 @@
                   no-caret
                 >
                   <template slot="button-content">
-                    <v-gravatar email="occuly.guillaume@gmail.com" :size="50" />
+                    <v-gravatar :email="loggedUser.email" :size="50" />
 
                     <span class="sr-only">Profile</span>
                   </template>
