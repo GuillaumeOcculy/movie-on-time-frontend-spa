@@ -63,6 +63,7 @@
 </template>
 
 <script>
+import _ from "lodash";
 export default {
   data() {
     return {
@@ -74,12 +75,15 @@ export default {
   },
   computed: {
     form: function() {
-      return {
+      let obj = {
         first_name: this.firstName,
         last_name: this.lastName,
         email: this.email,
         password: this.password
       };
+
+      obj = _.pickBy(obj, _.identity);
+      return obj;
     }
   },
   methods: {
