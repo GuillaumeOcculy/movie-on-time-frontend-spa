@@ -1,16 +1,11 @@
 <template>
   <div>
-    <p>
-      Country :
-      <router-link :to="{ name: 'select-country' }" class="navbar-brand"
+    <div class="badge badge-primary text-wrap">
+      <router-link :to="{ name: 'select-country' }" class="text-white h5"
         >France</router-link
       >
-    </p>
+    </div>
   </div>
 </template>
 
-<style scoped>
-a {
-  color: #007bff;
-}
-</style>
+<style scoped></style>
