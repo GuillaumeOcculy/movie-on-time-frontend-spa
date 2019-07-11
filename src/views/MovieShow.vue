@@ -5,7 +5,11 @@
 
     <div class="row bg-white mt-3 d-flex bd-highlight">
       <template v-for="date in movie.attributes.dates">
-        <div class="p-2 flex-fill bd-highlight text-center border" :key="date">
+        <div
+          class="p-2 flex-fill bd-highlight text-center border"
+          :key="date"
+          :class="{ 'alert-info': date == movie.attributes.date }"
+        >
           <button @click="set_date(date)" class="btn">
             <AppShortDate :date="date" />
           </button>
@@ -17,7 +21,11 @@
       <div class="d-flex justify-content-between p-3">
         <CinemaListForm @query-entered="fetch_movie" :meta="meta" />
 
-        <AppPagination :meta="meta" @pagination-clicked="fetch_movie" v-if="cinemas_length > 0" />
+        <AppPagination
+          :meta="meta"
+          @pagination-clicked="fetch_movie"
+          v-if="cinemas_length > 0"
+        />
       </div>
 
       <AppSelectedCountry class="p-3" />

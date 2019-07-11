@@ -5,8 +5,14 @@
 
     <div class="row bg-white mt-3 d-flex bd-highlight">
       <template v-for="date in cinema.attributes.dates">
-        <div class="p-2 flex-fill bd-highlight text-center border" :key="date">
-          <button @click="set_date(date)" class="btn">{{ date }}</button>
+        <div
+          class="p-2 flex-fill bd-highlight text-center border"
+          :key="date"
+          :class="{ 'alert-info': date == cinema.attributes.date }"
+        >
+          <button @click="set_date(date)" class="btn">
+            <AppShortDate :date="date" />
+          </button>
         </div>
       </template>
     </div>
