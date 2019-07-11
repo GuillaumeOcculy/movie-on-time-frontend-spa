@@ -1,25 +1,22 @@
 <template>
   <div class="mt-3">
-    <!-- <h1 class="text-center">Select Country</h1> -->
-
-    <div class="text-center">
-      <p class="lead">
-        Unfortunatly, France is the only country available for now.
-      </p>
-      <p><b>You can ask to add your country by filling the form below.</b></p>
-    </div>
     <div class="jumbotron">
       <div class="text-center">
-        <h2 v-if="poll">{{ poll.attributes.body }}</h2>
+        <p class="lead">
+          Unfortunatly, France is the only country available for now.
+        </p>
+
+        <h1 v-if="poll">{{ poll.attributes.body }}</h1>
+        <p>You can ask to add your country by filling the form below</p>
       </div>
 
       <div class="d-flex justify-content-center">
         <form class="form-inline" @submit.prevent="submit">
           <div class="form-group mx-sm-3 mb-2">
             <select class="custom-select" v-model="selectedCountry" required>
-              <option v-for="country in countries" :key="country.name">{{
-                country.name
-              }}</option>
+              <option v-for="country in countries" :key="country.name">
+                {{ country.name }}
+              </option>
             </select>
 
             <input
@@ -57,9 +54,9 @@
           @click="vote(answer.attributes.body)"
         >
           {{ answer.attributes.body }}
-          <span class="badge badge-light">
-            {{ answer.attributes.vote_count }}
-          </span>
+          <span class="badge badge-light">{{
+            answer.attributes.vote_count
+          }}</span>
         </button>
       </div>
     </div>
