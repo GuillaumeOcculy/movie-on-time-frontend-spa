@@ -24,6 +24,8 @@
 </template>
 
 <script>
+import _ from "lodash";
+
 export default {
   props: {
     meta: {
@@ -37,10 +39,10 @@ export default {
     };
   },
   methods: {
-    queryEntered: function() {
+    queryEntered: _.debounce(function() {
       const payload = { q: this.query };
       this.$emit("query-entered", payload);
-    }
+    }, 600)
   }
 };
 </script>
