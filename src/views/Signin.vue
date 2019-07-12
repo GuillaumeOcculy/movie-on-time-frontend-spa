@@ -5,6 +5,12 @@
     <div class="container mt-3">
       <div class="row">
         <div class="col-md-6 offset-md-3">
+          <div class="text-center">
+            <ul v-for="(error, index) in errors" :key="index">
+              <p class="text-danger">{{ error }}</p>
+            </ul>
+          </div>
+
           <form @submit.prevent="login">
             <div class="row mt-3">
               <div class="col">
@@ -43,7 +49,8 @@ export default {
   data() {
     return {
       email: null,
-      password: null
+      password: null,
+      errors: []
     };
   },
   computed: {
@@ -63,7 +70,7 @@ export default {
           this.$router.go(0);
         })
         .catch(error => {
-          alert(error.response.data);
+          this.errors = error.response.data;
         });
     }
   }

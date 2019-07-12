@@ -5,6 +5,17 @@
     <div class="container mt-3">
       <div class="row">
         <div class="col-md-6 offset-md-3">
+          <div class="text-center">
+            <ul v-for="(values, key, index) in errors" :key="index">
+              <p
+                v-for="(value, index) in values"
+                :key="index"
+                class="text-danger"
+              >
+                {{ key }} {{ value }}
+              </p>
+            </ul>
+          </div>
           <form @submit.prevent="register">
             <div class="row">
               <div class="col">
@@ -70,7 +81,8 @@ export default {
       firstName: null,
       lastName: null,
       email: null,
-      password: null
+      password: null,
+      errors: []
     };
   },
   computed: {
@@ -95,10 +107,11 @@ export default {
           this.$router.go(0);
         })
         .catch(error => {
-          var data = error.response.data;
-          var errors = JSON.stringify(data, null, 4);
+          // var data = error.response.data;
+          this.errors = error.response.data;
+          // var errors = JSON.stringify(data, null, 4);
 
-          alert(errors);
+          // alert(errors);
         });
     }
   }
