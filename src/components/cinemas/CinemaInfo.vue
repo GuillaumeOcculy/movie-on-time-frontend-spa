@@ -1,9 +1,5 @@
 <template>
   <div class="bg-white mt-3 py-3">
-    <h1 class="text-center">{{ cinema.attributes.name }}</h1>
-
-    <hr />
-
     <dl class="text-center">
       <dt>Address</dt>
       <dd>{{ cinema.attributes.street }}</dd>
