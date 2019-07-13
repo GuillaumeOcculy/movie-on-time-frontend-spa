@@ -1,48 +1,79 @@
 <template>
   <div v-if="movie.attributes">
-    <MovieHeaderLinkList />
-    <MovieInfo :movie="movie" />
-
-    <div class="row bg-white mt-3 d-flex bd-highlight">
-      <template v-for="date in movie.attributes.dates">
-        <div
-          class="p-2 flex-fill bd-highlight text-center border"
-          :key="date"
-          :class="{ 'alert-info': date == movie.attributes.date }"
-        >
-          <button @click="set_date(date)" class="btn">
-            <AppShortDate :date="date" />
-          </button>
+    <h1 class="text-center">{{ movie.attributes.title }}</h1>
+    <div class="bd-example bd-example-tabs">
+      <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item">
+          <a
+            class="nav-link active"
+            id="home-tab"
+            data-toggle="tab"
+            href="#home"
+            role="tab"
+            aria-controls="home"
+            aria-selected="true"
+          >Home</a>
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            id="shotimes-tab"
+            data-toggle="tab"
+            href="#shotimes"
+            role="tab"
+            aria-controls="shotimes"
+            aria-selected="false"
+          >Showtimes</a>
+        </li>
+      </ul>
+      <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade active show" id="home" role="tabpanel" aria-labelledby="home-tab">
+          <MovieInfo :movie="movie" />
         </div>
-      </template>
-    </div>
+        <div class="tab-pane fade" id="shotimes" role="tabpanel" aria-labelledby="shotimes-tab">
+          <div class="row bg-white mt-3 d-flex bd-highlight">
+            <template v-for="date in movie.attributes.dates">
+              <div
+                class="p-2 flex-fill bd-highlight text-center border"
+                :key="date"
+                :class="{ 'alert-info': date == movie.attributes.date }"
+              >
+                <button @click="set_date(date)" class="btn">
+                  <AppShortDate :date="date" />
+                </button>
+              </div>
+            </template>
+          </div>
 
-    <div class="bg-white mt-3" id="cinema-list">
-      <div class="d-flex justify-content-between p-3">
-        <CinemaListForm @query-entered="fetch_movie" :meta="meta" />
+          <div class="bg-white mt-3" id="cinema-list">
+            <div class="d-flex justify-content-between p-3">
+              <CinemaListForm @query-entered="fetch_movie" :meta="meta" />
 
-        <AppPagination
-          :meta="meta"
-          @pagination-clicked="fetch_movie"
-          v-if="cinemas_length > 0"
-        />
+              <AppPagination
+                :meta="meta"
+                @pagination-clicked="fetch_movie"
+                v-if="cinemas_length > 0"
+              />
+            </div>
+
+            <AppSelectedCountry class="p-3" />
+
+            <template v-if="favorited_cinemas.length > 0">
+              <CinemaList :cinemas="favorited_cinemas" />
+            </template>
+
+            <template v-if="cinemas.length > 0">
+              <CinemaList :cinemas="cinemas" />
+            </template>
+
+            <template v-if="cinemas_length == 0">
+              <div class="bt-white">
+                <h1>There are no cinemas avaible at this moment</h1>
+              </div>
+            </template>
+          </div>
+        </div>
       </div>
-
-      <AppSelectedCountry class="p-3" />
-
-      <template v-if="favorited_cinemas.length > 0">
-        <CinemaList :cinemas="favorited_cinemas" />
-      </template>
-
-      <template v-if="cinemas.length > 0">
-        <CinemaList :cinemas="cinemas" />
-      </template>
-
-      <template v-if="cinemas_length == 0">
-        <div class="bt-white">
-          <h1>There are no cinemas avaible at this moment</h1>
-        </div>
-      </template>
     </div>
   </div>
 </template>
@@ -51,7 +82,6 @@
 import MovieInfo from "@/components/MovieInfo.vue";
 import CinemaList from "@/components/movies/CinemaList.vue";
 import CinemaListForm from "@/components/CinemaListForm.vue";
-import MovieHeaderLinkList from "@/components/MovieHeaderLinkList.vue";
 import { mapState } from "vuex";
 
 export default {
@@ -59,7 +89,6 @@ export default {
     id: [String, Number]
   },
   components: {
-    MovieHeaderLinkList,
     MovieInfo,
     CinemaList,
     CinemaListForm

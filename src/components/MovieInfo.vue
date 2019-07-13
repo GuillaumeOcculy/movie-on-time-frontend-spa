@@ -1,5 +1,5 @@
 <template>
-  <div class="row bg-white mt-3 py-3 align-items-center">
+  <div class="row bg-white py-3 align-items-center">
     <div class="col-sm-4">
       <img
         :src="movie.attributes.poster_url"
@@ -8,10 +8,6 @@
       />
     </div>
     <div class="col-sm-8">
-      <h1 class="text-center">{{ movie.attributes.title }}</h1>
-
-      <hr />
-
       <dl>
         <dt>Released on</dt>
         <dd><AppDate :date="movie.attributes.release_date" /></dd>
