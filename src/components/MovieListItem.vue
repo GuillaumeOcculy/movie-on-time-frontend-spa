@@ -39,7 +39,8 @@ export default {
 
 <style scoped>
 img {
-  height: 428px;
+  max-height: 428px;
+  width: auto;
 }
 
 .card:hover {

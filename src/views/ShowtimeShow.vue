@@ -10,10 +10,13 @@
                 <router-link
                   :to="{ name: 'movie-show', params: { id: movie.id } }"
                 >
-                  <img
-                    :src="movie.attributes.poster_url"
-                    alt="movie.attributes.title"
-                  />
+                  <div class="text-center">
+                    <img
+                      :src="movie.attributes.poster_url"
+                      alt="movie.attributes.title"
+                      class="img-fluid"
+                    />
+                  </div>
                 </router-link>
               </div>
 

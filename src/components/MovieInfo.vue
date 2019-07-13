@@ -1,7 +1,11 @@
 <template>
   <div class="row bg-white mt-3 py-3 align-items-center">
     <div class="col-sm-4">
-      <img :src="movie.attributes.poster_url" :alt="movie.attributes.title" />
+      <img
+        :src="movie.attributes.poster_url"
+        :alt="movie.attributes.title"
+        class="img-fluid"
+      />
     </div>
     <div class="col-sm-8">
       <h1 class="text-center">{{ movie.attributes.title }}</h1>
@@ -175,9 +179,3 @@ export default {
   }
 };
 </script>
-
-<style scoped>
-img {
-  width: 400px;
-}
-</style>
