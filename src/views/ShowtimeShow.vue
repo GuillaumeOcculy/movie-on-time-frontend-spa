@@ -1,6 +1,5 @@
 <template>
   <div>
-    <MovieHeaderLinkList />
     <div class="row mt-3">
       <div class="col-md-10 offset-md-1">
         <div class="card">
@@ -142,7 +141,6 @@
 
 <script>
 import MOTService from "@/services/MOTService.js";
-import MovieHeaderLinkList from "@/components/MovieHeaderLinkList.vue";
 import MovieHours from "@/components/MovieHours.vue";
 
 export default {
@@ -150,7 +148,6 @@ export default {
     id: [String, Number]
   },
   components: {
-    MovieHeaderLinkList,
     MovieHours
   },
   data() {

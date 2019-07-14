@@ -12,7 +12,8 @@
             role="tab"
             aria-controls="home"
             aria-selected="true"
-          >Home</a>
+            >Home</a
+          >
         </li>
         <li class="nav-item">
           <a
@@ -23,14 +24,25 @@
             role="tab"
             aria-controls="shotimes"
             aria-selected="false"
-          >Showtimes</a>
+            >Showtimes</a
+          >
         </li>
       </ul>
       <div class="tab-content" id="myTabContent">
-        <div class="tab-pane fade active show" id="home" role="tabpanel" aria-labelledby="home-tab">
+        <div
+          class="tab-pane fade active show"
+          id="home"
+          role="tabpanel"
+          aria-labelledby="home-tab"
+        >
           <MovieInfo :movie="movie" />
         </div>
-        <div class="tab-pane fade" id="shotimes" role="tabpanel" aria-labelledby="shotimes-tab">
+        <div
+          class="tab-pane fade"
+          id="shotimes"
+          role="tabpanel"
+          aria-labelledby="shotimes-tab"
+        >
           <div class="row bg-white mt-3 d-flex bd-highlight">
             <template v-for="date in movie.attributes.dates">
               <div
@@ -79,6 +91,7 @@
 </template>
 
 <script>
+import axios from "axios";
 import MovieInfo from "@/components/MovieInfo.vue";
 import CinemaList from "@/components/movies/CinemaList.vue";
 import CinemaListForm from "@/components/CinemaListForm.vue";
@@ -97,7 +110,9 @@ export default {
     return {
       query: "",
       date: "",
-      page: 1
+      page: 1,
+      country: null,
+      postal_code: null
     };
   },
   computed: {
@@ -106,7 +121,9 @@ export default {
         id: this.id,
         q: this.query,
         date: this.date,
-        page: this.page
+        page: this.page,
+        country: this.country,
+        postal_code: this.postal_code
       };
     },
     cinemas: function() {
@@ -129,10 +146,26 @@ export default {
       this.page = payload && payload["page"] ? payload["page"] : 1;
       this.query = payload && payload["q"] ? payload["q"] : "";
       this.$store.dispatch("fetchMovie", this.payload);
+    },
+    ipLookUp() {
+      let response = axios.get("http://ip-api.com/json").then(
+        response => {
+          this.country = response.data.country;
+          this.postal_code = response.data.zip;
+        },
+
+        function fail(data, status) {
+          console.log("Request failed.  Returned status of", status);
+        }
+      );
+      return response;
     }
   },
   created() {
-    this.fetch_movie();
+    let _this = this;
+    this.ipLookUp().then(function() {
+      _this.fetch_movie();
+    });
   }
 };
 </script>
