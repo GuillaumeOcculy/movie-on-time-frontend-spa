@@ -113,7 +113,7 @@ export default {
   },
 
   removeToFavorite(cinema_id) {
-    return apiClient.delete("/favorite_cinemas", { data: cinema_id });
+    return apiClient.delete("/favorite_cinemas/" + cinema_id);
   },
 
   createUser(payload) {

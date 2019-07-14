@@ -55,7 +55,7 @@ export default {
         });
     },
     removeToFavorite() {
-      MOTService.removeToFavorite(this.cinemaId).then(() => {
+      MOTService.removeToFavorite(this.cinema.id).then(() => {
         this.cinema.attributes.favorited = false;
       });
     }
