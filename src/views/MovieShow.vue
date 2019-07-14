@@ -112,7 +112,8 @@ export default {
       date: "",
       page: 1,
       country: null,
-      postal_code: null
+      postal_code: null,
+      mobile: null
     };
   },
   computed: {
@@ -123,7 +124,8 @@ export default {
         date: this.date,
         page: this.page,
         country: this.country,
-        postal_code: this.postal_code
+        postal_code: this.postal_code,
+        mobile: this.mobile
       };
     },
     cinemas: function() {
@@ -148,16 +150,19 @@ export default {
       this.$store.dispatch("fetchMovie", this.payload);
     },
     ipLookUp() {
-      let response = axios.get("http://ip-api.com/json").then(
-        response => {
-          this.country = response.data.country;
-          this.postal_code = response.data.zip;
-        },
+      let response = axios
+        .get("http://ip-api.com/json/?fields=country,zip,mobile")
+        .then(
+          response => {
+            this.country = response.data.country;
+            this.postal_code = response.data.zip;
+            this.mobile = response.data.mobile;
+          },
 
-        function fail(data, status) {
-          console.log("Request failed.  Returned status of", status);
-        }
-      );
+          function fail(data, status) {
+            console.log("Request failed.  Returned status of", status);
+          }
+        );
       return response;
     }
   },
