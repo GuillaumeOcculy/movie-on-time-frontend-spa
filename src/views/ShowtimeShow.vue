@@ -6,9 +6,7 @@
           <div class="card-body">
             <div class="row" v-if="movie.attributes">
               <div class="col-sm-3">
-                <router-link
-                  :to="{ name: 'movie-show', params: { id: movie.id } }"
-                >
+                <router-link :to="{ name: 'movie-show', params: { id: movie.id } }">
                   <div class="text-center">
                     <img
                       :src="movie.attributes.poster_url"
@@ -34,9 +32,7 @@
                         <dt class="col-sm-3">During</dt>
                         <dd class="col-sm-9">
                           <span class="text-muted">
-                            <MovieHours
-                              :running_time="movie.attributes.running_time"
-                            />
+                            <MovieHours :running_time="movie.attributes.running_time" />
                           </span>
                         </dd>
                       </template>
@@ -80,17 +76,14 @@
                 <p v-html="computedAddress"></p>
 
                 <template v-if="cinema.attributes['ugc_unlimited?']">
-                  <dd class="text-monospace text-info">
-                    UGC unlimited card accepted
-                  </dd>
+                  <dd class="text-monospace text-info">UGC card accepted</dd>
                 </template>
                 <div class="text-center">
                   <a
                     :href="googleMapsUrl"
                     class="btn btn-outline-success"
                     target="_blank"
-                    >Get directions</a
-                  >
+                  >Get directions</a>
                 </div>
               </div>
             </div>
@@ -106,9 +99,7 @@
                 </div>
                 <div class="col-sm">
                   <p>Begins</p>
-                  <p class="text-danger">
-                    {{ showtime.attributes.start_time }}
-                  </p>
+                  <p class="text-danger">{{ showtime.attributes.start_time }}</p>
                 </div>
                 <div class="col-sm">
                   <p>Ends</p>
@@ -127,8 +118,7 @@
                       :href="showtime.attributes.booking_link"
                       class="btn btn-outline-success"
                       target="_blank"
-                      >Book Online</a
-                    >
+                    >Book Online</a>
                   </template>
                 </div>
                 <div class="col-sm">

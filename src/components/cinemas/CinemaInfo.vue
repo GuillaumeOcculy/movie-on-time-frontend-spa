@@ -7,7 +7,7 @@
       <dd>{{ cinema.attributes.city }}</dd>
 
       <template v-if="cinema.attributes['ugc_unlimited?']">
-        <dd class="text-monospace text-info">UGC card unlimited accepted</dd>
+        <dd class="text-monospace text-info">UGC card accepted</dd>
       </template>
 
       <dd>
