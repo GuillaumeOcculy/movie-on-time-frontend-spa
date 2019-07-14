@@ -10,6 +10,7 @@ import AppPagination from "@/components/AppPagination";
 import AppSelectedCountry from "@/components/AppSelectedCountry";
 
 import "@/assets/stylesheets/style.scss";
+import "nprogress/nprogress.css";
 
 Vue.use(require("vue-moment"));
 Vue.component("AppDate", AppDate);
