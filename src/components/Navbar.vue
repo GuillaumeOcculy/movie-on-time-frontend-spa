@@ -41,27 +41,36 @@
             >
 
             <template v-else>
-              <div>
-                <b-dropdown
-                  size="lg"
-                  variant="link"
-                  toggle-class="text-decoration-none"
-                  no-caret
-                >
-                  <template slot="button-content">
-                    <v-gravatar :email="loggedUser.email" :size="50" />
+              <div class="dropdown">
+                <v-gravatar
+                  :email="loggedUser.email"
+                  :size="50"
+                  class="dropdown-toggle"
+                  id="dropdownMenuButton"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                />
 
-                    <span class="sr-only">Profile</span>
-                  </template>
-                  <b-dropdown-item href="/favorite-cinemas"
-                    >Cinemas</b-dropdown-item
+                <div
+                  class="dropdown-menu dropdown-menu-right"
+                  aria-labelledby="dropdownMenuButton"
+                >
+                  <router-link
+                    :to="{ name: 'favorite-cinemas' }"
+                    class="dropdown-item"
+                    >Cinemas</router-link
                   >
-                  <b-dropdown-item href="/watchlist">Watchlist</b-dropdown-item>
-                  <b-dropdown-item href="/watched">Watched</b-dropdown-item>
-                  <b-dropdown-item href="#" @click.prevent="logout()"
-                    >Log out</b-dropdown-item
+                  <router-link :to="{ name: 'watchlist' }" class="dropdown-item"
+                    >Watchlist</router-link
                   >
-                </b-dropdown>
+                  <router-link :to="{ name: 'watched' }" class="dropdown-item"
+                    >Watched</router-link
+                  >
+                  <a href="#" class="dropdown-item" @click.prevent="logout()"
+                    >Log out</a
+                  >
+                </div>
               </div>
             </template>
           </li>
