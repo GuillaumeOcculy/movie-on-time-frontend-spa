@@ -79,6 +79,11 @@
                 <p class="text-muted">Address</p>
                 <p v-html="computedAddress"></p>
 
+                <template v-if="cinema.attributes['ugc_unlimited?']">
+                  <dd class="text-monospace text-info">
+                    UGC unlimited card accepted
+                  </dd>
+                </template>
                 <div class="text-center">
                   <a
                     :href="googleMapsUrl"

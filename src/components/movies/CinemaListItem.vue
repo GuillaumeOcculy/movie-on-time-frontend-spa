@@ -14,6 +14,10 @@
       </router-link>
 
       <p v-html="computedAddress"></p>
+
+      <template v-if="cinema.attributes['ugc_unlimited?']">
+        <dd class="text-monospace text-info">UGC unlimited card accepted</dd>
+      </template>
     </div>
     <div class="col-sm-8 align-self-center">
       <ShowtimeList :showtimes="cinema.attributes.showtimes.data" />
