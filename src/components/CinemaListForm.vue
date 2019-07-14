@@ -4,7 +4,7 @@
       <input
         type="text"
         class="form-control"
-        placeholder="Search cinema"
+        placeholder="Ex: UGC, 75008 or Paris"
         v-model="query"
         @input="queryEntered"
       />
