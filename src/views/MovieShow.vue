@@ -12,8 +12,7 @@
             role="tab"
             aria-controls="home"
             aria-selected="true"
-            >Home</a
-          >
+          >Home</a>
         </li>
         <li class="nav-item">
           <a
@@ -24,25 +23,14 @@
             role="tab"
             aria-controls="shotimes"
             aria-selected="false"
-            >Showtimes</a
-          >
+          >Showtimes</a>
         </li>
       </ul>
       <div class="tab-content" id="myTabContent">
-        <div
-          class="tab-pane fade active show"
-          id="home"
-          role="tabpanel"
-          aria-labelledby="home-tab"
-        >
+        <div class="tab-pane fade active show" id="home" role="tabpanel" aria-labelledby="home-tab">
           <MovieInfo :movie="movie" />
         </div>
-        <div
-          class="tab-pane fade"
-          id="shotimes"
-          role="tabpanel"
-          aria-labelledby="shotimes-tab"
-        >
+        <div class="tab-pane fade" id="shotimes" role="tabpanel" aria-labelledby="shotimes-tab">
           <div class="row bg-white mt-3 d-flex bd-highlight">
             <template v-for="date in movie.attributes.dates">
               <div
@@ -68,7 +56,16 @@
               />
             </div>
 
-            <AppSelectedCountry class="p-3" />
+            <div class="p-3">
+              <AppSelectedCountry />
+
+              <button
+                type="button"
+                class="btn btn-outline-success mt-3"
+                :disabled="disabledButton"
+                @click.prevent="geolocateMe"
+              >Find around me</button>
+            </div>
 
             <template v-if="favorited_cinemas.length > 0">
               <CinemaList :cinemas="favorited_cinemas" />
@@ -113,7 +110,10 @@ export default {
       page: 1,
       country: null,
       postal_code: null,
-      mobile: null
+      mobile: null,
+      latitude: null,
+      longitude: null,
+      disabledButton: false
     };
   },
   computed: {
@@ -125,7 +125,9 @@ export default {
         page: this.page,
         country: this.country,
         postal_code: this.postal_code,
-        mobile: this.mobile
+        mobile: this.mobile,
+        latitude: this.latitude,
+        longitude: this.longitude
       };
     },
     cinemas: function() {
@@ -140,6 +142,32 @@ export default {
     ...mapState(["movie", "meta"])
   },
   methods: {
+    geolocateMe() {
+      let _this = this;
+      this.disabledButton = true;
+      if ("geolocation" in navigator) {
+        // check if geolocation is supported/enabled on current browser
+        navigator.geolocation.getCurrentPosition(
+          function success(position) {
+            // for when getting location is a success
+            _this.latitude = position.coords.latitude;
+            _this.longitude = position.coords.longitude;
+            _this.fetch_movie();
+          },
+          function error(error_message) {
+            // for when getting location results in an error
+            console.error(
+              "An error has occured while retrieving" + "location",
+              error_message
+            );
+          }
+        );
+      } else {
+        // geolocation is not supported
+        // get your location some other way
+        console.log("geolocation is not enabled on this browser");
+      }
+    },
     set_date(date) {
       this.date = date;
       this.fetch_movie();

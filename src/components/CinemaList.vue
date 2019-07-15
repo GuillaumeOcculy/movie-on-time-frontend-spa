@@ -16,6 +16,7 @@
       <button
         type="button"
         class="btn btn-outline-success"
+        :disabled="disabledButton"
         @click.prevent="aroundMeClicked"
       >
         Find around me
@@ -47,6 +48,9 @@ export default {
       type: Array
     }
   },
+  data: function() {
+    return { disabledButton: false };
+  },
   components: {
     CinemaListItem,
     CinemaListForm
@@ -56,6 +60,7 @@ export default {
       this.$emit("pagination-clicked", payload);
     },
     aroundMeClicked: function() {
+      this.disabledButton = true;
       this.$emit("around-me-clicked");
     },
     queryEntered: function(payload) {

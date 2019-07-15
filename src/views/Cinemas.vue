@@ -48,7 +48,6 @@ export default {
   },
   methods: {
     geolocateMe() {
-      console.log("emit received");
       let _this = this;
       if ("geolocation" in navigator) {
         // check if geolocation is supported/enabled on current browser
