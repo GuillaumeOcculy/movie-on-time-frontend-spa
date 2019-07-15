@@ -15,7 +15,7 @@
         readonly
         class="form-control-plaintext"
         id="staticEmail2"
-        :value="'Cinemas: ' + meta.total_count"
+        :value="'Cinemas: ' + this.cinemaCount"
       />
     </div>
   </form>
@@ -41,6 +41,14 @@ export default {
       const payload = { q: this.query };
       this.$emit("query-entered", payload);
     }, 600)
+  },
+  computed: {
+    cinemaCount: function() {
+      if (this.meta.total_count) {
+        return this.meta.total_count;
+      }
+      return 0;
+    }
   }
 };
 </script>

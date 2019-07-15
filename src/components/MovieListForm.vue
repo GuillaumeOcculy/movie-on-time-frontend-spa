@@ -16,7 +16,7 @@
           readonly
           class="form-control-plaintext"
           id="staticEmail2"
-          :value="'Movies: ' + meta.total_count"
+          :value="'Movies: ' + this.movieCount"
         />
       </div>
     </form>
@@ -37,6 +37,14 @@ export default {
     return {
       query: ""
     };
+  },
+  computed: {
+    movieCount: function() {
+      if (this.meta.total_count) {
+        return this.meta.total_count;
+      }
+      return 0;
+    }
   },
   methods: {
     queryEntered: _.debounce(function() {
