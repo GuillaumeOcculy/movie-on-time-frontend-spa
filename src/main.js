@@ -2,7 +2,6 @@ import Vue from "vue";
 import App from "./App.vue";
 import router from "./router";
 import store from "./store";
-import Gravatar from "vue-gravatar";
 
 import AppDate from "@/components/AppDate";
 import AppShortDate from "@/components/AppShortDate";
@@ -17,7 +16,6 @@ Vue.component("AppDate", AppDate);
 Vue.component("AppShortDate", AppShortDate);
 Vue.component("AppPagination", AppPagination);
 Vue.component("AppSelectedCountry", AppSelectedCountry);
-Vue.component("v-gravatar", Gravatar);
 
 Vue.config.productionTip = false;
 

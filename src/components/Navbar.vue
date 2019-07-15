@@ -42,16 +42,14 @@
 
             <template v-else>
               <div class="dropdown">
-                <v-gravatar
-                  :email="loggedUser.email"
-                  :size="50"
-                  class="dropdown-toggle"
+                <img
+                  src="https://img.icons8.com/ios-filled/50/000000/guest-male--v1.png"
+                  class="dropdown-toggle avatar"
                   id="dropdownMenuButton"
                   data-toggle="dropdown"
                   aria-haspopup="true"
                   aria-expanded="false"
                 />
-
                 <div
                   class="dropdown-menu dropdown-menu-right"
                   aria-labelledby="dropdownMenuButton"
@@ -59,7 +57,7 @@
                   <router-link
                     :to="{ name: 'favorite-cinemas' }"
                     class="dropdown-item"
-                    >Cinemas</router-link
+                    >My cinemas</router-link
                   >
                   <router-link :to="{ name: 'watchlist' }" class="dropdown-item"
                     >Watchlist</router-link
@@ -114,5 +112,9 @@ export default {
 }
 a:hover {
   color: #e53935;
+}
+
+.avatar {
+  cursor: pointer;
 }
 </style>
