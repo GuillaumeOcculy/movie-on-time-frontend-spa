@@ -5,7 +5,7 @@
         <input
           type="text"
           class="form-control"
-          placeholder="Search movies"
+          placeholder="Filter movies"
           v-model="query"
           @input="queryEntered"
         />
