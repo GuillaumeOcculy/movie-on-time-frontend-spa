@@ -12,7 +12,8 @@
             role="tab"
             aria-controls="home"
             aria-selected="true"
-          >Home</a>
+            >Home</a
+          >
         </li>
         <li class="nav-item">
           <a
@@ -23,14 +24,25 @@
             role="tab"
             aria-controls="shotimes"
             aria-selected="false"
-          >Showtimes</a>
+            >Showtimes</a
+          >
         </li>
       </ul>
       <div class="tab-content" id="myTabContent">
-        <div class="tab-pane fade active show" id="home" role="tabpanel" aria-labelledby="home-tab">
+        <div
+          class="tab-pane fade active show"
+          id="home"
+          role="tabpanel"
+          aria-labelledby="home-tab"
+        >
           <MovieInfo :movie="movie" />
         </div>
-        <div class="tab-pane fade" id="shotimes" role="tabpanel" aria-labelledby="shotimes-tab">
+        <div
+          class="tab-pane fade"
+          id="shotimes"
+          role="tabpanel"
+          aria-labelledby="shotimes-tab"
+        >
           <div class="row bg-white mt-3 d-flex bd-highlight">
             <template v-for="date in movie.attributes.dates">
               <div
@@ -64,7 +76,9 @@
                 class="btn btn-outline-success mt-3"
                 :disabled="disabledButton"
                 @click.prevent="geolocateMe"
-              >Find around me</button>
+              >
+                Find around me
+              </button>
             </div>
 
             <template v-if="favorited_cinemas.length > 0">
@@ -88,7 +102,6 @@
 </template>
 
 <script>
-import axios from "axios";
 import MovieInfo from "@/components/MovieInfo.vue";
 import CinemaList from "@/components/movies/CinemaList.vue";
 import CinemaListForm from "@/components/CinemaListForm.vue";
@@ -176,29 +189,11 @@ export default {
       this.page = payload && payload["page"] ? payload["page"] : 1;
       this.query = payload && payload["q"] ? payload["q"] : "";
       this.$store.dispatch("fetchMovie", this.payload);
-    },
-    ipLookUp() {
-      let response = axios
-        .get("http://ip-api.com/json/?fields=country,zip,mobile")
-        .then(
-          response => {
-            this.country = response.data.country;
-            this.postal_code = response.data.zip;
-            this.mobile = response.data.mobile;
-          },
-
-          function fail(data, status) {
-            console.log("Request failed.  Returned status of", status);
-          }
-        );
-      return response;
     }
   },
   created() {
     let _this = this;
-    this.ipLookUp().then(function() {
-      _this.fetch_movie();
-    });
+    _this.fetch_movie();
   }
 };
 </script>
