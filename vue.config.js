@@ -3,7 +3,7 @@ module.exports = {
     s3Deploy: {
       registry: undefined,
       awsProfile: 'default',
-      region: 'us-west-2',
+      region: 'us-east-1',
       bucket: 'www.movieontime.com',
       createBucket: true,
       staticHosting: true,
