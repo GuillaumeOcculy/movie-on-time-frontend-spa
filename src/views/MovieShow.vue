@@ -12,8 +12,7 @@
             role="tab"
             aria-controls="home"
             aria-selected="true"
-            >Home</a
-          >
+          >Home</a>
         </li>
         <li class="nav-item">
           <a
@@ -24,25 +23,14 @@
             role="tab"
             aria-controls="shotimes"
             aria-selected="false"
-            >Showtimes</a
-          >
+          >Showtimes</a>
         </li>
       </ul>
       <div class="tab-content" id="myTabContent">
-        <div
-          class="tab-pane fade active show"
-          id="home"
-          role="tabpanel"
-          aria-labelledby="home-tab"
-        >
+        <div class="tab-pane fade active show" id="home" role="tabpanel" aria-labelledby="home-tab">
           <MovieInfo :movie="movie" />
         </div>
-        <div
-          class="tab-pane fade"
-          id="shotimes"
-          role="tabpanel"
-          aria-labelledby="shotimes-tab"
-        >
+        <div class="tab-pane fade" id="shotimes" role="tabpanel" aria-labelledby="shotimes-tab">
           <div class="row bg-white mt-3 d-flex bd-highlight">
             <template v-for="date in movie.attributes.dates">
               <div
@@ -68,17 +56,17 @@
               />
             </div>
 
-            <div class="p-3">
+            <div class="pl-3">
               <AppSelectedCountry />
 
-              <button
-                type="button"
-                class="btn btn-outline-success mt-3"
-                :disabled="disabledButton"
-                @click.prevent="geolocateMe"
-              >
-                Find around me
-              </button>
+              <div class="mt-2">
+                <button
+                  type="button"
+                  class="btn btn-success"
+                  :disabled="disabledButton"
+                  @click.prevent="geolocateMe"
+                >Find around me</button>
+              </div>
             </div>
 
             <template v-if="favorited_cinemas.length > 0">

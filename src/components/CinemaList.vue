@@ -15,7 +15,7 @@
     <div class="mt-2">
       <button
         type="button"
-        class="btn btn-outline-success"
+        class="btn btn-success"
         :disabled="disabledButton"
         @click.prevent="aroundMeClicked"
       >
