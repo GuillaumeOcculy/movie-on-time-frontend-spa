@@ -25,6 +25,18 @@
             aria-selected="false"
           >Showtimes</a>
         </li>
+
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            id="trailers-tab"
+            data-toggle="tab"
+            href="#trailers"
+            role="tab"
+            aria-controls="trailers"
+            aria-selected="false"
+          >Trailers</a>
+        </li>
       </ul>
       <div class="tab-content" id="myTabContent">
         <div class="tab-pane fade active show" id="home" role="tabpanel" aria-labelledby="home-tab">
@@ -79,9 +91,19 @@
 
             <template v-if="cinemas_length == 0">
               <div class="bt-white">
-                <h1>There are no cinemas avaible at this moment</h1>
+                <h1>There are no cinemas available at this moment</h1>
               </div>
             </template>
+          </div>
+        </div>
+        <div
+          class="tab-pane fade active show"
+          id="trailers"
+          role="tabpanel"
+          aria-labelledby="trailers-tab"
+        >
+          <div class="mt-3">
+            <TrailerList :trailers="movie.trailers" />
           </div>
         </div>
       </div>
@@ -91,6 +113,7 @@
 
 <script>
 import MovieInfo from "@/components/MovieInfo.vue";
+import TrailerList from "@/components/movies/TrailerList.vue";
 import CinemaList from "@/components/movies/CinemaList.vue";
 import CinemaListForm from "@/components/CinemaListForm.vue";
 import { mapState } from "vuex";
@@ -102,16 +125,14 @@ export default {
   components: {
     MovieInfo,
     CinemaList,
-    CinemaListForm
+    CinemaListForm,
+    TrailerList
   },
   data: function() {
     return {
       query: "",
       date: "",
       page: 1,
-      country: null,
-      postal_code: null,
-      mobile: null,
       latitude: null,
       longitude: null,
       disabledButton: false
@@ -124,9 +145,6 @@ export default {
         q: this.query,
         date: this.date,
         page: this.page,
-        country: this.country,
-        postal_code: this.postal_code,
-        mobile: this.mobile,
         latitude: this.latitude,
         longitude: this.longitude
       };

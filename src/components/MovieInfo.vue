@@ -42,17 +42,6 @@
         </template>
       </dl>
 
-      <div class="text-center">
-        <div class="btn-group" role="group" aria-label="Basic example">
-          <TrailerLink
-            v-for="(trailer, index) in movie.trailers"
-            :key="trailer.id"
-            :trailer="trailer"
-            :index="index"
-          />
-        </div>
-      </div>
-
       <div class="text-center" v-if="!movie.attributes.watched">
         <button
           type="button"
@@ -97,20 +86,17 @@
 </template>
 
 <script>
-import TrailerLink from "./TrailerLink.vue";
 import MovieHours from "./MovieHours.vue";
 import MOTService from "@/services/MOTService.js";
 
 export default {
   props: {
     movie: Object,
-    trailers: Array,
     genres: Array,
     directors: Array,
     casts: Array
   },
   components: {
-    TrailerLink,
     MovieHours
   },
   computed: {
