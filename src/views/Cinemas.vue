@@ -3,7 +3,7 @@
     <MovieHeaderLinkList />
 
     <CinemaList
-      :cinemas="cinemas"
+      :cinemas="allCinemas"
       :meta="meta"
       @query-entered="fetchCinemas"
       @pagination-clicked="fetchCinemas"
@@ -25,10 +25,8 @@ export default {
   data() {
     return {
       cinemas: [],
+      favoritedCinemas: [],
       query: "",
-      country: null,
-      postal_code: null,
-      mobile: null,
       latitude: null,
       longitude: null,
       meta: {}
@@ -37,12 +35,13 @@ export default {
   computed: {
     location: function() {
       return {
-        country: this.country,
-        postal_code: this.postal_code,
-        mobile: this.mobile,
         latitude: this.latitude,
         longitude: this.longitude
       };
+    },
+    allCinemas: function() {
+      let cinemas = this.favoritedCinemas.concat(this.cinemas);
+      return cinemas;
     }
   },
   methods: {
@@ -75,7 +74,12 @@ export default {
       let finalPayload = { ...payload, ...this.location };
       MOTService.getCinemas(finalPayload)
         .then(response => {
-          this.cinemas = response.data["data"];
+          this.favoritedCinemas = response.data.data.filter(
+            data => data.attributes.favorited == true
+          );
+          this.cinemas = response.data.data.filter(
+            data => data.attributes.favorited == false
+          );
           this.meta = response.data["meta"];
         })
         .catch(error => {
@@ -88,5 +92,3 @@ export default {
   }
 };
 </script>
-
-<style scoped></style>
