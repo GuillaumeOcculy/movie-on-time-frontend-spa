@@ -109,9 +109,6 @@ export default {
       query: "",
       date: "",
       page: 1,
-      country: null,
-      postal_code: null,
-      mobile: null,
       latitude: null,
       longitude: null,
       disabledButton: false
@@ -124,9 +121,6 @@ export default {
         q: this.query,
         date: this.date,
         page: this.page,
-        country: this.country,
-        postal_code: this.postal_code,
-        mobile: this.mobile,
         latitude: this.latitude,
         longitude: this.longitude
       };
