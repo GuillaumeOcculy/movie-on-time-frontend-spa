@@ -120,7 +120,7 @@
           </div>
         </div>
         <div
-          class="tab-pane fade active show"
+          class="tab-pane fade"
           id="trailers"
           role="tabpanel"
           aria-labelledby="trailers-tab"
