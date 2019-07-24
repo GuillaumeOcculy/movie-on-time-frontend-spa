@@ -6,7 +6,9 @@
           <div class="card-body">
             <div class="row" v-if="movie.attributes">
               <div class="col-sm-3">
-                <router-link :to="{ name: 'movie-show', params: { id: movie.id } }">
+                <router-link
+                  :to="{ name: 'movie-show', params: { id: movie.id } }"
+                >
                   <div class="text-center">
                     <img
                       :src="movie.attributes.poster_url"
@@ -32,7 +34,9 @@
                         <dt class="col-sm-3">During</dt>
                         <dd class="col-sm-9">
                           <span class="text-muted">
-                            <MovieHours :running_time="movie.attributes.running_time" />
+                            <MovieHours
+                              :running_time="movie.attributes.running_time"
+                            />
                           </span>
                         </dd>
                       </template>
@@ -83,7 +87,8 @@
                     :href="googleMapsUrl"
                     class="btn btn-outline-success"
                     target="_blank"
-                  >Get directions</a>
+                    >Get directions</a
+                  >
                 </div>
               </div>
             </div>
@@ -99,11 +104,19 @@
                 </div>
                 <div class="col-sm">
                   <p>Begins</p>
-                  <p class="text-danger">{{ showtime.attributes.start_time }}</p>
+                  <p class="text-danger">
+                    {{ showtime.attributes.start_time }}
+                    <span class="text-warning">*</span>
+                  </p>
+                  <p class="text-warning">
+                    There is approximately 15 minutes of advertising
+                  </p>
                 </div>
                 <div class="col-sm">
                   <p>Ends</p>
-                  <p class="text-danger">{{ showtime.attributes.end_time }}</p>
+                  <p class="text-danger">
+                    {{ this.endsAtTime }} <span class="text-warning">*</span>
+                  </p>
                 </div>
               </div>
 
@@ -118,7 +131,8 @@
                       :href="showtime.attributes.booking_link"
                       class="btn btn-outline-success"
                       target="_blank"
-                    >Book Online</a>
+                      >Book Online</a
+                    >
                   </template>
                 </div>
                 <div class="col-sm">
@@ -137,7 +151,7 @@
 <script>
 import MOTService from "@/services/MOTService.js";
 import MovieHours from "@/components/MovieHours.vue";
-
+import moment from "moment";
 export default {
   props: {
     id: [String, Number]
@@ -160,6 +174,12 @@ export default {
     });
   },
   computed: {
+    endsAtTime: function() {
+      let time = moment(this.showtime.attributes.end_time, "HH:mm")
+        .add(15, "minutes")
+        .format("HH:mm");
+      return time;
+    },
     castNames: function() {
       var casts = this.movie.attributes.casts.data.map(
         cast => cast.attributes.name
