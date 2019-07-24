@@ -43,7 +43,7 @@
             <template v-else>
               <div class="dropdown">
                 <img
-                  src="https://img.icons8.com/ios-filled/50/000000/guest-male--v1.png"
+                  src="https://img.icons8.com/ios-filled/30/000000/guest-male--v1.png"
                   class="dropdown-toggle avatar"
                   id="dropdownMenuButton"
                   data-toggle="dropdown"
