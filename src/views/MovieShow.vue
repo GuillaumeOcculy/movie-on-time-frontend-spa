@@ -26,7 +26,7 @@
             aria-selected="false"
           >
             <img
-              src="https://img.icons8.com/office/16/000000/starred-ticket.png"
+              src="https://img.icons8.com/office/20/000000/starred-ticket.png"
             />
             Showtimes
           </a>
@@ -41,7 +41,12 @@
             role="tab"
             aria-controls="trailers"
             aria-selected="false"
-          >Trailers</a>
+          >
+            <img
+              src="https://img.icons8.com/dusk/20/000000/movie-projector.png"
+            />
+            Trailers
+          </a>
         </li>
       </ul>
       <div class="tab-content" id="myTabContent">
@@ -120,9 +125,7 @@
           role="tabpanel"
           aria-labelledby="trailers-tab"
         >
-          <div class="mt-3">
-            <TrailerList :trailers="movie.trailers" />
-          </div>
+          <div class="mt-3"><TrailerList :trailers="movie.trailers" /></div>
         </div>
       </div>
     </div>
