@@ -89,10 +89,8 @@
               />
             </div>
 
-            <div class="pl-3">
-              <AppSelectedCountry />
-
-              <div class="mt-2">
+            <div class="pl-3 pr-3">
+              <div class="d-flex justify-content-between">
                 <button
                   type="button"
                   class="btn btn-success"
@@ -101,6 +99,8 @@
                 >
                   Find around me
                 </button>
+
+                <AppSelectedCountry />
               </div>
             </div>
 
