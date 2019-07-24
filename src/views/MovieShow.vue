@@ -12,7 +12,8 @@
             role="tab"
             aria-controls="home"
             aria-selected="true"
-          >Home</a>
+            >Home</a
+          >
         </li>
         <li class="nav-item">
           <a
@@ -23,14 +24,29 @@
             role="tab"
             aria-controls="shotimes"
             aria-selected="false"
-          >Showtimes</a>
+          >
+            <img
+              src="https://img.icons8.com/office/16/000000/starred-ticket.png"
+            />
+            Showtimes
+          </a>
         </li>
       </ul>
       <div class="tab-content" id="myTabContent">
-        <div class="tab-pane fade active show" id="home" role="tabpanel" aria-labelledby="home-tab">
+        <div
+          class="tab-pane fade active show"
+          id="home"
+          role="tabpanel"
+          aria-labelledby="home-tab"
+        >
           <MovieInfo :movie="movie" />
         </div>
-        <div class="tab-pane fade" id="shotimes" role="tabpanel" aria-labelledby="shotimes-tab">
+        <div
+          class="tab-pane fade"
+          id="shotimes"
+          role="tabpanel"
+          aria-labelledby="shotimes-tab"
+        >
           <div class="row bg-white mt-3 d-flex bd-highlight">
             <template v-for="date in movie.attributes.dates">
               <div
@@ -65,7 +81,9 @@
                   class="btn btn-success"
                   :disabled="disabledButton"
                   @click.prevent="geolocateMe"
-                >Find around me</button>
+                >
+                  Find around me
+                </button>
               </div>
             </div>
 
