@@ -12,7 +12,8 @@
       />
     </div>
 
-    <AppSelectedCountry />
+    <div class="d-flex justify-content-end"><AppSelectedCountry /></div>
+
     <div class="row">
       <MovieListItem v-for="movie in movies" :key="movie.id" :movie="movie" />
     </div>
