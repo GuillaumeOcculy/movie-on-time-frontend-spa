@@ -214,7 +214,9 @@ export default {
     },
     fetch_movie(payload) {
       this.page = payload && payload["page"] ? payload["page"] : 1;
-      this.query = payload && payload["q"] ? payload["q"] : "";
+      if (payload && payload["q"]) {
+        this.query = payload["q"];
+      }
       this.$store.dispatch("fetchMovie", this.payload);
     }
   },
