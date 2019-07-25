@@ -4,7 +4,7 @@ module.exports = {
       registry: undefined,
       awsProfile: 'default',
       region: 'us-east-1',
-      bucket: 'www.movieontime.com',
+      bucket: 'movieontime.com',
       createBucket: true,
       staticHosting: true,
       staticIndexPage: 'index.html',
