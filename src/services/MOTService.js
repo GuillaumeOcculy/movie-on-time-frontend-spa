@@ -2,8 +2,7 @@ import axios from "axios";
 import NProgress from "nprogress";
 import queryString from "query-string";
 
-const baseUrl = "http://localhost:3000";
-// const baseUrl = "https://api.movieontime.com";
+const baseUrl = process.env.VUE_APP_MOT_API_URL;
 
 const apiClient = axios.create({
   baseURL: baseUrl,
