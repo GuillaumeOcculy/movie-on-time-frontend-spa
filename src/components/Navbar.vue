@@ -24,9 +24,9 @@
               class="form-control mr-sm-1"
               type="search"
               v-model="query"
-              autofocus
-              placeholder="Search"
+              placeholder="Search movies"
               aria-label="Search"
+              autofocus
             />
           </form>
         </ul>
