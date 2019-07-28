@@ -2,7 +2,16 @@
   <div>
     <h1>Search</h1>
     <div class="row">
-      <MovieListItem v-for="movie in movies" :key="movie.id" :movie="movie" />
+      <template v-if="movieCount > 0">
+        <MovieListItem v-for="movie in movies" :key="movie.id" :movie="movie" />
+      </template>
+      <template v-else>
+        <div class="mt-3">
+          <h2 class="text-center">
+            We did not found movies with this query: {{ movieQuery }}
+          </h2>
+        </div>
+      </template>
     </div>
   </div>
 </template>
@@ -29,6 +38,14 @@ export default {
         .catch(error => {
           console.log("There was an error:", error.response);
         });
+    }
+  },
+  computed: {
+    movieCount: function() {
+      return this.movies.length;
+    },
+    movieQuery: function() {
+      return this.$route.query["q"];
     }
   },
   created() {
