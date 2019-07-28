@@ -25,10 +25,7 @@
             aria-controls="shotimes"
             aria-selected="false"
           >
-            <img
-              src="https://img.icons8.com/office/20/000000/starred-ticket.png"
-            />
-            Showtimes
+            <img :src="movieTicket" /> Showtimes
           </a>
         </li>
 
@@ -42,10 +39,7 @@
             aria-controls="trailers"
             aria-selected="false"
           >
-            <img
-              src="https://img.icons8.com/dusk/20/000000/movie-projector.png"
-            />
-            Trailers
+            <img :src="movieProjector" /> Trailers
           </a>
         </li>
       </ul>
@@ -138,6 +132,8 @@ import TrailerList from "@/components/movies/TrailerList.vue";
 import CinemaList from "@/components/movies/CinemaList.vue";
 import CinemaListForm from "@/components/CinemaListForm.vue";
 import { mapState } from "vuex";
+import movieTicket from "@/assets/images/icons/movie-ticket.png";
+import movieProjector from "@/assets/images/icons/movie-projector.png";
 
 export default {
   props: {
@@ -156,7 +152,9 @@ export default {
       page: 1,
       latitude: null,
       longitude: null,
-      disabledButton: false
+      disabledButton: false,
+      movieTicket,
+      movieProjector
     };
   },
   computed: {

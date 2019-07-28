@@ -43,7 +43,7 @@
             <template v-else>
               <div class="dropdown">
                 <img
-                  src="https://img.icons8.com/ios-filled/30/000000/guest-male--v1.png"
+                  :src="profileAvatar"
                   class="dropdown-toggle avatar"
                   id="dropdownMenuButton"
                   data-toggle="dropdown"
@@ -80,11 +80,12 @@
 
 <script>
 import { authComputed } from "../vuex/helpers.js";
-
+import profileAvatar from "@/assets/images/icons/profil.png";
 export default {
   data() {
     return {
-      query: ""
+      query: "",
+      profileAvatar
     };
   },
   methods: {
