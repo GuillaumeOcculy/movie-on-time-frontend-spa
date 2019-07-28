@@ -1,5 +1,5 @@
 <template>
-  <div class="col-sm-3 mt-3">
+  <div class="col-6 col-sm-3 mt-3">
     <router-link
       :to="{ name: 'movie-show', params: { id: movie.id } }"
       class="text-decoration-none"
@@ -8,6 +8,7 @@
         <img
           :src="movie.attributes.poster_url || posterNotFound"
           :alt="movie.attributes.title"
+          class="img-fluid"
         />
         <div class="card-body">
           <h5 class="card-title">{{ movie.attributes.title }}</h5>
