@@ -2,9 +2,7 @@
   <div>
     <MovieHeaderLinkList />
 
-    <div class="d-flex justify-content-between">
-      <MovieListForm @query-entered="queryEntered" :meta="meta" />
-
+    <div class="d-flex justify-content-end">
       <AppPagination
         :meta="meta"
         @pagination-clicked="paginationClicked"
@@ -12,7 +10,10 @@
       />
     </div>
 
-    <div class="d-flex justify-content-end"><AppSelectedCountry /></div>
+    <div class="d-flex justify-content-between">
+      <p class="font-weight-bold">Movies: {{ movieCount || 0 }}</p>
+      <AppSelectedCountry />
+    </div>
 
     <div class="row">
       <MovieListItem v-for="movie in movies" :key="movie.id" :movie="movie" />
@@ -30,13 +31,11 @@
 
 <script>
 import MovieListItem from "@/components/MovieListItem.vue";
-import MovieListForm from "@/components/MovieListForm.vue";
 import MovieHeaderLinkList from "@/components/MovieHeaderLinkList.vue";
 
 export default {
   components: {
     MovieListItem,
-    MovieListForm,
     MovieHeaderLinkList
   },
   props: {
@@ -52,9 +51,11 @@ export default {
   methods: {
     paginationClicked: function(payload) {
       this.$emit("pagination-clicked", payload);
-    },
-    queryEntered: function(payload) {
-      this.$emit("query-entered", payload);
+    }
+  },
+  computed: {
+    movieCount: function() {
+      return this.meta.total_count;
     }
   }
 };
