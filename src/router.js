@@ -15,6 +15,8 @@ import FavoriteCinemas from "./views/FavoriteCinemas.vue";
 import Watchlist from "./views/Watchlist.vue";
 import Watched from "./views/Watched.vue";
 import SelectCountry from "./views/SelectCountry.vue";
+import TermsOfUse from "./views/TermsOfUse.vue";
+import PrivacyPolicy from "./views/PrivacyPolicy.vue";
 
 Vue.use(Router);
 
@@ -99,6 +101,16 @@ export default new Router({
       path: "/select-country",
       name: "select-country",
       component: SelectCountry
+    },
+    {
+      path: "/terms-of-use",
+      name: "terms-of-use",
+      component: TermsOfUse
+    },
+    {
+      path: "/privacy-policy",
+      name: "privacy-policy",
+      component: PrivacyPolicy
     }
   ]
 });
