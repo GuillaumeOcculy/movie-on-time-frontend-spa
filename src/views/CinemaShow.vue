@@ -13,22 +13,31 @@
             role="tab"
             aria-controls="home"
             aria-selected="true"
-          >Home</a>
+            >Home</a
+          >
         </li>
         <li class="nav-item">
           <a
             class="nav-link"
-            id="shotimes-tab"
+            id="showtimes-tab"
             data-toggle="tab"
-            href="#shotimes"
+            href="#showtimes"
             role="tab"
-            aria-controls="shotimes"
+            aria-controls="showtimes"
             aria-selected="false"
-          >Showtimes</a>
+            @click="scrollTo"
+          >
+            <img :src="movieTicket" /> Showtimes
+          </a>
         </li>
       </ul>
       <div class="tab-content" id="myTabContent">
-        <div class="tab-pane fade active show" id="home" role="tabpanel" aria-labelledby="home-tab">
+        <div
+          class="tab-pane fade active show"
+          id="home"
+          role="tabpanel"
+          aria-labelledby="home-tab"
+        >
           <CinemaInfo :cinema="cinema" />
 
           <div class="row bg-white mt-3 d-flex bd-highlight">
@@ -70,10 +79,19 @@
               </form>
             </template>
 
-            <MovieInfo v-for="movie in filteredMovies" :key="movie.id" :movie="movie" />
+            <MovieInfo
+              v-for="movie in filteredMovies"
+              :key="movie.id"
+              :movie="movie"
+            />
           </div>
         </div>
-        <div class="tab-pane fade" id="shotimes" role="tabpanel" aria-labelledby="shotimes-tab">
+        <div
+          class="tab-pane fade"
+          id="showtimes"
+          role="tabpanel"
+          aria-labelledby="showtimes-tab"
+        >
           <div class="row bg-white mt-3 d-flex bd-highlight">
             <template v-for="date in cinema.attributes.dates">
               <div
@@ -113,7 +131,11 @@
               </form>
             </template>
 
-            <MovieInfo v-for="movie in filteredMovies" :key="movie.id" :movie="movie" />
+            <MovieInfo
+              v-for="movie in filteredMovies"
+              :key="movie.id"
+              :movie="movie"
+            />
           </div>
         </div>
       </div>
@@ -124,6 +146,7 @@
 <script>
 import CinemaInfo from "@/components/cinemas/CinemaInfo.vue";
 import MovieInfo from "@/components/cinemas/MovieInfo.vue";
+import movieTicket from "@/assets/images/icons/movie-ticket.png";
 import { mapState } from "vuex";
 
 export default {
@@ -137,7 +160,8 @@ export default {
   data: function() {
     return {
       search: "",
-      date: ""
+      date: "",
+      movieTicket
     };
   },
   created() {
@@ -166,6 +190,15 @@ export default {
     set_date(date) {
       this.date = date;
       this.fetch_cinema();
+    },
+    mobileScrollTo() {
+      let screenSize = document.documentElement.clientWidth;
+      if (screenSize < 700) {
+        window.scrollTo({ top: 500, behavior: "smooth" });
+      }
+    },
+    scrollTo() {
+      setTimeout(this.mobileScrollTo, 1000);
     }
   }
 };

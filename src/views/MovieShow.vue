@@ -18,12 +18,13 @@
         <li class="nav-item">
           <a
             class="nav-link"
-            id="shotimes-tab"
+            id="showtimes-tab"
             data-toggle="tab"
-            href="#shotimes"
+            href="#showtimes"
             role="tab"
-            aria-controls="shotimes"
+            aria-controls="showtimes"
             aria-selected="false"
+            @click="scrollTo"
           >
             <img :src="movieTicket" /> Showtimes
           </a>
@@ -54,9 +55,9 @@
         </div>
         <div
           class="tab-pane fade"
-          id="shotimes"
+          id="showtimes"
           role="tabpanel"
-          aria-labelledby="shotimes-tab"
+          aria-labelledby="showtimes-tab"
         >
           <div class="row bg-white mt-3 d-flex bd-highlight">
             <template v-for="date in movie.attributes.dates">
@@ -134,6 +135,7 @@ import CinemaListForm from "@/components/CinemaListForm.vue";
 import { mapState } from "vuex";
 import movieTicket from "@/assets/images/icons/movie-ticket.png";
 import movieProjector from "@/assets/images/icons/movie-projector.png";
+import { setTimeout } from "timers";
 
 export default {
   props: {
@@ -180,6 +182,15 @@ export default {
     ...mapState(["movie", "meta"])
   },
   methods: {
+    mobileScrollTo() {
+      let screenSize = document.documentElement.clientWidth;
+      if (screenSize < 700) {
+        window.scrollTo({ top: 500, behavior: "smooth" });
+      }
+    },
+    scrollTo() {
+      setTimeout(this.mobileScrollTo, 1000);
+    },
     geolocateMe() {
       let _this = this;
       this.disabledButton = true;
