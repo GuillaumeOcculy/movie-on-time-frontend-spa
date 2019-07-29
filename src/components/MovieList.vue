@@ -15,7 +15,7 @@
       <AppSelectedCountry />
     </div>
 
-    <div class="row">
+    <div class="row" id="movies">
       <MovieListItem v-for="movie in movies" :key="movie.id" :movie="movie" />
     </div>
 
@@ -51,6 +51,7 @@ export default {
   methods: {
     paginationClicked: function(payload) {
       this.$emit("pagination-clicked", payload);
+      window.scrollTo({ top: "#movies", behavior: "smooth" });
     }
   },
   computed: {

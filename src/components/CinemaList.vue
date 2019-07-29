@@ -23,11 +23,19 @@
       <AppSelectedCountry />
     </div>
 
-    <div class="row">
+    <div class="row" id="cinemas">
       <CinemaListItem
         v-for="cinema in cinemas"
         :key="cinema.id"
         :cinema="cinema"
+      />
+    </div>
+
+    <div class="d-flex flex-row-reverse bd-highlight mt-3">
+      <AppPagination
+        :meta="meta"
+        @pagination-clicked="paginationClicked"
+        v-if="cinemas.length > 0"
       />
     </div>
   </div>
@@ -58,6 +66,7 @@ export default {
   methods: {
     paginationClicked: function(payload) {
       this.$emit("pagination-clicked", payload);
+      window.scrollTo({ top: "#cinemas", behavior: "smooth" });
     },
     aroundMeClicked: function() {
       this.disabledButton = true;
