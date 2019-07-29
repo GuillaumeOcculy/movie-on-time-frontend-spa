@@ -1,5 +1,5 @@
 <template>
-  <footer class="bd-footer text-muted mt-3 bg-white">
+  <footer class="bd-footer text-muted mt-3">
     <div class="container">
       <div class="d-flex justify-content-between">
         <div class="mt-3">
