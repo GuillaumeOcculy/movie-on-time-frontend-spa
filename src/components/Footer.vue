@@ -3,7 +3,7 @@
     <div class="container">
       <div class="d-flex justify-content-between">
         <div class="mt-3">
-          <img :src="tmdbImage" alt="tmdb" height="80px" />
+          <img :src="tmdbImage" alt="tmdb" height="50px" />
         </div>
         <div>
           <ul style="list-style: none;">
