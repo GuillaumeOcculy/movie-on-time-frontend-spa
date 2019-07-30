@@ -65,6 +65,8 @@
                   <router-link :to="{ name: 'watched' }" class="dropdown-item"
                     >Watched</router-link
                   >
+                  <div class="dropdown-divider"></div>
+
                   <a href="#" class="dropdown-item" @click.prevent="logout()"
                     >Log out</a
                   >
