@@ -27,7 +27,7 @@
             aria-selected="false"
             @click="scrollTo"
           >
-            <img :src="movieTicket" /> Showtimes
+            <img :src="movieTicket" height="25px" /> Showtimes
           </a>
         </li>
       </ul>
@@ -146,7 +146,7 @@
 <script>
 import CinemaInfo from "@/components/cinemas/CinemaInfo.vue";
 import MovieInfo from "@/components/cinemas/MovieInfo.vue";
-import movieTicket from "@/assets/images/icons/movie-ticket.png";
+import movieTicket from "@/assets/images/icons/tickets.svg";
 import { mapState } from "vuex";
 
 export default {

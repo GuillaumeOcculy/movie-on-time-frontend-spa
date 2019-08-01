@@ -44,6 +44,7 @@
               <div class="dropdown">
                 <img
                   :src="profileAvatar"
+                  height="30px"
                   class="dropdown-toggle avatar"
                   id="dropdownMenuButton"
                   data-toggle="dropdown"
@@ -82,7 +83,7 @@
 
 <script>
 import { authComputed } from "../vuex/helpers.js";
-import profileAvatar from "@/assets/images/icons/profil.png";
+import profileAvatar from "@/assets/images/icons/user.svg";
 export default {
   data() {
     return {

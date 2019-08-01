@@ -4,6 +4,33 @@
       <div class="d-flex justify-content-between">
         <div class="mt-3">
           <img :src="tmdbImage" alt="tmdb" height="50px" />
+          <div>
+            Icons made by
+            <a
+              href="https://www.flaticon.com/authors/pongsakornred"
+              title="pongsakornRed"
+              >pongsakornRed</a
+            >,
+            <a href="https://www.flaticon.com/authors/freepik" title="Freepik"
+              >Freepik</a
+            >,
+            <a
+              href="https://www.flaticon.com/authors/smashicons"
+              title="Smashicons"
+              >Smashicons</a
+            >
+            from
+            <a href="https://www.flaticon.com/" title="Flaticon"
+              >www.flaticon.com</a
+            >
+            is licensed by
+            <a
+              href="http://creativecommons.org/licenses/by/3.0/"
+              title="Creative Commons BY 3.0"
+              target="_blank"
+              >CC 3.0 BY</a
+            >
+          </div>
         </div>
         <div>
           <ul style="list-style: none;">

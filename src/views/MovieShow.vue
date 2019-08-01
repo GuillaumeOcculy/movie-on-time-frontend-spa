@@ -26,7 +26,7 @@
             aria-selected="false"
             @click="scrollTo"
           >
-            <img :src="movieTicket" /> Showtimes
+            <img :src="movieTicketIcon" height="25px" /> Showtimes
           </a>
         </li>
 
@@ -40,7 +40,7 @@
             aria-controls="trailers"
             aria-selected="false"
           >
-            <img :src="movieProjector" /> Trailers
+            <img :src="movieCameraIcon" height="20px" /> Trailers
           </a>
         </li>
       </ul>
@@ -133,8 +133,8 @@ import TrailerList from "@/components/movies/TrailerList.vue";
 import CinemaList from "@/components/movies/CinemaList.vue";
 import CinemaListForm from "@/components/CinemaListForm.vue";
 import { mapState } from "vuex";
-import movieTicket from "@/assets/images/icons/movie-ticket.png";
-import movieProjector from "@/assets/images/icons/movie-projector.png";
+import movieCameraIcon from "@/assets/images/icons/video-camera.svg";
+import movieTicketIcon from "@/assets/images/icons/tickets.svg";
 import { setTimeout } from "timers";
 
 export default {
@@ -155,8 +155,8 @@ export default {
       latitude: null,
       longitude: null,
       disabledButton: false,
-      movieTicket,
-      movieProjector
+      movieCameraIcon,
+      movieTicketIcon
     };
   },
   computed: {
