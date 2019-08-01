@@ -5,7 +5,7 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "prebuild": "node ./node_modules/rimraf/bin.js ./node_modules/.cache",
-    "build": "vue-cli-service build",
+    "build": "vue-cli-service build --modern",
     "lint": "vue-cli-service lint",
     "deploy": "vue-cli-service s3-deploy"
   },
