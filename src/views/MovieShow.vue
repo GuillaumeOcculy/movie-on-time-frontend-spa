@@ -24,7 +24,6 @@
             role="tab"
             aria-controls="showtimes"
             aria-selected="false"
-            @click="scrollTo"
           >
             <img :src="movieTicketIcon" height="25px" /> Showtimes
           </a>
@@ -135,7 +134,6 @@ import CinemaListForm from "@/components/CinemaListForm.vue";
 import { mapState } from "vuex";
 import movieCameraIcon from "@/assets/images/icons/video-camera.svg";
 import movieTicketIcon from "@/assets/images/icons/tickets.svg";
-import { setTimeout } from "timers";
 
 export default {
   props: {
@@ -182,15 +180,6 @@ export default {
     ...mapState(["movie", "meta"])
   },
   methods: {
-    mobileScrollTo() {
-      let screenSize = document.documentElement.clientWidth;
-      if (screenSize < 700) {
-        window.scrollTo({ top: 500, behavior: "smooth" });
-      }
-    },
-    scrollTo() {
-      setTimeout(this.mobileScrollTo, 1000);
-    },
     geolocateMe() {
       let _this = this;
       this.disabledButton = true;
