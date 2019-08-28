@@ -23,3 +23,17 @@ a:hover {
     color: $grey;
   }
 }
+
+// Scroll horizontal
+div.scrollmenu {
+  overflow: auto;
+  white-space: nowrap;
+}
+
+div.scrollmenu div {
+  display: inline-block;
+}
+
+div.scrollmenu div:hover {
+  background-color: #d1ecf1;
+}
