@@ -15,7 +15,10 @@
         <dd>{{ genreNames }}</dd>
 
         <template
-          v-if="movie.attributes.title != movie.attributes.original_title"
+          v-if="
+            movie.attributes.title != movie.attributes.original_title &&
+              movie.attributes.original_title
+          "
         >
           <dt>Original title</dt>
           <dd>{{ movie.attributes.original_title }}</dd>
@@ -25,28 +28,33 @@
           <dt>Duration</dt>
           <dd><MovieHours :running_time="movie.attributes.running_time" /></dd>
         </template>
+        <template v-if="movie.attributes.during_credits">
+          <dt>During credits scene</dt>
+          <dd>
+            <img
+              :src="
+                movie.attributes.during_credits == 'yes'
+                  ? checkCircle
+                  : crossCircle
+              "
+              height="25px"
+            />
+          </dd>
+        </template>
 
-        <dt>During credits scene</dt>
-        <dd>
-          <img
-            :src="
-              movie.attributes.during_credits == true
-                ? checkCircle
-                : crossCircle
-            "
-            height="25px"
-          />
-        </dd>
-
-        <dt>After-credits scene</dt>
-        <dd>
-          <img
-            :src="
-              movie.attributes.after_credits == true ? checkCircle : crossCircle
-            "
-            height="25px"
-          />
-        </dd>
+        <template v-if="movie.attributes.after_credits">
+          <dt>After-credits scene</dt>
+          <dd>
+            <img
+              :src="
+                movie.attributes.after_credits == 'yes'
+                  ? checkCircle
+                  : crossCircle
+              "
+              height="25px"
+            />
+          </dd>
+        </template>
 
         <template v-if="directorNames.length > 0">
           <dt>Directors</dt>
