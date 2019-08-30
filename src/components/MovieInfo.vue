@@ -26,6 +26,28 @@
           <dd><MovieHours :running_time="movie.attributes.running_time" /></dd>
         </template>
 
+        <dt>During credits scene</dt>
+        <dd>
+          <img
+            :src="
+              movie.attributes.during_credits == true
+                ? checkCircle
+                : crossCircle
+            "
+            height="25px"
+          />
+        </dd>
+
+        <dt>After-credits scene</dt>
+        <dd>
+          <img
+            :src="
+              movie.attributes.after_credits == true ? checkCircle : crossCircle
+            "
+            height="25px"
+          />
+        </dd>
+
         <template v-if="directorNames.length > 0">
           <dt>Directors</dt>
           <dd>{{ directorNames }}</dd>
@@ -88,6 +110,8 @@
 <script>
 import MovieHours from "./MovieHours.vue";
 import MOTService from "@/services/MOTService.js";
+import crossCircle from "@/assets/images/icons/cross-circle.svg";
+import checkCircle from "@/assets/images/icons/check-circle.svg";
 
 export default {
   props: {
@@ -98,6 +122,12 @@ export default {
   },
   components: {
     MovieHours
+  },
+  data: function() {
+    return {
+      crossCircle,
+      checkCircle
+    };
   },
   computed: {
     genreNames: function() {
