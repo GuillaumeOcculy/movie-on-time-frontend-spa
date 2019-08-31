@@ -136,6 +136,11 @@ import movieCameraIcon from "@/assets/images/icons/video-camera.svg";
 import movieTicketIcon from "@/assets/images/icons/tickets.svg";
 
 export default {
+  metaInfo() {
+    return {
+      title: this.movie.attributes.title
+    };
+  },
   props: {
     id: [String, Number]
   },
@@ -145,7 +150,7 @@ export default {
     CinemaListForm,
     TrailerList
   },
-  data: function() {
+  data() {
     return {
       query: "",
       date: "",

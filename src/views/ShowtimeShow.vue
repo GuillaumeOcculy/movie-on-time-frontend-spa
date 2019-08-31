@@ -148,6 +148,11 @@ import MOTService from "@/services/MOTService.js";
 import MovieHours from "@/components/MovieHours.vue";
 import moment from "moment";
 export default {
+  metaInfo() {
+    return {
+      title: this.showtimeTitle
+    };
+  },
   props: {
     id: [String, Number]
   },
@@ -193,6 +198,12 @@ export default {
         this.cinema.attributes.post_code,
         this.cinema.attributes.city
       ].join("<br>");
+    },
+    showtimeTitle: function() {
+      let time = this.showtime.attributes.start_time;
+      let title = this.movie.attributes.title;
+      let cinemaName = this.cinema.attributes.name;
+      return title + "starts at " + time + " at " + cinemaName;
     }
   }
 };

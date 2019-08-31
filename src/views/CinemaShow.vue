@@ -150,6 +150,11 @@ import movieTicket from "@/assets/images/icons/tickets.svg";
 import { mapState } from "vuex";
 
 export default {
+  metaInfo() {
+    return {
+      title: this.cinema.attributes.name
+    };
+  },
   props: {
     id: [String, Number]
   },
