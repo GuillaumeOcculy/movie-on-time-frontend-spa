@@ -83,12 +83,7 @@
                   <dd class="text-monospace text-info">UGC card accepted</dd>
                 </template>
                 <div class="text-center">
-                  <a
-                    :href="googleMapsUrl"
-                    class="btn btn-outline-success"
-                    target="_blank"
-                    >Get directions</a
-                  >
+                  <AppGetDirection :cinema="cinema" />
                 </div>
               </div>
             </div>
@@ -198,14 +193,6 @@ export default {
         this.cinema.attributes.post_code,
         this.cinema.attributes.city
       ].join("<br>");
-    },
-    googleMapsUrl: function() {
-      return (
-        "https://www.google.com/maps/dir//" +
-        this.cinema.attributes.latitude +
-        "," +
-        this.cinema.attributes.longitude
-      );
     }
   }
 };

@@ -4,6 +4,7 @@ import router from "./router";
 import store from "./store";
 
 import AppDate from "@/components/AppDate";
+import AppGetDirection from "@/components/AppGetDirection";
 import AppShortDate from "@/components/AppShortDate";
 import AppPagination from "@/components/AppPagination";
 import AppSelectedCountry from "@/components/AppSelectedCountry";
@@ -13,6 +14,7 @@ import "nprogress/nprogress.css";
 
 Vue.use(require("vue-moment"));
 Vue.component("AppDate", AppDate);
+Vue.component("AppGetDirection", AppGetDirection);
 Vue.component("AppShortDate", AppShortDate);
 Vue.component("AppPagination", AppPagination);
 Vue.component("AppSelectedCountry", AppSelectedCountry);

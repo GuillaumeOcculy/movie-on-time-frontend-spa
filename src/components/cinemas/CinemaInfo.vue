@@ -6,8 +6,10 @@
       <dd>{{ cinema.attributes.post_code }}</dd>
       <dd>{{ cinema.attributes.city }}</dd>
 
+      <AppGetDirection :cinema="cinema" />
+
       <template v-if="cinema.attributes['ugc_unlimited?']">
-        <dd class="text-monospace text-info">UGC card accepted</dd>
+        <dd class="text-monospace text-info mt-3">UGC card accepted</dd>
       </template>
 
       <dd>
