@@ -42,6 +42,7 @@
                   class="form-control"
                   placeholder="Email"
                   v-model="email"
+                  required
                 />
               </div>
               <div class="col">
@@ -50,6 +51,7 @@
                   class="form-control"
                   placeholder="Password"
                   v-model="password"
+                  required
                 />
               </div>
             </div>

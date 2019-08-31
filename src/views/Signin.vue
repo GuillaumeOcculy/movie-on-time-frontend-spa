@@ -14,7 +14,13 @@
           <form @submit.prevent="login">
             <div class="row mt-3">
               <div class="col">
-                <input type="email" class="form-control" placeholder="Email" v-model="email" />
+                <input
+                  type="email"
+                  class="form-control"
+                  placeholder="Email"
+                  v-model="email"
+                  required
+                />
               </div>
               <div class="col">
                 <input
@@ -22,6 +28,7 @@
                   class="form-control"
                   placeholder="Password"
                   v-model="password"
+                  required
                 />
               </div>
             </div>
