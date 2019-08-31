@@ -18,6 +18,9 @@ import MovieHeaderLinkList from "@/components/MovieHeaderLinkList.vue";
 import CinemaList from "@/components/CinemaList.vue";
 
 export default {
+  metaInfo: {
+    title: "Cinemas"
+  },
   components: {
     MovieHeaderLinkList,
     CinemaList

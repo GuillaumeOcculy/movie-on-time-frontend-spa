@@ -41,14 +41,14 @@
 
     <h2>Privacy Policies</h2>
 
-    <P
-      >You may consult this list to find the Privacy Policy for each of the
+    <P>
+      You may consult this list to find the Privacy Policy for each of the
       advertising partners of Movie On Time. Our Privacy Policy was created with
       the help of the
       <a href="https://www.privacypolicygenerator.info"
         >Privacy Policy Generator</a
-      >.</P
-    >
+      >.
+    </P>
 
     <p>
       Third-party ad servers or ad networks uses technologies like cookies,
@@ -116,3 +116,11 @@
     </p>
   </div>
 </template>
+
+<script>
+export default {
+  metaInfo: {
+    title: "Privacy & Policy"
+  }
+};
+</script>

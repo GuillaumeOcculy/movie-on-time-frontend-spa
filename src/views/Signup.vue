@@ -11,9 +11,7 @@
                 v-for="(value, index) in values"
                 :key="index"
                 class="text-danger"
-              >
-                {{ key }} {{ value }}
-              </p>
+              >{{ key }} {{ value }}</p>
             </ul>
           </div>
           <form @submit.prevent="register">
@@ -27,12 +25,7 @@
                 />
               </div>
               <div class="col">
-                <input
-                  type="text"
-                  class="form-control"
-                  placeholder="Last name"
-                  v-model="lastName"
-                />
+                <input type="text" class="form-control" placeholder="Last name" v-model="lastName" />
               </div>
             </div>
             <div class="row mt-3">
@@ -57,17 +50,16 @@
             </div>
             <div class="row mt-3">
               <div class="col">
-                <button type="submit" class="btn btn-primary btn-block">
-                  Register
-                </button>
+                <button type="submit" class="btn btn-primary btn-block">Register</button>
               </div>
             </div>
           </form>
 
           <div class="text-center">
-            <router-link :to="{ name: 'signin' }" class="navbar-brand"
-              >Already have an account? Sign in</router-link
-            >
+            <router-link
+              :to="{ name: 'signin' }"
+              class="navbar-brand"
+            >Already have an account? Sign in</router-link>
           </div>
         </div>
       </div>
@@ -78,6 +70,9 @@
 <script>
 import _ from "lodash";
 export default {
+  metaInfo: {
+    title: "Sign Up"
+  },
   data() {
     return {
       firstName: null,

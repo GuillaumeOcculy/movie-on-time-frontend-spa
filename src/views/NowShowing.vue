@@ -17,6 +17,9 @@ import MovieList from "@/components/MovieList.vue";
 import Footer from "@/components/Footer.vue";
 
 export default {
+  metaInfo: {
+    title: "Now Showing"
+  },
   components: {
     MovieList,
     Footer

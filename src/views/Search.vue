@@ -18,6 +18,9 @@ import MOTService from "@/services/MOTService.js";
 import MovieListItem from "@/components/MovieListItem.vue";
 
 export default {
+  metaInfo: {
+    title: "Search"
+  },
   components: {
     MovieListItem
   },

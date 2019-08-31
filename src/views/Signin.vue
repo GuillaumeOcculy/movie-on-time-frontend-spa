@@ -34,16 +34,17 @@
             </div>
             <div class="row mt-3">
               <div class="col">
-                <button type="submit" class="btn btn-primary btn-block">Log in</button>
+                <button type="submit" class="btn btn-primary btn-block">
+                  Log in
+                </button>
               </div>
             </div>
           </form>
 
           <div class="text-center">
-            <router-link
-              :to="{ name: 'signup' }"
-              class="navbar-brand"
-            >Don't have an account? Sign up</router-link>
+            <router-link :to="{ name: 'signup' }" class="navbar-brand"
+              >Don't have an account? Sign up</router-link
+            >
           </div>
         </div>
       </div>
@@ -53,6 +54,9 @@
 
 <script>
 export default {
+  metaInfo: {
+    title: "Sign In"
+  },
   data() {
     return {
       email: null,

@@ -606,3 +606,11 @@
     </p>
   </div>
 </template>
+
+<script>
+export default {
+  metaInfo: {
+    title: "Terms Of Use"
+  }
+};
+</script>

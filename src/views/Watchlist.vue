@@ -12,6 +12,9 @@ import MOTService from "@/services/MOTService.js";
 import MovieList from "@/components/MovieList.vue";
 
 export default {
+  metaInfo: {
+    title: "My Watchlist"
+  },
   components: {
     MovieList
   },

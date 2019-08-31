@@ -14,9 +14,9 @@
         <form class="form-inline" @submit.prevent="submit">
           <div class="form-group mx-sm-3 mb-2">
             <select class="custom-select" v-model="selectedCountry" required>
-              <option v-for="country in countries" :key="country.name">
-                {{ country.name }}
-              </option>
+              <option v-for="country in countries" :key="country.name">{{
+                country.name
+              }}</option>
             </select>
 
             <input
@@ -54,9 +54,9 @@
           @click="vote(answer.attributes.body)"
         >
           {{ answer.attributes.body }}
-          <span class="badge badge-light">{{
-            answer.attributes.vote_count
-          }}</span>
+          <span class="badge badge-light">
+            {{ answer.attributes.vote_count }}
+          </span>
         </button>
       </div>
     </div>
@@ -70,6 +70,9 @@ import { authComputed } from "../vuex/helpers.js";
 import _ from "lodash";
 
 export default {
+  metaInfo: {
+    title: "Vote for a country"
+  },
   data() {
     return {
       poll: null,
