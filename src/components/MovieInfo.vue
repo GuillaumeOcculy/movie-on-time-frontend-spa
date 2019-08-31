@@ -1,8 +1,8 @@
 <template>
   <div class="row bg-white py-3 align-items-center">
-    <div class="col-sm-4">
+    <div class="col-sm-4 text-center">
       <img
-        :src="movie.attributes.poster_url"
+        :src="movie.attributes.thumbnail_url"
         :alt="movie.attributes.title"
         class="img-fluid"
       />

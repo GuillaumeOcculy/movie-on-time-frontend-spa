@@ -6,7 +6,7 @@
     >
       <div class="card">
         <img
-          :src="movie.attributes.poster_url || posterNotFound"
+          :src="movie.attributes.thumbnail_url || posterNotFound"
           :alt="movie.attributes.title"
           class="img-fluid"
         />
