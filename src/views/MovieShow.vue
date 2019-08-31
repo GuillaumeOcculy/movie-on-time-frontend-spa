@@ -219,8 +219,9 @@ export default {
     }
   },
   created() {
-    let _this = this;
-    _this.fetch_movie();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+
+    this.fetch_movie();
   }
 };
 </script>
