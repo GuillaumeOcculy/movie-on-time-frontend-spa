@@ -5,12 +5,10 @@
         :to="{ name: 'cinema-show', params: { id: cinema.id } }"
         class="text-decoration-none"
       >
-        <h1 class="text-center">
+        <h2 class="text-center">
           {{ cinema.attributes.name }}
-          <span style="font-size: 1em; color: Tomato;" v-if="favorited">
-            <i class="fas fa-heart"></i>
-          </span>
-        </h1>
+          <img v-if="favorited" :src="favoriteActive" height="25px" />
+        </h2>
       </router-link>
 
       <p class="text-center" v-html="computedAddress"></p>
@@ -27,6 +25,7 @@
 
 <script>
 import ShowtimeList from "@/components/ShowtimeList.vue";
+import favoriteActive from "@/assets/images/icons/favorite-active.svg";
 
 export default {
   props: {
@@ -34,6 +33,11 @@ export default {
   },
   components: {
     ShowtimeList
+  },
+  data() {
+    return {
+      favoriteActive
+    };
   },
   computed: {
     computedAddress: function() {
