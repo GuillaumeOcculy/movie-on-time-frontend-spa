@@ -13,7 +13,7 @@
         </h1>
       </router-link>
 
-      <p v-html="computedAddress"></p>
+      <p class="text-center" v-html="computedAddress"></p>
 
       <template v-if="cinema.attributes['ugc_unlimited?']">
         <dd class="text-monospace text-info">UGC card accepted</dd>

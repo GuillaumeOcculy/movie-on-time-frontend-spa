@@ -2,8 +2,8 @@
   <div>
     <div v-for="(showtimes, group) in groupedShowtimes" :key="group">
       <div class="row mt-3">
-        <div class="col-sm-2">{{ group }}</div>
-        <div class="col-sm-10">
+        <div class="col-sm-2 text-center">{{ group }}</div>
+        <div class="col-sm-10 text-center">
           <ShowtimeListItem
             v-for="showtime in showtimes"
             :key="showtime.id"
