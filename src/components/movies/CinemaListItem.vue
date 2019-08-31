@@ -16,7 +16,7 @@
       <p class="text-center" v-html="computedAddress"></p>
 
       <template v-if="cinema.attributes['ugc_unlimited?']">
-        <dd class="text-monospace text-info">UGC card accepted</dd>
+        <dd class="text-monospace text-info text-center">UGC card accepted</dd>
       </template>
     </div>
     <div class="col-sm-8 align-self-center">
