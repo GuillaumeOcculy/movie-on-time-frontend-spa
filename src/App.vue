@@ -1,9 +1,7 @@
 <template>
   <div id="app">
     <Navbar />
-    <div class="container">
-      <router-view />
-    </div>
+    <div class="container"><router-view /></div>
   </div>
 </template>
 
@@ -22,6 +20,27 @@ export default {
         name: "description",
         content:
           "Découvrez tous les films à l'affiche dans les cinémas ainsi que les horaires des séances. Réservez vos places. Savoir si le film contient une scène post-générique."
+      },
+      {
+        name: "og:title",
+        content: "Movie On Time"
+      },
+      {
+        name: "og:type",
+        content: "website"
+      },
+      {
+        name: "og:site_name",
+        content: "Movie On Time"
+      },
+      {
+        name: "og:description",
+        content:
+          "Découvrez tous les films à l'affiche dans les cinémas ainsi que les horaires des séances. Réservez vos places. Savoir si le film contient une scène post-générique."
+      },
+      {
+        name: "gsa:title",
+        content: "Movie On Time"
       }
     ]
   }
