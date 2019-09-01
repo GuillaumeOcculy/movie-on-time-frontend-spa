@@ -8,7 +8,6 @@
         <img
           :src="movie.attributes.thumbnail_url || posterNotFound"
           :alt="movie.attributes.title"
-          class="img-fluid"
         />
         <div class="card-body">
           <h5 class="card-title">{{ movie.attributes.title }}</h5>
