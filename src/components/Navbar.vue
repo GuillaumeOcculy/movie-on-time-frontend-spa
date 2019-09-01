@@ -24,7 +24,7 @@
               class="form-control mr-sm-1"
               type="search"
               v-model="query"
-              placeholder="Search movies"
+              placeholder="Search..."
               aria-label="Search"
               autofocus
             />
@@ -114,6 +114,12 @@ export default {
 .container {
   max-width: 1275px;
 }
+@media (max-width: 768px) {
+  .form-control {
+    max-width: 100px;
+  }
+}
+
 a:hover {
   color: #e53935;
 }
