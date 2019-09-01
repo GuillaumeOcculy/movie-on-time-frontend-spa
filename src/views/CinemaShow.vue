@@ -92,10 +92,10 @@
           role="tabpanel"
           aria-labelledby="showtimes-tab"
         >
-          <div class="row bg-white mt-3 d-flex bd-highlight">
+          <div class="text-center mt-3 scrollmenu">
             <template v-for="date in cinema.attributes.dates">
               <div
-                class="p-2 flex-fill bd-highlight text-center border"
+                class="p-2 text-center border"
                 :key="date"
                 :class="{ 'alert-info': date == cinema.attributes.date }"
               >
