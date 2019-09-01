@@ -98,6 +98,7 @@
               </div>
             </div>
 
+            <hr />
             <template v-if="favorited_cinemas.length > 0">
               <CinemaList :cinemas="favorited_cinemas" />
             </template>
