@@ -45,7 +45,7 @@ img {
 
 @media (max-width: 768px) {
   img {
-    max-height: 200px;
+    height: 200px;
     width: auto;
   }
 }
